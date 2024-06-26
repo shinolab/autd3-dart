@@ -1,0 +1,25 @@
+name: coverage
+
+on:
+  push:
+    branches:
+      - 'develop'
+
+jobs:
+ coverage:
+  name: coverage
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: stable
+        flutter-version-file: pubspec.yaml
+    - name: test
+      run: flutter test --coverage    
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        files: ./coverage/lcov.info
+        token: ${{ secrets.CODECOV_TOKEN }}

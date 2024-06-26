@@ -1,0 +1,26 @@
+name: build
+
+on:
+  push:
+    branches:
+      - 'develop'
+  pull_request:
+    types: [opened, reopened, review_requested]
+
+jobs:
+ build:
+  name: build
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: stable
+        flutter-version-file: pubspec.yaml
+    - name: install packages
+      run: flutter pub get
+    - name: lint
+      run: flutter analyze
+    - name: test
+      run: flutter test
