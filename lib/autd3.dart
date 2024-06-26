@@ -52,3 +52,4 @@ export 'package:autd3/utils/transition_mode.dart' show TransitionMode;
 
 export 'package:autd3/autd3_device.dart' show AUTD3;
 export 'package:autd3/controller.dart' show Controller;
+export 'package:vector_math/vector_math.dart' show Vector3, Quaternion;
