@@ -1,5 +1,4 @@
 import 'package:autd3/utils/angle.dart';
-import 'package:autd3/utils/freq.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vector_math/vector_math.dart';
 import 'package:autd3/datagram/gain/gain.dart';
