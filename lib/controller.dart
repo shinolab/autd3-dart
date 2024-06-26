@@ -31,7 +31,7 @@ class Controller {
       : _client = client,
         _geometry = geometry;
 
-  static builder(Iterable<AUTD3> devices) {
+  static ControllerBuilder builder(Iterable<AUTD3> devices) {
     return ControllerBuilder(devices);
   }
 
