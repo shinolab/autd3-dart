@@ -18,8 +18,16 @@ jobs:
         flutter-version-file: pubspec.yaml
     - name: test
       run: flutter test --coverage    
+    - name: Install lcov
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install lcov
+    - name: omit generated code from coverage
+      run: |
+          lcov --remove coverage/lcov.info 'lib/src/generated/*'  -o ./coverage/lcov-new.info
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
-        files: ./coverage/lcov.info
+        disable_search: true
+        file: ./coverage/lcov-new.info
         token: ${{ secrets.CODECOV_TOKEN }}
