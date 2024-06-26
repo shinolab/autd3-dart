@@ -8,9 +8,9 @@ import 'package:grpc/grpc.dart';
 import 'firmware_version.dart';
 
 class ControllerBuilder {
-  final List<AUTD3> _devices;
+  final Iterable<AUTD3> _devices;
 
-  ControllerBuilder(List<AUTD3> devices) : _devices = devices;
+  ControllerBuilder(Iterable<AUTD3> devices) : _devices = devices;
 
   Future<Controller> open(ClientChannel channel) async {
     final client = lightweight.ECATLightClient(channel);
@@ -31,7 +31,7 @@ class Controller {
       : _client = client,
         _geometry = geometry;
 
-  static builder(List<AUTD3> devices) {
+  static builder(Iterable<AUTD3> devices) {
     return ControllerBuilder(devices);
   }
 

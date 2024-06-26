@@ -6,7 +6,7 @@ import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/gain.pb.dart' as gain;
 
 class Naive extends Gain {
-  final List<Holo> foci;
+  final Iterable<Holo> foci;
   final EmissionConstraint? constraint;
 
   Naive(this.foci, {this.constraint}) {

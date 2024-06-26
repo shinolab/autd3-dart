@@ -6,7 +6,7 @@ import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/gain.pb.dart' as gain;
 
 class Greedy extends Gain {
-  final List<Holo> foci;
+  final Iterable<Holo> foci;
   final EmissionConstraint? constraint;
   final int? phaseDiv;
 

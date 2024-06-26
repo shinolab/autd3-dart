@@ -7,7 +7,7 @@ import 'package:autd3/src/generated/gain.pb.dart' as gain;
 import 'package:autd3/utils/int_helper.dart';
 
 class LM extends Gain {
-  final List<Holo> foci;
+  final Iterable<Holo> foci;
   final EmissionConstraint? constraint;
   final double? eps_1;
   final double? eps_2;
