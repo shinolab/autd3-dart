@@ -17,6 +17,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'datagram.pb.dart' as $3;
 import 'gain.pb.dart' as $5;
 import 'modulation.pb.dart' as $4;
+import 'utils.pb.dart' as $0;
 
 enum Datagram_Datagram {
   clear_1, 
@@ -663,6 +664,100 @@ class CloseRequestLightweight extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static CloseRequestLightweight getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CloseRequestLightweight>(create);
   static CloseRequestLightweight? _defaultInstance;
+}
+
+class OpenRequestLightweight extends $pb.GeneratedMessage {
+  factory OpenRequestLightweight({
+    $0.Geometry? geometry,
+    $fixnum.Int64? parallelThreshold,
+    $fixnum.Int64? sendInterval,
+    $core.int? timerResolution,
+  }) {
+    final $result = create();
+    if (geometry != null) {
+      $result.geometry = geometry;
+    }
+    if (parallelThreshold != null) {
+      $result.parallelThreshold = parallelThreshold;
+    }
+    if (sendInterval != null) {
+      $result.sendInterval = sendInterval;
+    }
+    if (timerResolution != null) {
+      $result.timerResolution = timerResolution;
+    }
+    return $result;
+  }
+  OpenRequestLightweight._() : super();
+  factory OpenRequestLightweight.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OpenRequestLightweight.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OpenRequestLightweight', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..aOM<$0.Geometry>(1, _omitFieldNames ? '' : 'geometry', subBuilder: $0.Geometry.create)
+    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'parallelThreshold', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'sendInterval', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'timerResolution', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  OpenRequestLightweight clone() => OpenRequestLightweight()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  OpenRequestLightweight copyWith(void Function(OpenRequestLightweight) updates) => super.copyWith((message) => updates(message as OpenRequestLightweight)) as OpenRequestLightweight;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static OpenRequestLightweight create() => OpenRequestLightweight._();
+  OpenRequestLightweight createEmptyInstance() => create();
+  static $pb.PbList<OpenRequestLightweight> createRepeated() => $pb.PbList<OpenRequestLightweight>();
+  @$core.pragma('dart2js:noInline')
+  static OpenRequestLightweight getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OpenRequestLightweight>(create);
+  static OpenRequestLightweight? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.Geometry get geometry => $_getN(0);
+  @$pb.TagNumber(1)
+  set geometry($0.Geometry v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGeometry() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGeometry() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.Geometry ensureGeometry() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get parallelThreshold => $_getI64(1);
+  @$pb.TagNumber(2)
+  set parallelThreshold($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasParallelThreshold() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearParallelThreshold() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get sendInterval => $_getI64(2);
+  @$pb.TagNumber(3)
+  set sendInterval($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSendInterval() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSendInterval() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get timerResolution => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set timerResolution($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTimerResolution() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTimerResolution() => clearField(4);
 }
 
 

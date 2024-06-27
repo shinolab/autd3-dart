@@ -6,14 +6,8 @@ import contextlib
 import glob
 import os
 import pathlib
-import platform
-import re
 import shutil
 import subprocess
-import sys
-import tarfile
-import urllib.request
-from typing import Optional
 
 
 def err(msg: str):
@@ -75,31 +69,6 @@ if __name__ == "__main__":
     with working_dir(os.path.dirname(os.path.abspath(__file__))):
         parser = argparse.ArgumentParser(description="autd3 build script")
         subparsers = parser.add_subparsers()
-
-        # # build
-        # parser_py_build = subparsers.add_parser("build", help="see `build -h`")
-        # parser_py_build.add_argument(
-        #     "--arch", help="cross-compile for specific architecture (for Linux)"
-        # )
-        # parser_py_build.add_argument(
-        #     "--no-install", action="store_true", help="skip install python package"
-        # )
-        # parser_py_build.set_defaults(handler=py_build)
-
-        # # test
-        # parser_py_test = subparsers.add_parser("test", help="see `test -h`")
-        # parser_py_test.set_defaults(handler=py_test)
-
-        # # cov
-        # parser_py_cov = subparsers.add_parser("cov", help="see `cov -h`")
-        # parser_py_cov.add_argument(
-        #     "--cov_report", help="coverage report type [term|xml|html]", default="term"
-        # )
-        # parser_py_cov.set_defaults(handler=py_cov)
-
-        # # clear
-        # parser_py_clear = subparsers.add_parser("clear", help="see `clear -h`")
-        # parser_py_clear.set_defaults(handler=py_clear)
 
         # util
         parser_util = subparsers.add_parser("util", help="see `util -h`")

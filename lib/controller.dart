@@ -2,6 +2,7 @@ import 'package:autd3/autd3_device.dart';
 import 'package:autd3/geometry.dart';
 import 'package:autd3/sendable.dart';
 import 'package:autd3/src/generated/lightweight.pbgrpc.dart' as lightweight;
+import 'package:autd3/utils/int_helper.dart';
 import 'package:autd3/utils/response_helper.dart';
 import 'package:grpc/grpc.dart';
 
@@ -9,15 +10,29 @@ import 'firmware_version.dart';
 
 class ControllerBuilder {
   final Iterable<AUTD3> _devices;
+  int? parallelThreshold;
+  Duration? sendInterval;
+  int? timerResolution;
 
-  ControllerBuilder(Iterable<AUTD3> devices) : _devices = devices;
+  ControllerBuilder(
+    Iterable<AUTD3> devices, {
+    this.parallelThreshold,
+    this.sendInterval,
+    this.timerResolution,
+  }) : _devices = devices;
 
   Future<Controller> open(ClientChannel channel) async {
     final client = lightweight.ECATLightClient(channel);
 
     final geometry = Geometry(_devices);
 
-    await client.configGeomety(geometry.toMsg()).validate();
+    await client
+        .open(lightweight.OpenRequestLightweight(
+            geometry: geometry.toMsg(),
+            parallelThreshold: parallelThreshold?.toMsgU64(),
+            sendInterval: sendInterval?.toMsg(),
+            timerResolution: timerResolution))
+        .validate();
 
     return Controller._(client, geometry);
   }
@@ -31,8 +46,16 @@ class Controller {
       : _client = client,
         _geometry = geometry;
 
-  static ControllerBuilder builder(Iterable<AUTD3> devices) {
-    return ControllerBuilder(devices);
+  static builder(
+    Iterable<AUTD3> devices, {
+    int? parallelThreshold,
+    Duration? sendInterval,
+    int? timerResolution,
+  }) {
+    return ControllerBuilder(devices,
+        parallelThreshold: parallelThreshold,
+        sendInterval: sendInterval,
+        timerResolution: timerResolution);
   }
 
   Future send(Sendable sendable, {CallOptions? options}) async {

@@ -16,15 +16,14 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'lightweight.pb.dart' as $2;
-import 'utils.pb.dart' as $0;
 
 export 'lightweight.pb.dart';
 
 @$pb.GrpcServiceName('autd3.ECATLight')
 class ECATLightClient extends $grpc.Client {
-  static final _$configGeomety = $grpc.ClientMethod<$0.Geometry, $2.SendResponseLightweight>(
-      '/autd3.ECATLight/ConfigGeomety',
-      ($0.Geometry value) => value.writeToBuffer(),
+  static final _$open = $grpc.ClientMethod<$2.OpenRequestLightweight, $2.SendResponseLightweight>(
+      '/autd3.ECATLight/Open',
+      ($2.OpenRequestLightweight value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.SendResponseLightweight.fromBuffer(value));
   static final _$firmwareVersion = $grpc.ClientMethod<$2.FirmwareVersionRequestLightweight, $2.FirmwareVersionResponseLightweight>(
       '/autd3.ECATLight/FirmwareVersion',
@@ -45,8 +44,8 @@ class ECATLightClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$2.SendResponseLightweight> configGeomety($0.Geometry request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$configGeomety, request, options: options);
+  $grpc.ResponseFuture<$2.SendResponseLightweight> open($2.OpenRequestLightweight request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$open, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.FirmwareVersionResponseLightweight> firmwareVersion($2.FirmwareVersionRequestLightweight request, {$grpc.CallOptions? options}) {
@@ -67,12 +66,12 @@ abstract class ECATLightServiceBase extends $grpc.Service {
   $core.String get $name => 'autd3.ECATLight';
 
   ECATLightServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.Geometry, $2.SendResponseLightweight>(
-        'ConfigGeomety',
-        configGeomety_Pre,
+    $addMethod($grpc.ServiceMethod<$2.OpenRequestLightweight, $2.SendResponseLightweight>(
+        'Open',
+        open_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.Geometry.fromBuffer(value),
+        ($core.List<$core.int> value) => $2.OpenRequestLightweight.fromBuffer(value),
         ($2.SendResponseLightweight value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.FirmwareVersionRequestLightweight, $2.FirmwareVersionResponseLightweight>(
         'FirmwareVersion',
@@ -97,8 +96,8 @@ abstract class ECATLightServiceBase extends $grpc.Service {
         ($2.SendResponseLightweight value) => value.writeToBuffer()));
   }
 
-  $async.Future<$2.SendResponseLightweight> configGeomety_Pre($grpc.ServiceCall call, $async.Future<$0.Geometry> request) async {
-    return configGeomety(call, await request);
+  $async.Future<$2.SendResponseLightweight> open_Pre($grpc.ServiceCall call, $async.Future<$2.OpenRequestLightweight> request) async {
+    return open(call, await request);
   }
 
   $async.Future<$2.FirmwareVersionResponseLightweight> firmwareVersion_Pre($grpc.ServiceCall call, $async.Future<$2.FirmwareVersionRequestLightweight> request) async {
@@ -113,7 +112,7 @@ abstract class ECATLightServiceBase extends $grpc.Service {
     return close(call, await request);
   }
 
-  $async.Future<$2.SendResponseLightweight> configGeomety($grpc.ServiceCall call, $0.Geometry request);
+  $async.Future<$2.SendResponseLightweight> open($grpc.ServiceCall call, $2.OpenRequestLightweight request);
   $async.Future<$2.FirmwareVersionResponseLightweight> firmwareVersion($grpc.ServiceCall call, $2.FirmwareVersionRequestLightweight request);
   $async.Future<$2.SendResponseLightweight> send($grpc.ServiceCall call, $2.Datagram request);
   $async.Future<$2.SendResponseLightweight> close($grpc.ServiceCall call, $2.CloseRequestLightweight request);
