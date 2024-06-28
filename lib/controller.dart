@@ -46,7 +46,7 @@ class Controller {
       : _client = client,
         _geometry = geometry;
 
-  static builder(
+  static ControllerBuilder builder(
     Iterable<AUTD3> devices, {
     int? parallelThreshold,
     Duration? sendInterval,
