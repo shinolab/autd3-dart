@@ -13,6 +13,21 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class SilencerTarget extends $pb.ProtobufEnum {
+  static const SilencerTarget Intensity = SilencerTarget._(0, _omitEnumNames ? '' : 'Intensity');
+  static const SilencerTarget PulseWidth = SilencerTarget._(1, _omitEnumNames ? '' : 'PulseWidth');
+
+  static const $core.List<SilencerTarget> values = <SilencerTarget> [
+    Intensity,
+    PulseWidth,
+  ];
+
+  static final $core.Map<$core.int, SilencerTarget> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static SilencerTarget? valueOf($core.int value) => _byValue[value];
+
+  const SilencerTarget._($core.int v, $core.String n) : super(v, n);
+}
+
 class GainSTMMode extends $pb.ProtobufEnum {
   static const GainSTMMode PhaseIntensityFull = GainSTMMode._(0, _omitEnumNames ? '' : 'PhaseIntensityFull');
   static const GainSTMMode PhaseFull = GainSTMMode._(1, _omitEnumNames ? '' : 'PhaseFull');

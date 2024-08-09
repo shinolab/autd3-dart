@@ -65,104 +65,17 @@ const Phase$json = {
 final $typed_data.Uint8List phaseDescriptor = $convert.base64Decode(
     'CgVQaGFzZRIUCgV2YWx1ZRgBIAEoDVIFdmFsdWU=');
 
-@$core.Deprecated('Use samplingConfigFreqDescriptor instead')
-const SamplingConfigFreq$json = {
-  '1': 'SamplingConfigFreq',
-  '2': [
-    {'1': 'value', '3': 1, '4': 1, '5': 13, '10': 'value'},
-  ],
-};
-
-/// Descriptor for `SamplingConfigFreq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List samplingConfigFreqDescriptor = $convert.base64Decode(
-    'ChJTYW1wbGluZ0NvbmZpZ0ZyZXESFAoFdmFsdWUYASABKA1SBXZhbHVl');
-
-@$core.Deprecated('Use samplingConfigFreqNearestDescriptor instead')
-const SamplingConfigFreqNearest$json = {
-  '1': 'SamplingConfigFreqNearest',
-  '2': [
-    {'1': 'value', '3': 1, '4': 1, '5': 2, '10': 'value'},
-  ],
-};
-
-/// Descriptor for `SamplingConfigFreqNearest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List samplingConfigFreqNearestDescriptor = $convert.base64Decode(
-    'ChlTYW1wbGluZ0NvbmZpZ0ZyZXFOZWFyZXN0EhQKBXZhbHVlGAEgASgCUgV2YWx1ZQ==');
-
-@$core.Deprecated('Use samplingConfigPeriodDescriptor instead')
-const SamplingConfigPeriod$json = {
-  '1': 'SamplingConfigPeriod',
-  '2': [
-    {'1': 'value', '3': 1, '4': 1, '5': 4, '10': 'value'},
-  ],
-};
-
-/// Descriptor for `SamplingConfigPeriod`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List samplingConfigPeriodDescriptor = $convert.base64Decode(
-    'ChRTYW1wbGluZ0NvbmZpZ1BlcmlvZBIUCgV2YWx1ZRgBIAEoBFIFdmFsdWU=');
-
-@$core.Deprecated('Use samplingConfigPeriodNearestDescriptor instead')
-const SamplingConfigPeriodNearest$json = {
-  '1': 'SamplingConfigPeriodNearest',
-  '2': [
-    {'1': 'value', '3': 1, '4': 1, '5': 4, '10': 'value'},
-  ],
-};
-
-/// Descriptor for `SamplingConfigPeriodNearest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List samplingConfigPeriodNearestDescriptor = $convert.base64Decode(
-    'ChtTYW1wbGluZ0NvbmZpZ1BlcmlvZE5lYXJlc3QSFAoFdmFsdWUYASABKARSBXZhbHVl');
-
-@$core.Deprecated('Use samplingConfigDivisionDescriptor instead')
-const SamplingConfigDivision$json = {
-  '1': 'SamplingConfigDivision',
-  '2': [
-    {'1': 'value', '3': 1, '4': 1, '5': 13, '10': 'value'},
-  ],
-};
-
-/// Descriptor for `SamplingConfigDivision`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List samplingConfigDivisionDescriptor = $convert.base64Decode(
-    'ChZTYW1wbGluZ0NvbmZpZ0RpdmlzaW9uEhQKBXZhbHVlGAEgASgNUgV2YWx1ZQ==');
-
-@$core.Deprecated('Use samplingConfigDivisionRawDescriptor instead')
-const SamplingConfigDivisionRaw$json = {
-  '1': 'SamplingConfigDivisionRaw',
-  '2': [
-    {'1': 'value', '3': 1, '4': 1, '5': 13, '10': 'value'},
-  ],
-};
-
-/// Descriptor for `SamplingConfigDivisionRaw`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List samplingConfigDivisionRawDescriptor = $convert.base64Decode(
-    'ChlTYW1wbGluZ0NvbmZpZ0RpdmlzaW9uUmF3EhQKBXZhbHVlGAEgASgNUgV2YWx1ZQ==');
-
 @$core.Deprecated('Use samplingConfigDescriptor instead')
 const SamplingConfig$json = {
   '1': 'SamplingConfig',
   '2': [
-    {'1': 'freq', '3': 1, '4': 1, '5': 11, '6': '.autd3.SamplingConfigFreq', '9': 0, '10': 'freq'},
-    {'1': 'freq_nearest', '3': 2, '4': 1, '5': 11, '6': '.autd3.SamplingConfigFreqNearest', '9': 0, '10': 'freqNearest'},
-    {'1': 'period', '3': 3, '4': 1, '5': 11, '6': '.autd3.SamplingConfigPeriod', '9': 0, '10': 'period'},
-    {'1': 'period_nearest', '3': 4, '4': 1, '5': 11, '6': '.autd3.SamplingConfigPeriodNearest', '9': 0, '10': 'periodNearest'},
-    {'1': 'division', '3': 5, '4': 1, '5': 11, '6': '.autd3.SamplingConfigDivision', '9': 0, '10': 'division'},
-    {'1': 'division_raw', '3': 6, '4': 1, '5': 11, '6': '.autd3.SamplingConfigDivisionRaw', '9': 0, '10': 'divisionRaw'},
-  ],
-  '8': [
-    {'1': 'config'},
+    {'1': 'div', '3': 1, '4': 1, '5': 13, '10': 'div'},
   ],
 };
 
 /// Descriptor for `SamplingConfig`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List samplingConfigDescriptor = $convert.base64Decode(
-    'Cg5TYW1wbGluZ0NvbmZpZxIvCgRmcmVxGAEgASgLMhkuYXV0ZDMuU2FtcGxpbmdDb25maWdGcm'
-    'VxSABSBGZyZXESRQoMZnJlcV9uZWFyZXN0GAIgASgLMiAuYXV0ZDMuU2FtcGxpbmdDb25maWdG'
-    'cmVxTmVhcmVzdEgAUgtmcmVxTmVhcmVzdBI1CgZwZXJpb2QYAyABKAsyGy5hdXRkMy5TYW1wbG'
-    'luZ0NvbmZpZ1BlcmlvZEgAUgZwZXJpb2QSSwoOcGVyaW9kX25lYXJlc3QYBCABKAsyIi5hdXRk'
-    'My5TYW1wbGluZ0NvbmZpZ1BlcmlvZE5lYXJlc3RIAFINcGVyaW9kTmVhcmVzdBI7CghkaXZpc2'
-    'lvbhgFIAEoCzIdLmF1dGQzLlNhbXBsaW5nQ29uZmlnRGl2aXNpb25IAFIIZGl2aXNpb24SRQoM'
-    'ZGl2aXNpb25fcmF3GAYgASgLMiAuYXV0ZDMuU2FtcGxpbmdDb25maWdEaXZpc2lvblJhd0gAUg'
-    'tkaXZpc2lvblJhd0IICgZjb25maWc=');
+    'Cg5TYW1wbGluZ0NvbmZpZxIQCgNkaXYYASABKA1SA2Rpdg==');
 
 @$core.Deprecated('Use loopBehaviorDescriptor instead')
 const LoopBehavior$json = {

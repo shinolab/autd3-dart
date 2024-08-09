@@ -841,108 +841,6 @@ class EmissionConstraint extends $pb.GeneratedMessage {
   MultiplyConstraint ensureMultiply() => $_ensure(3);
 }
 
-class SDP extends $pb.GeneratedMessage {
-  factory SDP({
-    $core.Iterable<Holo>? holo,
-    EmissionConstraint? constraint,
-    $core.double? alpha,
-    $core.double? lambda,
-    $fixnum.Int64? repeat,
-  }) {
-    final $result = create();
-    if (holo != null) {
-      $result.holo.addAll(holo);
-    }
-    if (constraint != null) {
-      $result.constraint = constraint;
-    }
-    if (alpha != null) {
-      $result.alpha = alpha;
-    }
-    if (lambda != null) {
-      $result.lambda = lambda;
-    }
-    if (repeat != null) {
-      $result.repeat = repeat;
-    }
-    return $result;
-  }
-  SDP._() : super();
-  factory SDP.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SDP.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SDP', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..pc<Holo>(1, _omitFieldNames ? '' : 'holo', $pb.PbFieldType.PM, subBuilder: Holo.create)
-    ..aOM<EmissionConstraint>(2, _omitFieldNames ? '' : 'constraint', subBuilder: EmissionConstraint.create)
-    ..a<$core.double>(3, _omitFieldNames ? '' : 'alpha', $pb.PbFieldType.OF)
-    ..a<$core.double>(4, _omitFieldNames ? '' : 'lambda', $pb.PbFieldType.OF)
-    ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'repeat', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SDP clone() => SDP()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SDP copyWith(void Function(SDP) updates) => super.copyWith((message) => updates(message as SDP)) as SDP;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static SDP create() => SDP._();
-  SDP createEmptyInstance() => create();
-  static $pb.PbList<SDP> createRepeated() => $pb.PbList<SDP>();
-  @$core.pragma('dart2js:noInline')
-  static SDP getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SDP>(create);
-  static SDP? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<Holo> get holo => $_getList(0);
-
-  @$pb.TagNumber(2)
-  EmissionConstraint get constraint => $_getN(1);
-  @$pb.TagNumber(2)
-  set constraint(EmissionConstraint v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasConstraint() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearConstraint() => clearField(2);
-  @$pb.TagNumber(2)
-  EmissionConstraint ensureConstraint() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $core.double get alpha => $_getN(2);
-  @$pb.TagNumber(3)
-  set alpha($core.double v) { $_setFloat(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasAlpha() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearAlpha() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.double get lambda => $_getN(3);
-  @$pb.TagNumber(4)
-  set lambda($core.double v) { $_setFloat(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasLambda() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearLambda() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $fixnum.Int64 get repeat => $_getI64(4);
-  @$pb.TagNumber(5)
-  set repeat($fixnum.Int64 v) { $_setInt64(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasRepeat() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearRepeat() => clearField(5);
-}
-
 class Naive extends $pb.GeneratedMessage {
   factory Naive({
     $core.Iterable<Holo>? holo,
@@ -1355,7 +1253,6 @@ enum Gain_Gain {
   null_3, 
   plane, 
   uniform, 
-  sdp, 
   naive, 
   gs, 
   gspat, 
@@ -1371,7 +1268,6 @@ class Gain extends $pb.GeneratedMessage {
     Null? null_3,
     Plane? plane,
     Uniform? uniform,
-    SDP? sdp,
     Naive? naive,
     GS? gs,
     GSPAT? gspat,
@@ -1393,9 +1289,6 @@ class Gain extends $pb.GeneratedMessage {
     }
     if (uniform != null) {
       $result.uniform = uniform;
-    }
-    if (sdp != null) {
-      $result.sdp = sdp;
     }
     if (naive != null) {
       $result.naive = naive;
@@ -1424,7 +1317,6 @@ class Gain extends $pb.GeneratedMessage {
     3 : Gain_Gain.null_3,
     4 : Gain_Gain.plane,
     5 : Gain_Gain.uniform,
-    100 : Gain_Gain.sdp,
     101 : Gain_Gain.naive,
     102 : Gain_Gain.gs,
     103 : Gain_Gain.gspat,
@@ -1433,13 +1325,12 @@ class Gain extends $pb.GeneratedMessage {
     0 : Gain_Gain.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Gain', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 100, 101, 102, 103, 104, 105])
+    ..oo(0, [1, 2, 3, 4, 5, 101, 102, 103, 104, 105])
     ..aOM<Bessel>(1, _omitFieldNames ? '' : 'bessel', subBuilder: Bessel.create)
     ..aOM<Focus>(2, _omitFieldNames ? '' : 'focus', subBuilder: Focus.create)
     ..aOM<Null>(3, _omitFieldNames ? '' : 'null', subBuilder: Null.create)
     ..aOM<Plane>(4, _omitFieldNames ? '' : 'plane', subBuilder: Plane.create)
     ..aOM<Uniform>(5, _omitFieldNames ? '' : 'uniform', subBuilder: Uniform.create)
-    ..aOM<SDP>(100, _omitFieldNames ? '' : 'sdp', subBuilder: SDP.create)
     ..aOM<Naive>(101, _omitFieldNames ? '' : 'naive', subBuilder: Naive.create)
     ..aOM<GS>(102, _omitFieldNames ? '' : 'gs', subBuilder: GS.create)
     ..aOM<GSPAT>(103, _omitFieldNames ? '' : 'gspat', subBuilder: GSPAT.create)
@@ -1527,71 +1418,60 @@ class Gain extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   Uniform ensureUniform() => $_ensure(4);
 
-  @$pb.TagNumber(100)
-  SDP get sdp => $_getN(5);
-  @$pb.TagNumber(100)
-  set sdp(SDP v) { setField(100, v); }
-  @$pb.TagNumber(100)
-  $core.bool hasSdp() => $_has(5);
-  @$pb.TagNumber(100)
-  void clearSdp() => clearField(100);
-  @$pb.TagNumber(100)
-  SDP ensureSdp() => $_ensure(5);
-
   @$pb.TagNumber(101)
-  Naive get naive => $_getN(6);
+  Naive get naive => $_getN(5);
   @$pb.TagNumber(101)
   set naive(Naive v) { setField(101, v); }
   @$pb.TagNumber(101)
-  $core.bool hasNaive() => $_has(6);
+  $core.bool hasNaive() => $_has(5);
   @$pb.TagNumber(101)
   void clearNaive() => clearField(101);
   @$pb.TagNumber(101)
-  Naive ensureNaive() => $_ensure(6);
+  Naive ensureNaive() => $_ensure(5);
 
   @$pb.TagNumber(102)
-  GS get gs => $_getN(7);
+  GS get gs => $_getN(6);
   @$pb.TagNumber(102)
   set gs(GS v) { setField(102, v); }
   @$pb.TagNumber(102)
-  $core.bool hasGs() => $_has(7);
+  $core.bool hasGs() => $_has(6);
   @$pb.TagNumber(102)
   void clearGs() => clearField(102);
   @$pb.TagNumber(102)
-  GS ensureGs() => $_ensure(7);
+  GS ensureGs() => $_ensure(6);
 
   @$pb.TagNumber(103)
-  GSPAT get gspat => $_getN(8);
+  GSPAT get gspat => $_getN(7);
   @$pb.TagNumber(103)
   set gspat(GSPAT v) { setField(103, v); }
   @$pb.TagNumber(103)
-  $core.bool hasGspat() => $_has(8);
+  $core.bool hasGspat() => $_has(7);
   @$pb.TagNumber(103)
   void clearGspat() => clearField(103);
   @$pb.TagNumber(103)
-  GSPAT ensureGspat() => $_ensure(8);
+  GSPAT ensureGspat() => $_ensure(7);
 
   @$pb.TagNumber(104)
-  LM get lm => $_getN(9);
+  LM get lm => $_getN(8);
   @$pb.TagNumber(104)
   set lm(LM v) { setField(104, v); }
   @$pb.TagNumber(104)
-  $core.bool hasLm() => $_has(9);
+  $core.bool hasLm() => $_has(8);
   @$pb.TagNumber(104)
   void clearLm() => clearField(104);
   @$pb.TagNumber(104)
-  LM ensureLm() => $_ensure(9);
+  LM ensureLm() => $_ensure(8);
 
   @$pb.TagNumber(105)
-  Greedy get greedy => $_getN(10);
+  Greedy get greedy => $_getN(9);
   @$pb.TagNumber(105)
   set greedy(Greedy v) { setField(105, v); }
   @$pb.TagNumber(105)
-  $core.bool hasGreedy() => $_has(10);
+  $core.bool hasGreedy() => $_has(9);
   @$pb.TagNumber(105)
   void clearGreedy() => clearField(105);
   @$pb.TagNumber(105)
-  Greedy ensureGreedy() => $_ensure(10);
+  Greedy ensureGreedy() => $_ensure(9);
 }
 
 class GainWithSegment extends $pb.GeneratedMessage {

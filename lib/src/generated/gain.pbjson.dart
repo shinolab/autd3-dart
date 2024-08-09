@@ -93,18 +93,14 @@ const Uniform$json = {
   '1': 'Uniform',
   '2': [
     {'1': 'intensity', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '10': 'intensity'},
-    {'1': 'phase', '3': 2, '4': 1, '5': 11, '6': '.autd3.Phase', '9': 0, '10': 'phase', '17': true},
-  ],
-  '8': [
-    {'1': '_phase'},
+    {'1': 'phase', '3': 2, '4': 1, '5': 11, '6': '.autd3.Phase', '10': 'phase'},
   ],
 };
 
 /// Descriptor for `Uniform`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List uniformDescriptor = $convert.base64Decode(
     'CgdVbmlmb3JtEjIKCWludGVuc2l0eRgBIAEoCzIULmF1dGQzLkVtaXRJbnRlbnNpdHlSCWludG'
-    'Vuc2l0eRInCgVwaGFzZRgCIAEoCzIMLmF1dGQzLlBoYXNlSABSBXBoYXNliAEBQggKBl9waGFz'
-    'ZQ==');
+    'Vuc2l0eRIiCgVwaGFzZRgCIAEoCzIMLmF1dGQzLlBoYXNlUgVwaGFzZQ==');
 
 @$core.Deprecated('Use amplitudeDescriptor instead')
 const Amplitude$json = {
@@ -201,32 +197,6 @@ final $typed_data.Uint8List emissionConstraintDescriptor = $convert.base64Decode
     'cm1Db25zdHJhaW50SABSB3VuaWZvcm0SLgoFY2xhbXAYAyABKAsyFi5hdXRkMy5DbGFtcENvbn'
     'N0cmFpbnRIAFIFY2xhbXASNwoIbXVsdGlwbHkYBCABKAsyGS5hdXRkMy5NdWx0aXBseUNvbnN0'
     'cmFpbnRIAFIIbXVsdGlwbHlCDAoKY29uc3RyYWludA==');
-
-@$core.Deprecated('Use sDPDescriptor instead')
-const SDP$json = {
-  '1': 'SDP',
-  '2': [
-    {'1': 'holo', '3': 1, '4': 3, '5': 11, '6': '.autd3.Holo', '10': 'holo'},
-    {'1': 'constraint', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
-    {'1': 'alpha', '3': 3, '4': 1, '5': 2, '9': 1, '10': 'alpha', '17': true},
-    {'1': 'lambda', '3': 4, '4': 1, '5': 2, '9': 2, '10': 'lambda', '17': true},
-    {'1': 'repeat', '3': 5, '4': 1, '5': 4, '9': 3, '10': 'repeat', '17': true},
-  ],
-  '8': [
-    {'1': '_constraint'},
-    {'1': '_alpha'},
-    {'1': '_lambda'},
-    {'1': '_repeat'},
-  ],
-};
-
-/// Descriptor for `SDP`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sDPDescriptor = $convert.base64Decode(
-    'CgNTRFASHwoEaG9sbxgBIAMoCzILLmF1dGQzLkhvbG9SBGhvbG8SPgoKY29uc3RyYWludBgCIA'
-    'EoCzIZLmF1dGQzLkVtaXNzaW9uQ29uc3RyYWludEgAUgpjb25zdHJhaW50iAEBEhkKBWFscGhh'
-    'GAMgASgCSAFSBWFscGhhiAEBEhsKBmxhbWJkYRgEIAEoAkgCUgZsYW1iZGGIAQESGwoGcmVwZW'
-    'F0GAUgASgESANSBnJlcGVhdIgBAUINCgtfY29uc3RyYWludEIICgZfYWxwaGFCCQoHX2xhbWJk'
-    'YUIJCgdfcmVwZWF0');
 
 @$core.Deprecated('Use naiveDescriptor instead')
 const Naive$json = {
@@ -344,7 +314,6 @@ const Gain$json = {
     {'1': 'null', '3': 3, '4': 1, '5': 11, '6': '.autd3.Null', '9': 0, '10': 'null'},
     {'1': 'plane', '3': 4, '4': 1, '5': 11, '6': '.autd3.Plane', '9': 0, '10': 'plane'},
     {'1': 'uniform', '3': 5, '4': 1, '5': 11, '6': '.autd3.Uniform', '9': 0, '10': 'uniform'},
-    {'1': 'sdp', '3': 100, '4': 1, '5': 11, '6': '.autd3.SDP', '9': 0, '10': 'sdp'},
     {'1': 'naive', '3': 101, '4': 1, '5': 11, '6': '.autd3.Naive', '9': 0, '10': 'naive'},
     {'1': 'gs', '3': 102, '4': 1, '5': 11, '6': '.autd3.GS', '9': 0, '10': 'gs'},
     {'1': 'gspat', '3': 103, '4': 1, '5': 11, '6': '.autd3.GSPAT', '9': 0, '10': 'gspat'},
@@ -361,11 +330,10 @@ final $typed_data.Uint8List gainDescriptor = $convert.base64Decode(
     'CgRHYWluEicKBmJlc3NlbBgBIAEoCzINLmF1dGQzLkJlc3NlbEgAUgZiZXNzZWwSJAoFZm9jdX'
     'MYAiABKAsyDC5hdXRkMy5Gb2N1c0gAUgVmb2N1cxIhCgRudWxsGAMgASgLMgsuYXV0ZDMuTnVs'
     'bEgAUgRudWxsEiQKBXBsYW5lGAQgASgLMgwuYXV0ZDMuUGxhbmVIAFIFcGxhbmUSKgoHdW5pZm'
-    '9ybRgFIAEoCzIOLmF1dGQzLlVuaWZvcm1IAFIHdW5pZm9ybRIeCgNzZHAYZCABKAsyCi5hdXRk'
-    'My5TRFBIAFIDc2RwEiQKBW5haXZlGGUgASgLMgwuYXV0ZDMuTmFpdmVIAFIFbmFpdmUSGwoCZ3'
-    'MYZiABKAsyCS5hdXRkMy5HU0gAUgJncxIkCgVnc3BhdBhnIAEoCzIMLmF1dGQzLkdTUEFUSABS'
-    'BWdzcGF0EhsKAmxtGGggASgLMgkuYXV0ZDMuTE1IAFICbG0SJwoGZ3JlZWR5GGkgASgLMg0uYX'
-    'V0ZDMuR3JlZWR5SABSBmdyZWVkeUIGCgRnYWlu');
+    '9ybRgFIAEoCzIOLmF1dGQzLlVuaWZvcm1IAFIHdW5pZm9ybRIkCgVuYWl2ZRhlIAEoCzIMLmF1'
+    'dGQzLk5haXZlSABSBW5haXZlEhsKAmdzGGYgASgLMgkuYXV0ZDMuR1NIAFICZ3MSJAoFZ3NwYX'
+    'QYZyABKAsyDC5hdXRkMy5HU1BBVEgAUgVnc3BhdBIbCgJsbRhoIAEoCzIJLmF1dGQzLkxNSABS'
+    'AmxtEicKBmdyZWVkeRhpIAEoCzINLmF1dGQzLkdyZWVkeUgAUgZncmVlZHlCBgoEZ2Fpbg==');
 
 @$core.Deprecated('Use gainWithSegmentDescriptor instead')
 const GainWithSegment$json = {

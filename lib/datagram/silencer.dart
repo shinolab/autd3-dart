@@ -7,51 +7,37 @@ import 'package:autd3/utils/int_helper.dart';
 class SilencerFixedUpdateRate extends Sendable {
   final int _valueIntensity;
   final int _valuePhase;
+  final lightweight_datagram.SilencerTarget? _target;
 
-  SilencerFixedUpdateRate._(int valueIntensity, int valuePhase)
+  SilencerFixedUpdateRate._(int valueIntensity, int valuePhase,
+      lightweight_datagram.SilencerTarget? target)
       : _valueIntensity = valueIntensity,
-        _valuePhase = valuePhase;
+        _valuePhase = valuePhase,
+        _target = target;
 
   @override
   lightweight.Datagram datagram(Geometry geometry) {
     return lightweight.Datagram(
         silencer: lightweight_datagram.Silencer(
             fixedUpdateRate: lightweight_datagram.SilencerFixedUpdateRate(
-                valueIntensity: _valueIntensity, valuePhase: _valuePhase)));
-  }
-}
-
-class SilencerFixedCompletionSteps extends Sendable {
-  final int _valueIntensity;
-  final int _valuePhase;
-  final bool? strictMode;
-
-  SilencerFixedCompletionSteps._(
-      int valueIntensity, int valuePhase, this.strictMode)
-      : _valueIntensity = valueIntensity,
-        _valuePhase = valuePhase;
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        silencer: lightweight_datagram.Silencer(
-            fixedCompletionSteps:
-                lightweight_datagram.SilencerFixedCompletionSteps(
-                    valueIntensity: _valueIntensity,
-                    valuePhase: _valuePhase,
-                    strictMode: strictMode)));
+                valueIntensity: _valueIntensity,
+                valuePhase: _valuePhase,
+                target: _target)));
   }
 }
 
 class SilencerFixedCompletionTime extends Sendable {
   final Duration _valueIntensity;
   final Duration _valuePhase;
-  final bool? strictMode;
+  final bool? _strictMode;
+  final lightweight_datagram.SilencerTarget? _target;
 
-  SilencerFixedCompletionTime._(
-      Duration valueIntensity, Duration valuePhase, this.strictMode)
+  SilencerFixedCompletionTime._(Duration valueIntensity, Duration valuePhase,
+      bool? strictMode, lightweight_datagram.SilencerTarget? target)
       : _valueIntensity = valueIntensity,
-        _valuePhase = valuePhase;
+        _valuePhase = valuePhase,
+        _strictMode = strictMode,
+        _target = target;
 
   @override
   lightweight.Datagram datagram(Geometry geometry) {
@@ -61,26 +47,24 @@ class SilencerFixedCompletionTime extends Sendable {
                 lightweight_datagram.SilencerFixedCompletionTime(
                     valueIntensity: _valueIntensity.toMsg(),
                     valuePhase: _valuePhase.toMsg(),
-                    strictMode: strictMode)));
+                    strictMode: _strictMode,
+                    target: _target)));
   }
 }
 
 class Silencer {
   static SilencerFixedUpdateRate fromUpdateRate(
-          int valueIntensity, int valuePhase) =>
-      SilencerFixedUpdateRate._(valueIntensity, valuePhase);
-
-  static SilencerFixedCompletionSteps fromCompletionSteps(
           int valueIntensity, int valuePhase,
-          {bool? strictMode}) =>
-      SilencerFixedCompletionSteps._(valueIntensity, valuePhase, strictMode);
+          {lightweight_datagram.SilencerTarget? target}) =>
+      SilencerFixedUpdateRate._(valueIntensity, valuePhase, target);
 
   static SilencerFixedCompletionTime fromCompletionTime(
           Duration valueIntensity, Duration valuePhase,
-          {bool? strictMode}) =>
+          {bool? strictMode, lightweight_datagram.SilencerTarget? target}) =>
       SilencerFixedCompletionTime._(
         valueIntensity,
         valuePhase,
         strictMode,
+        target,
       );
 }
