@@ -7,6 +7,13 @@ int validateU8(int value) {
   return value;
 }
 
+int validateNonZeroU16(int value) {
+  if (value <= 0 || value > 65535) {
+    throw RangeError('value must be in the range of 1 to 65535');
+  }
+  return value;
+}
+
 extension IntHelper on int? {
   int? toMsgU8() {
     final value = this;
@@ -26,7 +33,11 @@ extension IntHelper on int? {
 }
 
 extension DurationHelper on Duration {
-  Int64? toMsg() {
+  int? toMsg() {
+    return inMicroseconds * 1000;
+  }
+
+  Int64? toMsgU64() {
     return Int64(inMicroseconds * 1000);
   }
 }

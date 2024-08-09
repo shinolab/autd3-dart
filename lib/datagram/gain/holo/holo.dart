@@ -7,7 +7,6 @@ export 'greedy.dart' show Greedy;
 export 'amplitude.dart' show Amplitude;
 export 'gs.dart' show GS;
 export 'gspat.dart' show GSPAT;
-export 'sdp.dart' show SDP;
 export 'lm.dart' show LM;
 export 'naive.dart' show Naive;
 

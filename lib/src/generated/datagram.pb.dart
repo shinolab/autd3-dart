@@ -11,7 +11,6 @@
 
 import 'dart:core' as $core;
 
-import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'datagram.pbenum.dart';
@@ -57,6 +56,7 @@ class SilencerFixedUpdateRate extends $pb.GeneratedMessage {
   factory SilencerFixedUpdateRate({
     $core.int? valueIntensity,
     $core.int? valuePhase,
+    SilencerTarget? target,
   }) {
     final $result = create();
     if (valueIntensity != null) {
@@ -64,6 +64,9 @@ class SilencerFixedUpdateRate extends $pb.GeneratedMessage {
     }
     if (valuePhase != null) {
       $result.valuePhase = valuePhase;
+    }
+    if (target != null) {
+      $result.target = target;
     }
     return $result;
   }
@@ -74,6 +77,7 @@ class SilencerFixedUpdateRate extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SilencerFixedUpdateRate', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'valueIntensity', $pb.PbFieldType.OU3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'valuePhase', $pb.PbFieldType.OU3)
+    ..e<SilencerTarget>(3, _omitFieldNames ? '' : 'target', $pb.PbFieldType.OE, defaultOrMaker: SilencerTarget.Intensity, valueOf: SilencerTarget.valueOf, enumValues: SilencerTarget.values)
     ..hasRequiredFields = false
   ;
 
@@ -115,13 +119,23 @@ class SilencerFixedUpdateRate extends $pb.GeneratedMessage {
   $core.bool hasValuePhase() => $_has(1);
   @$pb.TagNumber(2)
   void clearValuePhase() => clearField(2);
+
+  @$pb.TagNumber(3)
+  SilencerTarget get target => $_getN(2);
+  @$pb.TagNumber(3)
+  set target(SilencerTarget v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTarget() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTarget() => clearField(3);
 }
 
-class SilencerFixedCompletionSteps extends $pb.GeneratedMessage {
-  factory SilencerFixedCompletionSteps({
+class SilencerFixedCompletionTime extends $pb.GeneratedMessage {
+  factory SilencerFixedCompletionTime({
     $core.int? valueIntensity,
     $core.int? valuePhase,
     $core.bool? strictMode,
+    SilencerTarget? target,
   }) {
     final $result = create();
     if (valueIntensity != null) {
@@ -133,16 +147,20 @@ class SilencerFixedCompletionSteps extends $pb.GeneratedMessage {
     if (strictMode != null) {
       $result.strictMode = strictMode;
     }
+    if (target != null) {
+      $result.target = target;
+    }
     return $result;
   }
-  SilencerFixedCompletionSteps._() : super();
-  factory SilencerFixedCompletionSteps.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SilencerFixedCompletionSteps.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  SilencerFixedCompletionTime._() : super();
+  factory SilencerFixedCompletionTime.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SilencerFixedCompletionTime.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SilencerFixedCompletionSteps', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SilencerFixedCompletionTime', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'valueIntensity', $pb.PbFieldType.OU3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'valuePhase', $pb.PbFieldType.OU3)
     ..aOB(3, _omitFieldNames ? '' : 'strictMode')
+    ..e<SilencerTarget>(4, _omitFieldNames ? '' : 'target', $pb.PbFieldType.OE, defaultOrMaker: SilencerTarget.Intensity, valueOf: SilencerTarget.valueOf, enumValues: SilencerTarget.values)
     ..hasRequiredFields = false
   ;
 
@@ -150,22 +168,22 @@ class SilencerFixedCompletionSteps extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  SilencerFixedCompletionSteps clone() => SilencerFixedCompletionSteps()..mergeFromMessage(this);
+  SilencerFixedCompletionTime clone() => SilencerFixedCompletionTime()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SilencerFixedCompletionSteps copyWith(void Function(SilencerFixedCompletionSteps) updates) => super.copyWith((message) => updates(message as SilencerFixedCompletionSteps)) as SilencerFixedCompletionSteps;
+  SilencerFixedCompletionTime copyWith(void Function(SilencerFixedCompletionTime) updates) => super.copyWith((message) => updates(message as SilencerFixedCompletionTime)) as SilencerFixedCompletionTime;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static SilencerFixedCompletionSteps create() => SilencerFixedCompletionSteps._();
-  SilencerFixedCompletionSteps createEmptyInstance() => create();
-  static $pb.PbList<SilencerFixedCompletionSteps> createRepeated() => $pb.PbList<SilencerFixedCompletionSteps>();
+  static SilencerFixedCompletionTime create() => SilencerFixedCompletionTime._();
+  SilencerFixedCompletionTime createEmptyInstance() => create();
+  static $pb.PbList<SilencerFixedCompletionTime> createRepeated() => $pb.PbList<SilencerFixedCompletionTime>();
   @$core.pragma('dart2js:noInline')
-  static SilencerFixedCompletionSteps getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SilencerFixedCompletionSteps>(create);
-  static SilencerFixedCompletionSteps? _defaultInstance;
+  static SilencerFixedCompletionTime getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SilencerFixedCompletionTime>(create);
+  static SilencerFixedCompletionTime? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get valueIntensity => $_getIZ(0);
@@ -193,89 +211,19 @@ class SilencerFixedCompletionSteps extends $pb.GeneratedMessage {
   $core.bool hasStrictMode() => $_has(2);
   @$pb.TagNumber(3)
   void clearStrictMode() => clearField(3);
-}
 
-class SilencerFixedCompletionTime extends $pb.GeneratedMessage {
-  factory SilencerFixedCompletionTime({
-    $fixnum.Int64? valueIntensity,
-    $fixnum.Int64? valuePhase,
-    $core.bool? strictMode,
-  }) {
-    final $result = create();
-    if (valueIntensity != null) {
-      $result.valueIntensity = valueIntensity;
-    }
-    if (valuePhase != null) {
-      $result.valuePhase = valuePhase;
-    }
-    if (strictMode != null) {
-      $result.strictMode = strictMode;
-    }
-    return $result;
-  }
-  SilencerFixedCompletionTime._() : super();
-  factory SilencerFixedCompletionTime.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SilencerFixedCompletionTime.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SilencerFixedCompletionTime', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'valueIntensity', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'valuePhase', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..aOB(3, _omitFieldNames ? '' : 'strictMode')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SilencerFixedCompletionTime clone() => SilencerFixedCompletionTime()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SilencerFixedCompletionTime copyWith(void Function(SilencerFixedCompletionTime) updates) => super.copyWith((message) => updates(message as SilencerFixedCompletionTime)) as SilencerFixedCompletionTime;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static SilencerFixedCompletionTime create() => SilencerFixedCompletionTime._();
-  SilencerFixedCompletionTime createEmptyInstance() => create();
-  static $pb.PbList<SilencerFixedCompletionTime> createRepeated() => $pb.PbList<SilencerFixedCompletionTime>();
-  @$core.pragma('dart2js:noInline')
-  static SilencerFixedCompletionTime getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SilencerFixedCompletionTime>(create);
-  static SilencerFixedCompletionTime? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $fixnum.Int64 get valueIntensity => $_getI64(0);
-  @$pb.TagNumber(1)
-  set valueIntensity($fixnum.Int64 v) { $_setInt64(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasValueIntensity() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearValueIntensity() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $fixnum.Int64 get valuePhase => $_getI64(1);
-  @$pb.TagNumber(2)
-  set valuePhase($fixnum.Int64 v) { $_setInt64(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasValuePhase() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearValuePhase() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.bool get strictMode => $_getBF(2);
-  @$pb.TagNumber(3)
-  set strictMode($core.bool v) { $_setBool(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasStrictMode() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearStrictMode() => clearField(3);
+  @$pb.TagNumber(4)
+  SilencerTarget get target => $_getN(3);
+  @$pb.TagNumber(4)
+  set target(SilencerTarget v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTarget() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTarget() => clearField(4);
 }
 
 enum Silencer_Config {
   fixedUpdateRate, 
-  fixedCompletionSteps, 
   fixedCompletionTime, 
   notSet
 }
@@ -283,15 +231,11 @@ enum Silencer_Config {
 class Silencer extends $pb.GeneratedMessage {
   factory Silencer({
     SilencerFixedUpdateRate? fixedUpdateRate,
-    SilencerFixedCompletionSteps? fixedCompletionSteps,
     SilencerFixedCompletionTime? fixedCompletionTime,
   }) {
     final $result = create();
     if (fixedUpdateRate != null) {
       $result.fixedUpdateRate = fixedUpdateRate;
-    }
-    if (fixedCompletionSteps != null) {
-      $result.fixedCompletionSteps = fixedCompletionSteps;
     }
     if (fixedCompletionTime != null) {
       $result.fixedCompletionTime = fixedCompletionTime;
@@ -304,15 +248,13 @@ class Silencer extends $pb.GeneratedMessage {
 
   static const $core.Map<$core.int, Silencer_Config> _Silencer_ConfigByTag = {
     1 : Silencer_Config.fixedUpdateRate,
-    2 : Silencer_Config.fixedCompletionSteps,
-    3 : Silencer_Config.fixedCompletionTime,
+    2 : Silencer_Config.fixedCompletionTime,
     0 : Silencer_Config.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Silencer', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3])
+    ..oo(0, [1, 2])
     ..aOM<SilencerFixedUpdateRate>(1, _omitFieldNames ? '' : 'fixedUpdateRate', subBuilder: SilencerFixedUpdateRate.create)
-    ..aOM<SilencerFixedCompletionSteps>(2, _omitFieldNames ? '' : 'fixedCompletionSteps', subBuilder: SilencerFixedCompletionSteps.create)
-    ..aOM<SilencerFixedCompletionTime>(3, _omitFieldNames ? '' : 'fixedCompletionTime', subBuilder: SilencerFixedCompletionTime.create)
+    ..aOM<SilencerFixedCompletionTime>(2, _omitFieldNames ? '' : 'fixedCompletionTime', subBuilder: SilencerFixedCompletionTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -352,26 +294,15 @@ class Silencer extends $pb.GeneratedMessage {
   SilencerFixedUpdateRate ensureFixedUpdateRate() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  SilencerFixedCompletionSteps get fixedCompletionSteps => $_getN(1);
+  SilencerFixedCompletionTime get fixedCompletionTime => $_getN(1);
   @$pb.TagNumber(2)
-  set fixedCompletionSteps(SilencerFixedCompletionSteps v) { setField(2, v); }
+  set fixedCompletionTime(SilencerFixedCompletionTime v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasFixedCompletionSteps() => $_has(1);
+  $core.bool hasFixedCompletionTime() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFixedCompletionSteps() => clearField(2);
+  void clearFixedCompletionTime() => clearField(2);
   @$pb.TagNumber(2)
-  SilencerFixedCompletionSteps ensureFixedCompletionSteps() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  SilencerFixedCompletionTime get fixedCompletionTime => $_getN(2);
-  @$pb.TagNumber(3)
-  set fixedCompletionTime(SilencerFixedCompletionTime v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasFixedCompletionTime() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearFixedCompletionTime() => clearField(3);
-  @$pb.TagNumber(3)
-  SilencerFixedCompletionTime ensureFixedCompletionTime() => $_ensure(2);
+  SilencerFixedCompletionTime ensureFixedCompletionTime() => $_ensure(1);
 }
 
 class Synchronize extends $pb.GeneratedMessage {

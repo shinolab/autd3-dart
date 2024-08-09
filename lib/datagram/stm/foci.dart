@@ -20,17 +20,19 @@ abstract class FociSTM<T extends ControlPoints> extends Sendable {
       fromFreq<T extends ControlPoints>(
           Freq<double> f, List<T> foci, LoopBehavior? loopBehavior) {
     final fs = f.hz * foci.length;
-    if (fs != fs.roundToDouble()) {
-      throw ArgumentError('The sampling frequency must be integer');
+    final div = 40000.0 / fs;
+    if (div != div.roundToDouble()) {
+      throw ArgumentError('The frequency is invalid');
     }
-    return (foci, SamplingConfig.Freq(fs.round().Hz), loopBehavior);
+    return (foci, SamplingConfig(div.round()), loopBehavior);
   }
 
   static (List<T>, SamplingConfig, LoopBehavior?)
       fromFreqNearest<T extends ControlPoints>(
           Freq<double> f, List<T> foci, LoopBehavior? loopBehavior) {
     final fs = f.hz * foci.length;
-    return (foci, SamplingConfig.FreqNearest(fs.Hz), loopBehavior);
+    final div = 40000.0 / fs;
+    return (foci, SamplingConfig(div.round()), loopBehavior);
   }
 
   static (List<T>, SamplingConfig, LoopBehavior?)
@@ -39,23 +41,20 @@ abstract class FociSTM<T extends ControlPoints> extends Sendable {
     if (((period.inMicroseconds) % foci.length) != 0) {
       throw ArgumentError('The sampling period must be integer');
     }
-    return (
-      foci,
-      SamplingConfig.Period(
-          Duration(microseconds: period.inMicroseconds ~/ foci.length)),
-      loopBehavior
-    );
+    final us = period.inMicroseconds ~/ foci.length;
+    final div = us / 25.0;
+    if (div != div.roundToDouble()) {
+      throw ArgumentError('The period is invalid');
+    }
+    return (foci, SamplingConfig(div.round()), loopBehavior);
   }
 
   static (List<T>, SamplingConfig, LoopBehavior?)
       fromPeriodNearest<T extends ControlPoints>(
           Duration period, List<T> foci, LoopBehavior? loopBehavior) {
-    return (
-      foci,
-      SamplingConfig.PeriodNearest(
-          Duration(microseconds: period.inMicroseconds ~/ foci.length)),
-      loopBehavior
-    );
+    final us = period.inMicroseconds ~/ foci.length;
+    final div = us / 25.0;
+    return (foci, SamplingConfig(div.round()), loopBehavior);
   }
 
   static (List<T>, SamplingConfig, LoopBehavior?)

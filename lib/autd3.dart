@@ -1,7 +1,7 @@
 export 'package:autd3/datagram/gain/gain.dart'
     show Focus, Bessel, Null, Plane, Uniform;
 export 'package:autd3/datagram/gain/holo/holo.dart'
-    show GS, GSPAT, Greedy, LM, Naive, SDP;
+    show GS, GSPAT, Greedy, LM, Naive;
 export 'package:autd3/datagram/gain/holo/amplitude.dart' show AmplitudeExt;
 export 'package:autd3/datagram/gain/holo/constraint.dart'
     show EmissionConstraint;

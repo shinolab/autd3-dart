@@ -1,6 +1,6 @@
 name: autd3
 description: "autd3 lightweight library"
-version: 26.0.0
+version: 27.0.0
 homepage: https://github.com/shinolab/autd3
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   fixnum: ^1.1.0
   flutter:
     sdk: flutter
-  grpc: ^3.2.4
+  grpc: ^4.0.0
   protobuf: ^3.1.0
   vector_math: ^2.1.4
 

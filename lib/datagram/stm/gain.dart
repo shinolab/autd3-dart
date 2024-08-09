@@ -21,18 +21,18 @@ class GainSTM extends Sendable {
   static GainSTM fromFreq(Freq<double> f, List<Gain> gains,
       {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
     final fs = f.hz * gains.length;
-    if (fs != fs.roundToDouble()) {
-      throw ArgumentError('The sampling frequency must be integer');
+    final div = 40000.0 / fs;
+    if (div != div.roundToDouble()) {
+      throw ArgumentError('The frequency is invalid');
     }
-    return GainSTM._(
-        gains, SamplingConfig.Freq(fs.round().Hz), loopBehavior, mode);
+    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
   }
 
   static GainSTM fromFreqNearest(Freq<double> f, List<Gain> gains,
       {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
     final fs = f.hz * gains.length;
-    return GainSTM._(
-        gains, SamplingConfig.FreqNearest(fs.Hz), loopBehavior, mode);
+    final div = 40000.0 / fs;
+    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
   }
 
   static GainSTM fromPeriod(Duration period, List<Gain> gains,
@@ -40,22 +40,19 @@ class GainSTM extends Sendable {
     if (((period.inMicroseconds) % gains.length) != 0) {
       throw ArgumentError('The sampling period must be integer');
     }
-    return GainSTM._(
-        gains,
-        SamplingConfig.Period(
-            Duration(microseconds: period.inMicroseconds ~/ gains.length)),
-        loopBehavior,
-        mode);
+    final us = period.inMicroseconds ~/ gains.length;
+    final div = us / 25.0;
+    if (div != div.roundToDouble()) {
+      throw ArgumentError('The period is invalid');
+    }
+    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
   }
 
   static GainSTM fromPeriodNearest(Duration period, List<Gain> gains,
       {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
-    return GainSTM._(
-        gains,
-        SamplingConfig.PeriodNearest(
-            Duration(microseconds: period.inMicroseconds ~/ gains.length)),
-        loopBehavior,
-        mode);
+    final us = period.inMicroseconds ~/ gains.length;
+    final div = us / 25.0;
+    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
   }
 
   static GainSTM fromSamplingConifg(SamplingConfig config, List<Gain> gains,

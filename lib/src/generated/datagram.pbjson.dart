@@ -13,6 +13,19 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use silencerTargetDescriptor instead')
+const SilencerTarget$json = {
+  '1': 'SilencerTarget',
+  '2': [
+    {'1': 'Intensity', '2': 0},
+    {'1': 'PulseWidth', '2': 1},
+  ],
+};
+
+/// Descriptor for `SilencerTarget`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List silencerTargetDescriptor = $convert.base64Decode(
+    'Cg5TaWxlbmNlclRhcmdldBINCglJbnRlbnNpdHkQABIOCgpQdWxzZVdpZHRoEAE=');
+
 @$core.Deprecated('Use gainSTMModeDescriptor instead')
 const GainSTMMode$json = {
   '1': 'GainSTMMode',
@@ -43,59 +56,47 @@ const SilencerFixedUpdateRate$json = {
   '2': [
     {'1': 'value_intensity', '3': 1, '4': 1, '5': 13, '10': 'valueIntensity'},
     {'1': 'value_phase', '3': 2, '4': 1, '5': 13, '10': 'valuePhase'},
+    {'1': 'target', '3': 3, '4': 1, '5': 14, '6': '.autd3.SilencerTarget', '9': 0, '10': 'target', '17': true},
+  ],
+  '8': [
+    {'1': '_target'},
   ],
 };
 
 /// Descriptor for `SilencerFixedUpdateRate`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List silencerFixedUpdateRateDescriptor = $convert.base64Decode(
     'ChdTaWxlbmNlckZpeGVkVXBkYXRlUmF0ZRInCg92YWx1ZV9pbnRlbnNpdHkYASABKA1SDnZhbH'
-    'VlSW50ZW5zaXR5Eh8KC3ZhbHVlX3BoYXNlGAIgASgNUgp2YWx1ZVBoYXNl');
-
-@$core.Deprecated('Use silencerFixedCompletionStepsDescriptor instead')
-const SilencerFixedCompletionSteps$json = {
-  '1': 'SilencerFixedCompletionSteps',
-  '2': [
-    {'1': 'value_intensity', '3': 1, '4': 1, '5': 13, '10': 'valueIntensity'},
-    {'1': 'value_phase', '3': 2, '4': 1, '5': 13, '10': 'valuePhase'},
-    {'1': 'strict_mode', '3': 3, '4': 1, '5': 8, '9': 0, '10': 'strictMode', '17': true},
-  ],
-  '8': [
-    {'1': '_strict_mode'},
-  ],
-};
-
-/// Descriptor for `SilencerFixedCompletionSteps`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List silencerFixedCompletionStepsDescriptor = $convert.base64Decode(
-    'ChxTaWxlbmNlckZpeGVkQ29tcGxldGlvblN0ZXBzEicKD3ZhbHVlX2ludGVuc2l0eRgBIAEoDV'
-    'IOdmFsdWVJbnRlbnNpdHkSHwoLdmFsdWVfcGhhc2UYAiABKA1SCnZhbHVlUGhhc2USJAoLc3Ry'
-    'aWN0X21vZGUYAyABKAhIAFIKc3RyaWN0TW9kZYgBAUIOCgxfc3RyaWN0X21vZGU=');
+    'VlSW50ZW5zaXR5Eh8KC3ZhbHVlX3BoYXNlGAIgASgNUgp2YWx1ZVBoYXNlEjIKBnRhcmdldBgD'
+    'IAEoDjIVLmF1dGQzLlNpbGVuY2VyVGFyZ2V0SABSBnRhcmdldIgBAUIJCgdfdGFyZ2V0');
 
 @$core.Deprecated('Use silencerFixedCompletionTimeDescriptor instead')
 const SilencerFixedCompletionTime$json = {
   '1': 'SilencerFixedCompletionTime',
   '2': [
-    {'1': 'value_intensity', '3': 1, '4': 1, '5': 4, '10': 'valueIntensity'},
-    {'1': 'value_phase', '3': 2, '4': 1, '5': 4, '10': 'valuePhase'},
-    {'1': 'strict_mode', '3': 3, '4': 1, '5': 8, '9': 0, '10': 'strictMode', '17': true},
+    {'1': 'value_intensity', '3': 1, '4': 1, '5': 13, '10': 'valueIntensity'},
+    {'1': 'value_phase', '3': 2, '4': 1, '5': 13, '10': 'valuePhase'},
+    {'1': 'target', '3': 4, '4': 1, '5': 14, '6': '.autd3.SilencerTarget', '9': 0, '10': 'target', '17': true},
+    {'1': 'strict_mode', '3': 3, '4': 1, '5': 8, '9': 1, '10': 'strictMode', '17': true},
   ],
   '8': [
+    {'1': '_target'},
     {'1': '_strict_mode'},
   ],
 };
 
 /// Descriptor for `SilencerFixedCompletionTime`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List silencerFixedCompletionTimeDescriptor = $convert.base64Decode(
-    'ChtTaWxlbmNlckZpeGVkQ29tcGxldGlvblRpbWUSJwoPdmFsdWVfaW50ZW5zaXR5GAEgASgEUg'
-    '52YWx1ZUludGVuc2l0eRIfCgt2YWx1ZV9waGFzZRgCIAEoBFIKdmFsdWVQaGFzZRIkCgtzdHJp'
-    'Y3RfbW9kZRgDIAEoCEgAUgpzdHJpY3RNb2RliAEBQg4KDF9zdHJpY3RfbW9kZQ==');
+    'ChtTaWxlbmNlckZpeGVkQ29tcGxldGlvblRpbWUSJwoPdmFsdWVfaW50ZW5zaXR5GAEgASgNUg'
+    '52YWx1ZUludGVuc2l0eRIfCgt2YWx1ZV9waGFzZRgCIAEoDVIKdmFsdWVQaGFzZRIyCgZ0YXJn'
+    'ZXQYBCABKA4yFS5hdXRkMy5TaWxlbmNlclRhcmdldEgAUgZ0YXJnZXSIAQESJAoLc3RyaWN0X2'
+    '1vZGUYAyABKAhIAVIKc3RyaWN0TW9kZYgBAUIJCgdfdGFyZ2V0Qg4KDF9zdHJpY3RfbW9kZQ==');
 
 @$core.Deprecated('Use silencerDescriptor instead')
 const Silencer$json = {
   '1': 'Silencer',
   '2': [
     {'1': 'fixed_update_rate', '3': 1, '4': 1, '5': 11, '6': '.autd3.SilencerFixedUpdateRate', '9': 0, '10': 'fixedUpdateRate'},
-    {'1': 'fixed_completion_steps', '3': 2, '4': 1, '5': 11, '6': '.autd3.SilencerFixedCompletionSteps', '9': 0, '10': 'fixedCompletionSteps'},
-    {'1': 'fixed_completion_time', '3': 3, '4': 1, '5': 11, '6': '.autd3.SilencerFixedCompletionTime', '9': 0, '10': 'fixedCompletionTime'},
+    {'1': 'fixed_completion_time', '3': 2, '4': 1, '5': 11, '6': '.autd3.SilencerFixedCompletionTime', '9': 0, '10': 'fixedCompletionTime'},
   ],
   '8': [
     {'1': 'config'},
@@ -105,11 +106,9 @@ const Silencer$json = {
 /// Descriptor for `Silencer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List silencerDescriptor = $convert.base64Decode(
     'CghTaWxlbmNlchJMChFmaXhlZF91cGRhdGVfcmF0ZRgBIAEoCzIeLmF1dGQzLlNpbGVuY2VyRm'
-    'l4ZWRVcGRhdGVSYXRlSABSD2ZpeGVkVXBkYXRlUmF0ZRJbChZmaXhlZF9jb21wbGV0aW9uX3N0'
-    'ZXBzGAIgASgLMiMuYXV0ZDMuU2lsZW5jZXJGaXhlZENvbXBsZXRpb25TdGVwc0gAUhRmaXhlZE'
-    'NvbXBsZXRpb25TdGVwcxJYChVmaXhlZF9jb21wbGV0aW9uX3RpbWUYAyABKAsyIi5hdXRkMy5T'
-    'aWxlbmNlckZpeGVkQ29tcGxldGlvblRpbWVIAFITZml4ZWRDb21wbGV0aW9uVGltZUIICgZjb2'
-    '5maWc=');
+    'l4ZWRVcGRhdGVSYXRlSABSD2ZpeGVkVXBkYXRlUmF0ZRJYChVmaXhlZF9jb21wbGV0aW9uX3Rp'
+    'bWUYAiABKAsyIi5hdXRkMy5TaWxlbmNlckZpeGVkQ29tcGxldGlvblRpbWVIAFITZml4ZWRDb2'
+    '1wbGV0aW9uVGltZUIICgZjb25maWc=');
 
 @$core.Deprecated('Use synchronizeDescriptor instead')
 const Synchronize$json = {

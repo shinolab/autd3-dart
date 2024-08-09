@@ -30,7 +30,7 @@ class ControllerBuilder {
         .open(lightweight.OpenRequestLightweight(
             geometry: geometry.toMsg(),
             parallelThreshold: parallelThreshold?.toMsgU64(),
-            sendInterval: sendInterval?.toMsg(),
+            sendInterval: sendInterval?.toMsgU64(),
             timerResolution: timerResolution))
         .validate();
 
