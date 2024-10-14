@@ -136,7 +136,8 @@ const OpenRequestLightweight$json = {
     {'1': 'geometry', '3': 1, '4': 1, '5': 11, '6': '.autd3.Geometry', '10': 'geometry'},
     {'1': 'parallel_threshold', '3': 2, '4': 1, '5': 4, '10': 'parallelThreshold'},
     {'1': 'send_interval', '3': 3, '4': 1, '5': 4, '10': 'sendInterval'},
-    {'1': 'timer_resolution', '3': 4, '4': 1, '5': 13, '10': 'timerResolution'},
+    {'1': 'receive_interval', '3': 4, '4': 1, '5': 4, '10': 'receiveInterval'},
+    {'1': 'timer_resolution', '3': 5, '4': 1, '5': 13, '10': 'timerResolution'},
   ],
 };
 
@@ -144,6 +145,7 @@ const OpenRequestLightweight$json = {
 final $typed_data.Uint8List openRequestLightweightDescriptor = $convert.base64Decode(
     'ChZPcGVuUmVxdWVzdExpZ2h0d2VpZ2h0EisKCGdlb21ldHJ5GAEgASgLMg8uYXV0ZDMuR2VvbW'
     'V0cnlSCGdlb21ldHJ5Ei0KEnBhcmFsbGVsX3RocmVzaG9sZBgCIAEoBFIRcGFyYWxsZWxUaHJl'
-    'c2hvbGQSIwoNc2VuZF9pbnRlcnZhbBgDIAEoBFIMc2VuZEludGVydmFsEikKEHRpbWVyX3Jlc2'
-    '9sdXRpb24YBCABKA1SD3RpbWVyUmVzb2x1dGlvbg==');
+    'c2hvbGQSIwoNc2VuZF9pbnRlcnZhbBgDIAEoBFIMc2VuZEludGVydmFsEikKEHJlY2VpdmVfaW'
+    '50ZXJ2YWwYBCABKARSD3JlY2VpdmVJbnRlcnZhbBIpChB0aW1lcl9yZXNvbHV0aW9uGAUgASgN'
+    'Ug90aW1lclJlc29sdXRpb24=');
 

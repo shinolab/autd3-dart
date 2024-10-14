@@ -12,12 +12,14 @@ class ControllerBuilder {
   final Iterable<AUTD3> _devices;
   int? parallelThreshold;
   Duration? sendInterval;
+  Duration? receiveInterval;
   int? timerResolution;
 
   ControllerBuilder(
     Iterable<AUTD3> devices, {
     this.parallelThreshold,
     this.sendInterval,
+    this.receiveInterval,
     this.timerResolution,
   }) : _devices = devices;
 
@@ -31,6 +33,7 @@ class ControllerBuilder {
             geometry: geometry.toMsg(),
             parallelThreshold: parallelThreshold?.toMsgU64(),
             sendInterval: sendInterval?.toMsgU64(),
+            receiveInterval: receiveInterval?.toMsgU64(),
             timerResolution: timerResolution))
         .validate();
 
@@ -50,11 +53,13 @@ class Controller {
     Iterable<AUTD3> devices, {
     int? parallelThreshold,
     Duration? sendInterval,
+    Duration? receiveInterval,
     int? timerResolution,
   }) {
     return ControllerBuilder(devices,
         parallelThreshold: parallelThreshold,
         sendInterval: sendInterval,
+        receiveInterval: receiveInterval,
         timerResolution: timerResolution);
   }
 
