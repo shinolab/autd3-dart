@@ -671,6 +671,7 @@ class OpenRequestLightweight extends $pb.GeneratedMessage {
     $0.Geometry? geometry,
     $fixnum.Int64? parallelThreshold,
     $fixnum.Int64? sendInterval,
+    $fixnum.Int64? receiveInterval,
     $core.int? timerResolution,
   }) {
     final $result = create();
@@ -682,6 +683,9 @@ class OpenRequestLightweight extends $pb.GeneratedMessage {
     }
     if (sendInterval != null) {
       $result.sendInterval = sendInterval;
+    }
+    if (receiveInterval != null) {
+      $result.receiveInterval = receiveInterval;
     }
     if (timerResolution != null) {
       $result.timerResolution = timerResolution;
@@ -696,7 +700,8 @@ class OpenRequestLightweight extends $pb.GeneratedMessage {
     ..aOM<$0.Geometry>(1, _omitFieldNames ? '' : 'geometry', subBuilder: $0.Geometry.create)
     ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'parallelThreshold', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'sendInterval', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'timerResolution', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(4, _omitFieldNames ? '' : 'receiveInterval', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'timerResolution', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -751,13 +756,22 @@ class OpenRequestLightweight extends $pb.GeneratedMessage {
   void clearSendInterval() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.int get timerResolution => $_getIZ(3);
+  $fixnum.Int64 get receiveInterval => $_getI64(3);
   @$pb.TagNumber(4)
-  set timerResolution($core.int v) { $_setUnsignedInt32(3, v); }
+  set receiveInterval($fixnum.Int64 v) { $_setInt64(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasTimerResolution() => $_has(3);
+  $core.bool hasReceiveInterval() => $_has(3);
   @$pb.TagNumber(4)
-  void clearTimerResolution() => clearField(4);
+  void clearReceiveInterval() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.int get timerResolution => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set timerResolution($core.int v) { $_setUnsignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasTimerResolution() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearTimerResolution() => clearField(5);
 }
 
 
