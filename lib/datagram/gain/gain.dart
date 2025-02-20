@@ -1,35 +1,33 @@
+import 'package:autd3/datagram.dart';
 import 'package:autd3/geometry.dart';
-import 'package:autd3/sendable.dart';
 import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
-import 'package:autd3/src/generated/gain.pb.dart' as lightweight_gain;
+import 'package:autd3/src/generated/datagram.pb.dart' as lightweight_datagram;
+import 'package:autd3/src/generated/gain.pb.dart' as gain;
 import 'package:autd3/utils/segment.dart';
+import 'package:autd3/utils/transition_mode.dart';
 
-export 'bessel.dart' show Bessel;
+export 'bessel.dart' show Bessel, BesselOption;
 export 'null.dart' show Null;
-export 'focus.dart' show Focus;
-export 'plane.dart' show Plane;
+export 'focus.dart' show Focus, FocusOption;
+export 'plane.dart' show Plane, PlaneOption;
 export 'uniform.dart' show Uniform;
 
-abstract class Gain extends Sendable {
-  GainWithSegment withSegment(Segment segment, bool transition) {
-    return GainWithSegment(this, segment, transition);
-  }
-}
-
-class GainWithSegment extends Sendable {
-  final Gain gain;
-  final Segment segment;
-  final bool transition;
-
-  GainWithSegment(this.gain, this.segment, this.transition);
+abstract class Gain extends DatagramS {
+  gain.Gain rawDatagram(Geometry geometry);
 
   @override
   lightweight.Datagram datagram(Geometry geometry) {
+    return lightweight.Datagram(gain: rawDatagram(geometry));
+  }
+
+  @override
+  lightweight.Datagram datagramWithSegment(
+      Geometry geometry, Segment segment, TransitionMode? transitionMode) {
     return lightweight.Datagram(
-        gainWithSegment: lightweight_gain.GainWithSegment(
-      gain: gain.datagram(geometry).gain,
+        withSegment: lightweight_datagram.WithSegment(
+      gain: rawDatagram(geometry),
       segment: segment,
-      transition: transition,
+      transitionMode: transitionMode?.toMsg(),
     ));
   }
 }

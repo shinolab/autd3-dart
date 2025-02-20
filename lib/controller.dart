@@ -1,45 +1,11 @@
 import 'package:autd3/autd3_device.dart';
 import 'package:autd3/geometry.dart';
-import 'package:autd3/sendable.dart';
+import 'package:autd3/datagram.dart';
 import 'package:autd3/src/generated/lightweight.pbgrpc.dart' as lightweight;
-import 'package:autd3/utils/int_helper.dart';
 import 'package:autd3/utils/response_helper.dart';
 import 'package:grpc/grpc.dart';
 
 import 'firmware_version.dart';
-
-class ControllerBuilder {
-  final Iterable<AUTD3> _devices;
-  int? parallelThreshold;
-  Duration? sendInterval;
-  Duration? receiveInterval;
-  int? timerResolution;
-
-  ControllerBuilder(
-    Iterable<AUTD3> devices, {
-    this.parallelThreshold,
-    this.sendInterval,
-    this.receiveInterval,
-    this.timerResolution,
-  }) : _devices = devices;
-
-  Future<Controller> open(ClientChannel channel) async {
-    final client = lightweight.ECATLightClient(channel);
-
-    final geometry = Geometry(_devices);
-
-    await client
-        .open(lightweight.OpenRequestLightweight(
-            geometry: geometry.toMsg(),
-            parallelThreshold: parallelThreshold?.toMsgU64(),
-            sendInterval: sendInterval?.toMsgU64(),
-            receiveInterval: receiveInterval?.toMsgU64(),
-            timerResolution: timerResolution))
-        .validate();
-
-    return Controller._(client, geometry);
-  }
-}
 
 class Controller {
   final lightweight.ECATLightClient _client;
@@ -49,23 +15,22 @@ class Controller {
       : _client = client,
         _geometry = geometry;
 
-  static ControllerBuilder builder(
-    Iterable<AUTD3> devices, {
-    int? parallelThreshold,
-    Duration? sendInterval,
-    Duration? receiveInterval,
-    int? timerResolution,
-  }) {
-    return ControllerBuilder(devices,
-        parallelThreshold: parallelThreshold,
-        sendInterval: sendInterval,
-        receiveInterval: receiveInterval,
-        timerResolution: timerResolution);
+  Future<Controller> open(
+      Iterable<AUTD3> devices, ClientChannel channel) async {
+    final client = lightweight.ECATLightClient(channel);
+
+    final geometry = Geometry(devices);
+
+    await client
+        .open(lightweight.OpenRequestLightweight(geometry: geometry.toMsg()))
+        .validate();
+
+    return Controller._(client, geometry);
   }
 
-  Future send(Sendable sendable, {CallOptions? options}) async {
+  Future send(Datagram datagram, {CallOptions? options}) async {
     await _client
-        .send(sendable.datagram(_geometry), options: options)
+        .send(datagram.datagram(_geometry), options: options)
         .validate();
   }
 
@@ -73,7 +38,7 @@ class Controller {
     final firmwares = await _client.firmwareVersion(
         lightweight.FirmwareVersionRequestLightweight(),
         options: options);
-    if (!firmwares.success) {
+    if (firmwares.err) {
       throw Exception(firmwares.msg);
     }
     return firmwares.firmwareVersionList

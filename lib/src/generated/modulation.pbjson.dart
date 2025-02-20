@@ -29,158 +29,140 @@ final $typed_data.Uint8List staticDescriptor = $convert.base64Decode(
     'CgZTdGF0aWMSIQoJaW50ZW5zaXR5GAEgASgNSABSCWludGVuc2l0eYgBAUIMCgpfaW50ZW5zaX'
     'R5');
 
-@$core.Deprecated('Use sineExactDescriptor instead')
-const SineExact$json = {
-  '1': 'SineExact',
+@$core.Deprecated('Use sineOptionDescriptor instead')
+const SineOption$json = {
+  '1': 'SineOption',
   '2': [
-    {'1': 'freq', '3': 1, '4': 1, '5': 13, '10': 'freq'},
-    {'1': 'config', '3': 2, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
-    {'1': 'intensity', '3': 3, '4': 1, '5': 13, '9': 1, '10': 'intensity', '17': true},
-    {'1': 'offset', '3': 4, '4': 1, '5': 13, '9': 2, '10': 'offset', '17': true},
-    {'1': 'phase', '3': 5, '4': 1, '5': 11, '6': '.autd3.Angle', '9': 3, '10': 'phase', '17': true},
+    {'1': 'config', '3': 1, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
+    {'1': 'intensity', '3': 2, '4': 1, '5': 13, '9': 1, '10': 'intensity', '17': true},
+    {'1': 'offset', '3': 3, '4': 1, '5': 13, '9': 2, '10': 'offset', '17': true},
+    {'1': 'phase', '3': 4, '4': 1, '5': 11, '6': '.autd3.Angle', '9': 3, '10': 'phase', '17': true},
+    {'1': 'clamp', '3': 5, '4': 1, '5': 8, '9': 4, '10': 'clamp', '17': true},
   ],
   '8': [
     {'1': '_config'},
     {'1': '_intensity'},
     {'1': '_offset'},
     {'1': '_phase'},
+    {'1': '_clamp'},
+  ],
+};
+
+/// Descriptor for `SineOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sineOptionDescriptor = $convert.base64Decode(
+    'CgpTaW5lT3B0aW9uEjIKBmNvbmZpZxgBIAEoCzIVLmF1dGQzLlNhbXBsaW5nQ29uZmlnSABSBm'
+    'NvbmZpZ4gBARIhCglpbnRlbnNpdHkYAiABKA1IAVIJaW50ZW5zaXR5iAEBEhsKBm9mZnNldBgD'
+    'IAEoDUgCUgZvZmZzZXSIAQESJwoFcGhhc2UYBCABKAsyDC5hdXRkMy5BbmdsZUgDUgVwaGFzZY'
+    'gBARIZCgVjbGFtcBgFIAEoCEgEUgVjbGFtcIgBAUIJCgdfY29uZmlnQgwKCl9pbnRlbnNpdHlC'
+    'CQoHX29mZnNldEIICgZfcGhhc2VCCAoGX2NsYW1w');
+
+@$core.Deprecated('Use sineExactDescriptor instead')
+const SineExact$json = {
+  '1': 'SineExact',
+  '2': [
+    {'1': 'freq', '3': 1, '4': 1, '5': 13, '10': 'freq'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.SineOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `SineExact`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sineExactDescriptor = $convert.base64Decode(
-    'CglTaW5lRXhhY3QSEgoEZnJlcRgBIAEoDVIEZnJlcRIyCgZjb25maWcYAiABKAsyFS5hdXRkMy'
-    '5TYW1wbGluZ0NvbmZpZ0gAUgZjb25maWeIAQESIQoJaW50ZW5zaXR5GAMgASgNSAFSCWludGVu'
-    'c2l0eYgBARIbCgZvZmZzZXQYBCABKA1IAlIGb2Zmc2V0iAEBEicKBXBoYXNlGAUgASgLMgwuYX'
-    'V0ZDMuQW5nbGVIA1IFcGhhc2WIAQFCCQoHX2NvbmZpZ0IMCgpfaW50ZW5zaXR5QgkKB19vZmZz'
-    'ZXRCCAoGX3BoYXNl');
+    'CglTaW5lRXhhY3QSEgoEZnJlcRgBIAEoDVIEZnJlcRIpCgZvcHRpb24YAiABKAsyES5hdXRkMy'
+    '5TaW5lT3B0aW9uUgZvcHRpb24=');
 
 @$core.Deprecated('Use sineExactFloatDescriptor instead')
 const SineExactFloat$json = {
   '1': 'SineExactFloat',
   '2': [
     {'1': 'freq', '3': 1, '4': 1, '5': 2, '10': 'freq'},
-    {'1': 'config', '3': 2, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
-    {'1': 'intensity', '3': 3, '4': 1, '5': 13, '9': 1, '10': 'intensity', '17': true},
-    {'1': 'offset', '3': 4, '4': 1, '5': 13, '9': 2, '10': 'offset', '17': true},
-    {'1': 'phase', '3': 5, '4': 1, '5': 11, '6': '.autd3.Angle', '9': 3, '10': 'phase', '17': true},
-  ],
-  '8': [
-    {'1': '_config'},
-    {'1': '_intensity'},
-    {'1': '_offset'},
-    {'1': '_phase'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.SineOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `SineExactFloat`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sineExactFloatDescriptor = $convert.base64Decode(
-    'Cg5TaW5lRXhhY3RGbG9hdBISCgRmcmVxGAEgASgCUgRmcmVxEjIKBmNvbmZpZxgCIAEoCzIVLm'
-    'F1dGQzLlNhbXBsaW5nQ29uZmlnSABSBmNvbmZpZ4gBARIhCglpbnRlbnNpdHkYAyABKA1IAVIJ'
-    'aW50ZW5zaXR5iAEBEhsKBm9mZnNldBgEIAEoDUgCUgZvZmZzZXSIAQESJwoFcGhhc2UYBSABKA'
-    'syDC5hdXRkMy5BbmdsZUgDUgVwaGFzZYgBAUIJCgdfY29uZmlnQgwKCl9pbnRlbnNpdHlCCQoH'
-    'X29mZnNldEIICgZfcGhhc2U=');
+    'Cg5TaW5lRXhhY3RGbG9hdBISCgRmcmVxGAEgASgCUgRmcmVxEikKBm9wdGlvbhgCIAEoCzIRLm'
+    'F1dGQzLlNpbmVPcHRpb25SBm9wdGlvbg==');
 
 @$core.Deprecated('Use sineNearestDescriptor instead')
 const SineNearest$json = {
   '1': 'SineNearest',
   '2': [
     {'1': 'freq', '3': 1, '4': 1, '5': 2, '10': 'freq'},
-    {'1': 'config', '3': 2, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
-    {'1': 'intensity', '3': 3, '4': 1, '5': 13, '9': 1, '10': 'intensity', '17': true},
-    {'1': 'offset', '3': 4, '4': 1, '5': 13, '9': 2, '10': 'offset', '17': true},
-    {'1': 'phase', '3': 5, '4': 1, '5': 11, '6': '.autd3.Angle', '9': 3, '10': 'phase', '17': true},
-  ],
-  '8': [
-    {'1': '_config'},
-    {'1': '_intensity'},
-    {'1': '_offset'},
-    {'1': '_phase'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.SineOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `SineNearest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sineNearestDescriptor = $convert.base64Decode(
-    'CgtTaW5lTmVhcmVzdBISCgRmcmVxGAEgASgCUgRmcmVxEjIKBmNvbmZpZxgCIAEoCzIVLmF1dG'
-    'QzLlNhbXBsaW5nQ29uZmlnSABSBmNvbmZpZ4gBARIhCglpbnRlbnNpdHkYAyABKA1IAVIJaW50'
-    'ZW5zaXR5iAEBEhsKBm9mZnNldBgEIAEoDUgCUgZvZmZzZXSIAQESJwoFcGhhc2UYBSABKAsyDC'
-    '5hdXRkMy5BbmdsZUgDUgVwaGFzZYgBAUIJCgdfY29uZmlnQgwKCl9pbnRlbnNpdHlCCQoHX29m'
-    'ZnNldEIICgZfcGhhc2U=');
+    'CgtTaW5lTmVhcmVzdBISCgRmcmVxGAEgASgCUgRmcmVxEikKBm9wdGlvbhgCIAEoCzIRLmF1dG'
+    'QzLlNpbmVPcHRpb25SBm9wdGlvbg==');
+
+@$core.Deprecated('Use squareOptionDescriptor instead')
+const SquareOption$json = {
+  '1': 'SquareOption',
+  '2': [
+    {'1': 'config', '3': 1, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
+    {'1': 'low', '3': 2, '4': 1, '5': 13, '9': 1, '10': 'low', '17': true},
+    {'1': 'high', '3': 3, '4': 1, '5': 13, '9': 2, '10': 'high', '17': true},
+    {'1': 'duty', '3': 4, '4': 1, '5': 2, '9': 3, '10': 'duty', '17': true},
+  ],
+  '8': [
+    {'1': '_config'},
+    {'1': '_low'},
+    {'1': '_high'},
+    {'1': '_duty'},
+  ],
+};
+
+/// Descriptor for `SquareOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List squareOptionDescriptor = $convert.base64Decode(
+    'CgxTcXVhcmVPcHRpb24SMgoGY29uZmlnGAEgASgLMhUuYXV0ZDMuU2FtcGxpbmdDb25maWdIAF'
+    'IGY29uZmlniAEBEhUKA2xvdxgCIAEoDUgBUgNsb3eIAQESFwoEaGlnaBgDIAEoDUgCUgRoaWdo'
+    'iAEBEhcKBGR1dHkYBCABKAJIA1IEZHV0eYgBAUIJCgdfY29uZmlnQgYKBF9sb3dCBwoFX2hpZ2'
+    'hCBwoFX2R1dHk=');
 
 @$core.Deprecated('Use squareExactDescriptor instead')
 const SquareExact$json = {
   '1': 'SquareExact',
   '2': [
     {'1': 'freq', '3': 1, '4': 1, '5': 13, '10': 'freq'},
-    {'1': 'config', '3': 2, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
-    {'1': 'low', '3': 3, '4': 1, '5': 13, '9': 1, '10': 'low', '17': true},
-    {'1': 'high', '3': 4, '4': 1, '5': 13, '9': 2, '10': 'high', '17': true},
-    {'1': 'duty', '3': 5, '4': 1, '5': 2, '9': 3, '10': 'duty', '17': true},
-  ],
-  '8': [
-    {'1': '_config'},
-    {'1': '_low'},
-    {'1': '_high'},
-    {'1': '_duty'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.SquareOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `SquareExact`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List squareExactDescriptor = $convert.base64Decode(
-    'CgtTcXVhcmVFeGFjdBISCgRmcmVxGAEgASgNUgRmcmVxEjIKBmNvbmZpZxgCIAEoCzIVLmF1dG'
-    'QzLlNhbXBsaW5nQ29uZmlnSABSBmNvbmZpZ4gBARIVCgNsb3cYAyABKA1IAVIDbG93iAEBEhcK'
-    'BGhpZ2gYBCABKA1IAlIEaGlnaIgBARIXCgRkdXR5GAUgASgCSANSBGR1dHmIAQFCCQoHX2Nvbm'
-    'ZpZ0IGCgRfbG93QgcKBV9oaWdoQgcKBV9kdXR5');
+    'CgtTcXVhcmVFeGFjdBISCgRmcmVxGAEgASgNUgRmcmVxEisKBm9wdGlvbhgCIAEoCzITLmF1dG'
+    'QzLlNxdWFyZU9wdGlvblIGb3B0aW9u');
 
 @$core.Deprecated('Use squareExactFloatDescriptor instead')
 const SquareExactFloat$json = {
   '1': 'SquareExactFloat',
   '2': [
     {'1': 'freq', '3': 1, '4': 1, '5': 2, '10': 'freq'},
-    {'1': 'config', '3': 2, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
-    {'1': 'low', '3': 3, '4': 1, '5': 13, '9': 1, '10': 'low', '17': true},
-    {'1': 'high', '3': 4, '4': 1, '5': 13, '9': 2, '10': 'high', '17': true},
-    {'1': 'duty', '3': 5, '4': 1, '5': 2, '9': 3, '10': 'duty', '17': true},
-  ],
-  '8': [
-    {'1': '_config'},
-    {'1': '_low'},
-    {'1': '_high'},
-    {'1': '_duty'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.SquareOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `SquareExactFloat`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List squareExactFloatDescriptor = $convert.base64Decode(
-    'ChBTcXVhcmVFeGFjdEZsb2F0EhIKBGZyZXEYASABKAJSBGZyZXESMgoGY29uZmlnGAIgASgLMh'
-    'UuYXV0ZDMuU2FtcGxpbmdDb25maWdIAFIGY29uZmlniAEBEhUKA2xvdxgDIAEoDUgBUgNsb3eI'
-    'AQESFwoEaGlnaBgEIAEoDUgCUgRoaWdoiAEBEhcKBGR1dHkYBSABKAJIA1IEZHV0eYgBAUIJCg'
-    'dfY29uZmlnQgYKBF9sb3dCBwoFX2hpZ2hCBwoFX2R1dHk=');
+    'ChBTcXVhcmVFeGFjdEZsb2F0EhIKBGZyZXEYASABKAJSBGZyZXESKwoGb3B0aW9uGAIgASgLMh'
+    'MuYXV0ZDMuU3F1YXJlT3B0aW9uUgZvcHRpb24=');
 
 @$core.Deprecated('Use squareNearestDescriptor instead')
 const SquareNearest$json = {
   '1': 'SquareNearest',
   '2': [
     {'1': 'freq', '3': 1, '4': 1, '5': 2, '10': 'freq'},
-    {'1': 'config', '3': 2, '4': 1, '5': 11, '6': '.autd3.SamplingConfig', '9': 0, '10': 'config', '17': true},
-    {'1': 'low', '3': 3, '4': 1, '5': 13, '9': 1, '10': 'low', '17': true},
-    {'1': 'high', '3': 4, '4': 1, '5': 13, '9': 2, '10': 'high', '17': true},
-    {'1': 'duty', '3': 5, '4': 1, '5': 2, '9': 3, '10': 'duty', '17': true},
-  ],
-  '8': [
-    {'1': '_config'},
-    {'1': '_low'},
-    {'1': '_high'},
-    {'1': '_duty'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.SquareOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `SquareNearest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List squareNearestDescriptor = $convert.base64Decode(
-    'Cg1TcXVhcmVOZWFyZXN0EhIKBGZyZXEYASABKAJSBGZyZXESMgoGY29uZmlnGAIgASgLMhUuYX'
-    'V0ZDMuU2FtcGxpbmdDb25maWdIAFIGY29uZmlniAEBEhUKA2xvdxgDIAEoDUgBUgNsb3eIAQES'
-    'FwoEaGlnaBgEIAEoDUgCUgRoaWdoiAEBEhcKBGR1dHkYBSABKAJIA1IEZHV0eYgBAUIJCgdfY2'
-    '9uZmlnQgYKBF9sb3dCBwoFX2hpZ2hCBwoFX2R1dHk=');
+    'Cg1TcXVhcmVOZWFyZXN0EhIKBGZyZXEYASABKAJSBGZyZXESKwoGb3B0aW9uGAIgASgLMhMuYX'
+    'V0ZDMuU3F1YXJlT3B0aW9uUgZvcHRpb24=');
 
 @$core.Deprecated('Use modulationDescriptor instead')
 const Modulation$json = {
@@ -193,11 +175,9 @@ const Modulation$json = {
     {'1': 'square_exact', '3': 20, '4': 1, '5': 11, '6': '.autd3.SquareExact', '9': 0, '10': 'squareExact'},
     {'1': 'square_exact_float', '3': 21, '4': 1, '5': 11, '6': '.autd3.SquareExactFloat', '9': 0, '10': 'squareExactFloat'},
     {'1': 'square_nearest', '3': 22, '4': 1, '5': 11, '6': '.autd3.SquareNearest', '9': 0, '10': 'squareNearest'},
-    {'1': 'loop_behavior', '3': 1000, '4': 1, '5': 11, '6': '.autd3.LoopBehavior', '9': 1, '10': 'loopBehavior', '17': true},
   ],
   '8': [
     {'1': 'modulation'},
-    {'1': '_loop_behavior'},
   ],
 };
 
@@ -210,27 +190,5 @@ final $typed_data.Uint8List modulationDescriptor = $convert.base64Decode(
     'ZWFyZXN0EjcKDHNxdWFyZV9leGFjdBgUIAEoCzISLmF1dGQzLlNxdWFyZUV4YWN0SABSC3NxdW'
     'FyZUV4YWN0EkcKEnNxdWFyZV9leGFjdF9mbG9hdBgVIAEoCzIXLmF1dGQzLlNxdWFyZUV4YWN0'
     'RmxvYXRIAFIQc3F1YXJlRXhhY3RGbG9hdBI9Cg5zcXVhcmVfbmVhcmVzdBgWIAEoCzIULmF1dG'
-    'QzLlNxdWFyZU5lYXJlc3RIAFINc3F1YXJlTmVhcmVzdBI+Cg1sb29wX2JlaGF2aW9yGOgHIAEo'
-    'CzITLmF1dGQzLkxvb3BCZWhhdmlvckgBUgxsb29wQmVoYXZpb3KIAQFCDAoKbW9kdWxhdGlvbk'
-    'IQCg5fbG9vcF9iZWhhdmlvcg==');
-
-@$core.Deprecated('Use modulationWithSegmentDescriptor instead')
-const ModulationWithSegment$json = {
-  '1': 'ModulationWithSegment',
-  '2': [
-    {'1': 'modulation', '3': 1, '4': 1, '5': 11, '6': '.autd3.Modulation', '10': 'modulation'},
-    {'1': 'segment', '3': 2, '4': 1, '5': 14, '6': '.autd3.Segment', '10': 'segment'},
-    {'1': 'transition_mode', '3': 3, '4': 1, '5': 11, '6': '.autd3.TransitionMode', '9': 0, '10': 'transitionMode', '17': true},
-  ],
-  '8': [
-    {'1': '_transition_mode'},
-  ],
-};
-
-/// Descriptor for `ModulationWithSegment`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List modulationWithSegmentDescriptor = $convert.base64Decode(
-    'ChVNb2R1bGF0aW9uV2l0aFNlZ21lbnQSMQoKbW9kdWxhdGlvbhgBIAEoCzIRLmF1dGQzLk1vZH'
-    'VsYXRpb25SCm1vZHVsYXRpb24SKAoHc2VnbWVudBgCIAEoDjIOLmF1dGQzLlNlZ21lbnRSB3Nl'
-    'Z21lbnQSQwoPdHJhbnNpdGlvbl9tb2RlGAMgASgLMhUuYXV0ZDMuVHJhbnNpdGlvbk1vZGVIAF'
-    'IOdHJhbnNpdGlvbk1vZGWIAQFCEgoQX3RyYW5zaXRpb25fbW9kZQ==');
+    'QzLlNxdWFyZU5lYXJlc3RIAFINc3F1YXJlTmVhcmVzdEIMCgptb2R1bGF0aW9u');
 

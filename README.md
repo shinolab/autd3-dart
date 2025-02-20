@@ -11,4 +11,4 @@ See [LICENSE](./LICENSE).
 
 # Author
 
-Shun Suzuki, 2024
+Shun Suzuki, 2024-2025

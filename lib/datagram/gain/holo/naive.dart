@@ -2,25 +2,35 @@ import 'package:autd3/datagram/gain/gain.dart';
 import 'package:autd3/datagram/gain/holo/constraint.dart';
 import 'package:autd3/datagram/gain/holo/holo.dart';
 import 'package:autd3/geometry.dart';
-import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/gain.pb.dart' as gain;
+
+class NaiveOption {
+  final EmissionConstraint? constraint;
+
+  NaiveOption({this.constraint});
+
+  gain.NaiveOption toMsg() {
+    return gain.NaiveOption(
+      constraint: constraint?.toMsg(),
+    );
+  }
+}
 
 class Naive extends Gain {
   final Iterable<Holo> foci;
-  final EmissionConstraint? constraint;
+  final NaiveOption option;
 
-  Naive(this.foci, {this.constraint}) {
+  Naive({required this.foci, required this.option}) {
     {}
   }
 
   @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        gain: gain.Gain(
+  gain.Gain rawDatagram(Geometry geometry) {
+    return gain.Gain(
       naive: gain.Naive(
         holo: foci.map((f) => f.toMsg()),
-        constraint: constraint?.toMsg(),
+        option: option.toMsg(),
       ),
-    ));
+    );
   }
 }

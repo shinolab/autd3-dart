@@ -24,20 +24,14 @@ const Datagram$json = {
     {'1': 'silencer', '3': 5, '4': 1, '5': 11, '6': '.autd3.Silencer', '9': 0, '10': 'silencer'},
     {'1': 'swap_segment', '3': 6, '4': 1, '5': 11, '6': '.autd3.SwapSegment', '9': 0, '10': 'swapSegment'},
     {'1': 'modulation', '3': 10, '4': 1, '5': 11, '6': '.autd3.Modulation', '9': 0, '10': 'modulation'},
-    {'1': 'modulation_with_segment', '3': 11, '4': 1, '5': 11, '6': '.autd3.ModulationWithSegment', '9': 0, '10': 'modulationWithSegment'},
     {'1': 'gain', '3': 30, '4': 1, '5': 11, '6': '.autd3.Gain', '9': 0, '10': 'gain'},
-    {'1': 'gain_with_segment', '3': 31, '4': 1, '5': 11, '6': '.autd3.GainWithSegment', '9': 0, '10': 'gainWithSegment'},
     {'1': 'foci_stm', '3': 40, '4': 1, '5': 11, '6': '.autd3.FociSTM', '9': 0, '10': 'fociStm'},
-    {'1': 'foci_stm_with_segment', '3': 41, '4': 1, '5': 11, '6': '.autd3.FociSTMWithSegment', '9': 0, '10': 'fociStmWithSegment'},
     {'1': 'gain_stm', '3': 50, '4': 1, '5': 11, '6': '.autd3.GainSTM', '9': 0, '10': 'gainStm'},
-    {'1': 'gain_stm_with_segment', '3': 51, '4': 1, '5': 11, '6': '.autd3.GainSTMWithSegment', '9': 0, '10': 'gainStmWithSegment'},
-    {'1': 'timeout', '3': 1001, '4': 1, '5': 4, '9': 1, '10': 'timeout', '17': true},
-    {'1': 'parallel_threshold', '3': 1002, '4': 1, '5': 4, '9': 2, '10': 'parallelThreshold', '17': true},
+    {'1': 'with_segment', '3': 60, '4': 1, '5': 11, '6': '.autd3.WithSegment', '9': 0, '10': 'withSegment'},
+    {'1': 'with_loop_behavior', '3': 61, '4': 1, '5': 11, '6': '.autd3.WithLoopBehavior', '9': 0, '10': 'withLoopBehavior'},
   ],
   '8': [
     {'1': 'datagram'},
-    {'1': '_timeout'},
-    {'1': '_parallel_threshold'},
   ],
 };
 
@@ -49,33 +43,26 @@ final $typed_data.Uint8List datagramDescriptor = $convert.base64Decode(
     '9zdGF0ZRgEIAEoCzIVLmF1dGQzLlJlYWRzRlBHQVN0YXRlSABSDnJlYWRzRnBnYVN0YXRlEi0K'
     'CHNpbGVuY2VyGAUgASgLMg8uYXV0ZDMuU2lsZW5jZXJIAFIIc2lsZW5jZXISNwoMc3dhcF9zZW'
     'dtZW50GAYgASgLMhIuYXV0ZDMuU3dhcFNlZ21lbnRIAFILc3dhcFNlZ21lbnQSMwoKbW9kdWxh'
-    'dGlvbhgKIAEoCzIRLmF1dGQzLk1vZHVsYXRpb25IAFIKbW9kdWxhdGlvbhJWChdtb2R1bGF0aW'
-    '9uX3dpdGhfc2VnbWVudBgLIAEoCzIcLmF1dGQzLk1vZHVsYXRpb25XaXRoU2VnbWVudEgAUhVt'
-    'b2R1bGF0aW9uV2l0aFNlZ21lbnQSIQoEZ2FpbhgeIAEoCzILLmF1dGQzLkdhaW5IAFIEZ2Fpbh'
-    'JEChFnYWluX3dpdGhfc2VnbWVudBgfIAEoCzIWLmF1dGQzLkdhaW5XaXRoU2VnbWVudEgAUg9n'
-    'YWluV2l0aFNlZ21lbnQSKwoIZm9jaV9zdG0YKCABKAsyDi5hdXRkMy5Gb2NpU1RNSABSB2ZvY2'
-    'lTdG0STgoVZm9jaV9zdG1fd2l0aF9zZWdtZW50GCkgASgLMhkuYXV0ZDMuRm9jaVNUTVdpdGhT'
-    'ZWdtZW50SABSEmZvY2lTdG1XaXRoU2VnbWVudBIrCghnYWluX3N0bRgyIAEoCzIOLmF1dGQzLk'
-    'dhaW5TVE1IAFIHZ2FpblN0bRJOChVnYWluX3N0bV93aXRoX3NlZ21lbnQYMyABKAsyGS5hdXRk'
-    'My5HYWluU1RNV2l0aFNlZ21lbnRIAFISZ2FpblN0bVdpdGhTZWdtZW50Eh4KB3RpbWVvdXQY6Q'
-    'cgASgESAFSB3RpbWVvdXSIAQESMwoScGFyYWxsZWxfdGhyZXNob2xkGOoHIAEoBEgCUhFwYXJh'
-    'bGxlbFRocmVzaG9sZIgBAUIKCghkYXRhZ3JhbUIKCghfdGltZW91dEIVChNfcGFyYWxsZWxfdG'
-    'hyZXNob2xk');
+    'dGlvbhgKIAEoCzIRLmF1dGQzLk1vZHVsYXRpb25IAFIKbW9kdWxhdGlvbhIhCgRnYWluGB4gAS'
+    'gLMgsuYXV0ZDMuR2FpbkgAUgRnYWluEisKCGZvY2lfc3RtGCggASgLMg4uYXV0ZDMuRm9jaVNU'
+    'TUgAUgdmb2NpU3RtEisKCGdhaW5fc3RtGDIgASgLMg4uYXV0ZDMuR2FpblNUTUgAUgdnYWluU3'
+    'RtEjcKDHdpdGhfc2VnbWVudBg8IAEoCzISLmF1dGQzLldpdGhTZWdtZW50SABSC3dpdGhTZWdt'
+    'ZW50EkcKEndpdGhfbG9vcF9iZWhhdmlvchg9IAEoCzIXLmF1dGQzLldpdGhMb29wQmVoYXZpb3'
+    'JIAFIQd2l0aExvb3BCZWhhdmlvckIKCghkYXRhZ3JhbQ==');
 
 @$core.Deprecated('Use sendResponseLightweightDescriptor instead')
 const SendResponseLightweight$json = {
   '1': 'SendResponseLightweight',
   '2': [
-    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
-    {'1': 'err', '3': 2, '4': 1, '5': 8, '10': 'err'},
-    {'1': 'msg', '3': 3, '4': 1, '5': 9, '10': 'msg'},
+    {'1': 'err', '3': 1, '4': 1, '5': 8, '10': 'err'},
+    {'1': 'msg', '3': 2, '4': 1, '5': 9, '10': 'msg'},
   ],
 };
 
 /// Descriptor for `SendResponseLightweight`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendResponseLightweightDescriptor = $convert.base64Decode(
-    'ChdTZW5kUmVzcG9uc2VMaWdodHdlaWdodBIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNzEhAKA2'
-    'VychgCIAEoCFIDZXJyEhAKA21zZxgDIAEoCVIDbXNn');
+    'ChdTZW5kUmVzcG9uc2VMaWdodHdlaWdodBIQCgNlcnIYASABKAhSA2VychIQCgNtc2cYAiABKA'
+    'lSA21zZw==');
 
 @$core.Deprecated('Use firmwareVersionRequestLightweightDescriptor instead')
 const FirmwareVersionRequestLightweight$json = {
@@ -90,7 +77,7 @@ final $typed_data.Uint8List firmwareVersionRequestLightweightDescriptor = $conve
 const FirmwareVersionResponseLightweight$json = {
   '1': 'FirmwareVersionResponseLightweight',
   '2': [
-    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
+    {'1': 'err', '3': 1, '4': 1, '5': 8, '10': 'err'},
     {'1': 'msg', '3': 2, '4': 1, '5': 9, '10': 'msg'},
     {'1': 'firmware_version_list', '3': 3, '4': 3, '5': 11, '6': '.autd3.FirmwareVersionResponseLightweight.FirmwareVersion', '10': 'firmwareVersionList'},
   ],
@@ -111,14 +98,14 @@ const FirmwareVersionResponseLightweight_FirmwareVersion$json = {
 
 /// Descriptor for `FirmwareVersionResponseLightweight`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List firmwareVersionResponseLightweightDescriptor = $convert.base64Decode(
-    'CiJGaXJtd2FyZVZlcnNpb25SZXNwb25zZUxpZ2h0d2VpZ2h0EhgKB3N1Y2Nlc3MYASABKAhSB3'
-    'N1Y2Nlc3MSEAoDbXNnGAIgASgJUgNtc2cSbQoVZmlybXdhcmVfdmVyc2lvbl9saXN0GAMgAygL'
-    'MjkuYXV0ZDMuRmlybXdhcmVWZXJzaW9uUmVzcG9uc2VMaWdodHdlaWdodC5GaXJtd2FyZVZlcn'
-    'Npb25SE2Zpcm13YXJlVmVyc2lvbkxpc3Qa8wEKD0Zpcm13YXJlVmVyc2lvbhIsChJmcGdhX21h'
-    'am9yX3ZlcnNpb24YASABKA1SEGZwZ2FNYWpvclZlcnNpb24SLAoSZnBnYV9taW5vcl92ZXJzaW'
-    '9uGAIgASgNUhBmcGdhTWlub3JWZXJzaW9uEioKEWNwdV9tYWpvcl92ZXJzaW9uGAMgASgNUg9j'
-    'cHVNYWpvclZlcnNpb24SKgoRY3B1X21pbm9yX3ZlcnNpb24YBCABKA1SD2NwdU1pbm9yVmVyc2'
-    'lvbhIsChJmcGdhX2Z1bmN0aW9uX2JpdHMYBSABKA1SEGZwZ2FGdW5jdGlvbkJpdHM=');
+    'CiJGaXJtd2FyZVZlcnNpb25SZXNwb25zZUxpZ2h0d2VpZ2h0EhAKA2VychgBIAEoCFIDZXJyEh'
+    'AKA21zZxgCIAEoCVIDbXNnEm0KFWZpcm13YXJlX3ZlcnNpb25fbGlzdBgDIAMoCzI5LmF1dGQz'
+    'LkZpcm13YXJlVmVyc2lvblJlc3BvbnNlTGlnaHR3ZWlnaHQuRmlybXdhcmVWZXJzaW9uUhNmaX'
+    'Jtd2FyZVZlcnNpb25MaXN0GvMBCg9GaXJtd2FyZVZlcnNpb24SLAoSZnBnYV9tYWpvcl92ZXJz'
+    'aW9uGAEgASgNUhBmcGdhTWFqb3JWZXJzaW9uEiwKEmZwZ2FfbWlub3JfdmVyc2lvbhgCIAEoDV'
+    'IQZnBnYU1pbm9yVmVyc2lvbhIqChFjcHVfbWFqb3JfdmVyc2lvbhgDIAEoDVIPY3B1TWFqb3JW'
+    'ZXJzaW9uEioKEWNwdV9taW5vcl92ZXJzaW9uGAQgASgNUg9jcHVNaW5vclZlcnNpb24SLAoSZn'
+    'BnYV9mdW5jdGlvbl9iaXRzGAUgASgNUhBmcGdhRnVuY3Rpb25CaXRz');
 
 @$core.Deprecated('Use closeRequestLightweightDescriptor instead')
 const CloseRequestLightweight$json = {
@@ -134,18 +121,11 @@ const OpenRequestLightweight$json = {
   '1': 'OpenRequestLightweight',
   '2': [
     {'1': 'geometry', '3': 1, '4': 1, '5': 11, '6': '.autd3.Geometry', '10': 'geometry'},
-    {'1': 'parallel_threshold', '3': 2, '4': 1, '5': 4, '10': 'parallelThreshold'},
-    {'1': 'send_interval', '3': 3, '4': 1, '5': 4, '10': 'sendInterval'},
-    {'1': 'receive_interval', '3': 4, '4': 1, '5': 4, '10': 'receiveInterval'},
-    {'1': 'timer_resolution', '3': 5, '4': 1, '5': 13, '10': 'timerResolution'},
   ],
 };
 
 /// Descriptor for `OpenRequestLightweight`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List openRequestLightweightDescriptor = $convert.base64Decode(
     'ChZPcGVuUmVxdWVzdExpZ2h0d2VpZ2h0EisKCGdlb21ldHJ5GAEgASgLMg8uYXV0ZDMuR2VvbW'
-    'V0cnlSCGdlb21ldHJ5Ei0KEnBhcmFsbGVsX3RocmVzaG9sZBgCIAEoBFIRcGFyYWxsZWxUaHJl'
-    'c2hvbGQSIwoNc2VuZF9pbnRlcnZhbBgDIAEoBFIMc2VuZEludGVydmFsEikKEHJlY2VpdmVfaW'
-    '50ZXJ2YWwYBCABKARSD3JlY2VpdmVJbnRlcnZhbBIpChB0aW1lcl9yZXNvbHV0aW9uGAUgASgN'
-    'Ug90aW1lclJlc29sdXRpb24=');
+    'V0cnlSCGdlb21ldHJ5');
 

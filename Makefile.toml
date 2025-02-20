@@ -1,0 +1,33 @@
+[config]
+default_to_workspace = false
+skip_core_tasks = true
+
+
+[tasks.update-submodules]
+command = "git"
+args = ["submodule", "update", "--init"]
+
+[tasks.gen-proto]
+dependencies = ["update-submodules"]
+script_runner = "python"
+script_extension = "py"
+script = '''
+import glob
+import os
+import pathlib
+import subprocess
+
+os.makedirs("lib/src/generated", exist_ok=True)
+proto_files = glob.glob("autd3/autd3-protobuf/proto/*.proto")
+for proto_file in proto_files:
+    f = pathlib.Path(proto_file)
+    if f.name == "autd3.proto":
+        continue
+    command = [
+        "protoc",
+        "--dart_out=grpc:lib/src/generated",
+        "-Iautd3/autd3-protobuf/proto",
+        f,
+    ]
+    subprocess.run(command).check_returncode()
+'''

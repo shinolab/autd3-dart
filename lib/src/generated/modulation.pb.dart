@@ -14,7 +14,6 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'utils-lightweight.pb.dart' as $0;
-import 'utils-lightweight.pbenum.dart' as $0;
 import 'utils.pb.dart' as $1;
 
 class Static extends $pb.GeneratedMessage {
@@ -67,18 +66,15 @@ class Static extends $pb.GeneratedMessage {
   void clearIntensity() => clearField(1);
 }
 
-class SineExact extends $pb.GeneratedMessage {
-  factory SineExact({
-    $core.int? freq,
+class SineOption extends $pb.GeneratedMessage {
+  factory SineOption({
     $0.SamplingConfig? config,
     $core.int? intensity,
     $core.int? offset,
     $1.Angle? phase,
+    $core.bool? clamp,
   }) {
     final $result = create();
-    if (freq != null) {
-      $result.freq = freq;
-    }
     if (config != null) {
       $result.config = config;
     }
@@ -91,6 +87,107 @@ class SineExact extends $pb.GeneratedMessage {
     if (phase != null) {
       $result.phase = phase;
     }
+    if (clamp != null) {
+      $result.clamp = clamp;
+    }
+    return $result;
+  }
+  SineOption._() : super();
+  factory SineOption.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SineOption.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SineOption', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..aOM<$0.SamplingConfig>(1, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'intensity', $pb.PbFieldType.OU3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'offset', $pb.PbFieldType.OU3)
+    ..aOM<$1.Angle>(4, _omitFieldNames ? '' : 'phase', subBuilder: $1.Angle.create)
+    ..aOB(5, _omitFieldNames ? '' : 'clamp')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SineOption clone() => SineOption()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SineOption copyWith(void Function(SineOption) updates) => super.copyWith((message) => updates(message as SineOption)) as SineOption;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SineOption create() => SineOption._();
+  SineOption createEmptyInstance() => create();
+  static $pb.PbList<SineOption> createRepeated() => $pb.PbList<SineOption>();
+  @$core.pragma('dart2js:noInline')
+  static SineOption getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SineOption>(create);
+  static SineOption? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.SamplingConfig get config => $_getN(0);
+  @$pb.TagNumber(1)
+  set config($0.SamplingConfig v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasConfig() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearConfig() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.SamplingConfig ensureConfig() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.int get intensity => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set intensity($core.int v) { $_setUnsignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasIntensity() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearIntensity() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get offset => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set offset($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOffset() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOffset() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $1.Angle get phase => $_getN(3);
+  @$pb.TagNumber(4)
+  set phase($1.Angle v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPhase() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPhase() => clearField(4);
+  @$pb.TagNumber(4)
+  $1.Angle ensurePhase() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $core.bool get clamp => $_getBF(4);
+  @$pb.TagNumber(5)
+  set clamp($core.bool v) { $_setBool(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasClamp() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearClamp() => clearField(5);
+}
+
+class SineExact extends $pb.GeneratedMessage {
+  factory SineExact({
+    $core.int? freq,
+    SineOption? option,
+  }) {
+    final $result = create();
+    if (freq != null) {
+      $result.freq = freq;
+    }
+    if (option != null) {
+      $result.option = option;
+    }
     return $result;
   }
   SineExact._() : super();
@@ -99,10 +196,7 @@ class SineExact extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SineExact', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OU3)
-    ..aOM<$0.SamplingConfig>(2, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'intensity', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'offset', $pb.PbFieldType.OU3)
-    ..aOM<$1.Angle>(5, _omitFieldNames ? '' : 'phase', subBuilder: $1.Angle.create)
+    ..aOM<SineOption>(2, _omitFieldNames ? '' : 'option', subBuilder: SineOption.create)
     ..hasRequiredFields = false
   ;
 
@@ -137,69 +231,28 @@ class SineExact extends $pb.GeneratedMessage {
   void clearFreq() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.SamplingConfig get config => $_getN(1);
+  SineOption get option => $_getN(1);
   @$pb.TagNumber(2)
-  set config($0.SamplingConfig v) { setField(2, v); }
+  set option(SineOption v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasConfig() => $_has(1);
+  $core.bool hasOption() => $_has(1);
   @$pb.TagNumber(2)
-  void clearConfig() => clearField(2);
+  void clearOption() => clearField(2);
   @$pb.TagNumber(2)
-  $0.SamplingConfig ensureConfig() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $core.int get intensity => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set intensity($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasIntensity() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearIntensity() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get offset => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set offset($core.int v) { $_setUnsignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasOffset() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearOffset() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $1.Angle get phase => $_getN(4);
-  @$pb.TagNumber(5)
-  set phase($1.Angle v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasPhase() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearPhase() => clearField(5);
-  @$pb.TagNumber(5)
-  $1.Angle ensurePhase() => $_ensure(4);
+  SineOption ensureOption() => $_ensure(1);
 }
 
 class SineExactFloat extends $pb.GeneratedMessage {
   factory SineExactFloat({
     $core.double? freq,
-    $0.SamplingConfig? config,
-    $core.int? intensity,
-    $core.int? offset,
-    $1.Angle? phase,
+    SineOption? option,
   }) {
     final $result = create();
     if (freq != null) {
       $result.freq = freq;
     }
-    if (config != null) {
-      $result.config = config;
-    }
-    if (intensity != null) {
-      $result.intensity = intensity;
-    }
-    if (offset != null) {
-      $result.offset = offset;
-    }
-    if (phase != null) {
-      $result.phase = phase;
+    if (option != null) {
+      $result.option = option;
     }
     return $result;
   }
@@ -209,10 +262,7 @@ class SineExactFloat extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SineExactFloat', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.double>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OF)
-    ..aOM<$0.SamplingConfig>(2, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'intensity', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'offset', $pb.PbFieldType.OU3)
-    ..aOM<$1.Angle>(5, _omitFieldNames ? '' : 'phase', subBuilder: $1.Angle.create)
+    ..aOM<SineOption>(2, _omitFieldNames ? '' : 'option', subBuilder: SineOption.create)
     ..hasRequiredFields = false
   ;
 
@@ -247,69 +297,28 @@ class SineExactFloat extends $pb.GeneratedMessage {
   void clearFreq() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.SamplingConfig get config => $_getN(1);
+  SineOption get option => $_getN(1);
   @$pb.TagNumber(2)
-  set config($0.SamplingConfig v) { setField(2, v); }
+  set option(SineOption v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasConfig() => $_has(1);
+  $core.bool hasOption() => $_has(1);
   @$pb.TagNumber(2)
-  void clearConfig() => clearField(2);
+  void clearOption() => clearField(2);
   @$pb.TagNumber(2)
-  $0.SamplingConfig ensureConfig() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $core.int get intensity => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set intensity($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasIntensity() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearIntensity() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get offset => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set offset($core.int v) { $_setUnsignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasOffset() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearOffset() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $1.Angle get phase => $_getN(4);
-  @$pb.TagNumber(5)
-  set phase($1.Angle v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasPhase() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearPhase() => clearField(5);
-  @$pb.TagNumber(5)
-  $1.Angle ensurePhase() => $_ensure(4);
+  SineOption ensureOption() => $_ensure(1);
 }
 
 class SineNearest extends $pb.GeneratedMessage {
   factory SineNearest({
     $core.double? freq,
-    $0.SamplingConfig? config,
-    $core.int? intensity,
-    $core.int? offset,
-    $1.Angle? phase,
+    SineOption? option,
   }) {
     final $result = create();
     if (freq != null) {
       $result.freq = freq;
     }
-    if (config != null) {
-      $result.config = config;
-    }
-    if (intensity != null) {
-      $result.intensity = intensity;
-    }
-    if (offset != null) {
-      $result.offset = offset;
-    }
-    if (phase != null) {
-      $result.phase = phase;
+    if (option != null) {
+      $result.option = option;
     }
     return $result;
   }
@@ -319,10 +328,7 @@ class SineNearest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SineNearest', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.double>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OF)
-    ..aOM<$0.SamplingConfig>(2, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'intensity', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'offset', $pb.PbFieldType.OU3)
-    ..aOM<$1.Angle>(5, _omitFieldNames ? '' : 'phase', subBuilder: $1.Angle.create)
+    ..aOM<SineOption>(2, _omitFieldNames ? '' : 'option', subBuilder: SineOption.create)
     ..hasRequiredFields = false
   ;
 
@@ -357,58 +363,25 @@ class SineNearest extends $pb.GeneratedMessage {
   void clearFreq() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.SamplingConfig get config => $_getN(1);
+  SineOption get option => $_getN(1);
   @$pb.TagNumber(2)
-  set config($0.SamplingConfig v) { setField(2, v); }
+  set option(SineOption v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasConfig() => $_has(1);
+  $core.bool hasOption() => $_has(1);
   @$pb.TagNumber(2)
-  void clearConfig() => clearField(2);
+  void clearOption() => clearField(2);
   @$pb.TagNumber(2)
-  $0.SamplingConfig ensureConfig() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $core.int get intensity => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set intensity($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasIntensity() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearIntensity() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get offset => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set offset($core.int v) { $_setUnsignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasOffset() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearOffset() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $1.Angle get phase => $_getN(4);
-  @$pb.TagNumber(5)
-  set phase($1.Angle v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasPhase() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearPhase() => clearField(5);
-  @$pb.TagNumber(5)
-  $1.Angle ensurePhase() => $_ensure(4);
+  SineOption ensureOption() => $_ensure(1);
 }
 
-class SquareExact extends $pb.GeneratedMessage {
-  factory SquareExact({
-    $core.int? freq,
+class SquareOption extends $pb.GeneratedMessage {
+  factory SquareOption({
     $0.SamplingConfig? config,
     $core.int? low,
     $core.int? high,
     $core.double? duty,
   }) {
     final $result = create();
-    if (freq != null) {
-      $result.freq = freq;
-    }
     if (config != null) {
       $result.config = config;
     }
@@ -423,16 +396,99 @@ class SquareExact extends $pb.GeneratedMessage {
     }
     return $result;
   }
+  SquareOption._() : super();
+  factory SquareOption.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SquareOption.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SquareOption', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..aOM<$0.SamplingConfig>(1, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'low', $pb.PbFieldType.OU3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'high', $pb.PbFieldType.OU3)
+    ..a<$core.double>(4, _omitFieldNames ? '' : 'duty', $pb.PbFieldType.OF)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SquareOption clone() => SquareOption()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SquareOption copyWith(void Function(SquareOption) updates) => super.copyWith((message) => updates(message as SquareOption)) as SquareOption;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SquareOption create() => SquareOption._();
+  SquareOption createEmptyInstance() => create();
+  static $pb.PbList<SquareOption> createRepeated() => $pb.PbList<SquareOption>();
+  @$core.pragma('dart2js:noInline')
+  static SquareOption getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SquareOption>(create);
+  static SquareOption? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.SamplingConfig get config => $_getN(0);
+  @$pb.TagNumber(1)
+  set config($0.SamplingConfig v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasConfig() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearConfig() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.SamplingConfig ensureConfig() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.int get low => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set low($core.int v) { $_setUnsignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLow() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLow() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get high => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set high($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasHigh() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearHigh() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.double get duty => $_getN(3);
+  @$pb.TagNumber(4)
+  set duty($core.double v) { $_setFloat(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasDuty() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearDuty() => clearField(4);
+}
+
+class SquareExact extends $pb.GeneratedMessage {
+  factory SquareExact({
+    $core.int? freq,
+    SquareOption? option,
+  }) {
+    final $result = create();
+    if (freq != null) {
+      $result.freq = freq;
+    }
+    if (option != null) {
+      $result.option = option;
+    }
+    return $result;
+  }
   SquareExact._() : super();
   factory SquareExact.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SquareExact.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SquareExact', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OU3)
-    ..aOM<$0.SamplingConfig>(2, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'low', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'high', $pb.PbFieldType.OU3)
-    ..a<$core.double>(5, _omitFieldNames ? '' : 'duty', $pb.PbFieldType.OF)
+    ..aOM<SquareOption>(2, _omitFieldNames ? '' : 'option', subBuilder: SquareOption.create)
     ..hasRequiredFields = false
   ;
 
@@ -467,67 +523,28 @@ class SquareExact extends $pb.GeneratedMessage {
   void clearFreq() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.SamplingConfig get config => $_getN(1);
+  SquareOption get option => $_getN(1);
   @$pb.TagNumber(2)
-  set config($0.SamplingConfig v) { setField(2, v); }
+  set option(SquareOption v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasConfig() => $_has(1);
+  $core.bool hasOption() => $_has(1);
   @$pb.TagNumber(2)
-  void clearConfig() => clearField(2);
+  void clearOption() => clearField(2);
   @$pb.TagNumber(2)
-  $0.SamplingConfig ensureConfig() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $core.int get low => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set low($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasLow() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearLow() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get high => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set high($core.int v) { $_setUnsignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasHigh() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearHigh() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.double get duty => $_getN(4);
-  @$pb.TagNumber(5)
-  set duty($core.double v) { $_setFloat(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasDuty() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearDuty() => clearField(5);
+  SquareOption ensureOption() => $_ensure(1);
 }
 
 class SquareExactFloat extends $pb.GeneratedMessage {
   factory SquareExactFloat({
     $core.double? freq,
-    $0.SamplingConfig? config,
-    $core.int? low,
-    $core.int? high,
-    $core.double? duty,
+    SquareOption? option,
   }) {
     final $result = create();
     if (freq != null) {
       $result.freq = freq;
     }
-    if (config != null) {
-      $result.config = config;
-    }
-    if (low != null) {
-      $result.low = low;
-    }
-    if (high != null) {
-      $result.high = high;
-    }
-    if (duty != null) {
-      $result.duty = duty;
+    if (option != null) {
+      $result.option = option;
     }
     return $result;
   }
@@ -537,10 +554,7 @@ class SquareExactFloat extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SquareExactFloat', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.double>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OF)
-    ..aOM<$0.SamplingConfig>(2, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'low', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'high', $pb.PbFieldType.OU3)
-    ..a<$core.double>(5, _omitFieldNames ? '' : 'duty', $pb.PbFieldType.OF)
+    ..aOM<SquareOption>(2, _omitFieldNames ? '' : 'option', subBuilder: SquareOption.create)
     ..hasRequiredFields = false
   ;
 
@@ -575,67 +589,28 @@ class SquareExactFloat extends $pb.GeneratedMessage {
   void clearFreq() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.SamplingConfig get config => $_getN(1);
+  SquareOption get option => $_getN(1);
   @$pb.TagNumber(2)
-  set config($0.SamplingConfig v) { setField(2, v); }
+  set option(SquareOption v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasConfig() => $_has(1);
+  $core.bool hasOption() => $_has(1);
   @$pb.TagNumber(2)
-  void clearConfig() => clearField(2);
+  void clearOption() => clearField(2);
   @$pb.TagNumber(2)
-  $0.SamplingConfig ensureConfig() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $core.int get low => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set low($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasLow() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearLow() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get high => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set high($core.int v) { $_setUnsignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasHigh() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearHigh() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.double get duty => $_getN(4);
-  @$pb.TagNumber(5)
-  set duty($core.double v) { $_setFloat(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasDuty() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearDuty() => clearField(5);
+  SquareOption ensureOption() => $_ensure(1);
 }
 
 class SquareNearest extends $pb.GeneratedMessage {
   factory SquareNearest({
     $core.double? freq,
-    $0.SamplingConfig? config,
-    $core.int? low,
-    $core.int? high,
-    $core.double? duty,
+    SquareOption? option,
   }) {
     final $result = create();
     if (freq != null) {
       $result.freq = freq;
     }
-    if (config != null) {
-      $result.config = config;
-    }
-    if (low != null) {
-      $result.low = low;
-    }
-    if (high != null) {
-      $result.high = high;
-    }
-    if (duty != null) {
-      $result.duty = duty;
+    if (option != null) {
+      $result.option = option;
     }
     return $result;
   }
@@ -645,10 +620,7 @@ class SquareNearest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SquareNearest', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.double>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OF)
-    ..aOM<$0.SamplingConfig>(2, _omitFieldNames ? '' : 'config', subBuilder: $0.SamplingConfig.create)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'low', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'high', $pb.PbFieldType.OU3)
-    ..a<$core.double>(5, _omitFieldNames ? '' : 'duty', $pb.PbFieldType.OF)
+    ..aOM<SquareOption>(2, _omitFieldNames ? '' : 'option', subBuilder: SquareOption.create)
     ..hasRequiredFields = false
   ;
 
@@ -683,42 +655,15 @@ class SquareNearest extends $pb.GeneratedMessage {
   void clearFreq() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.SamplingConfig get config => $_getN(1);
+  SquareOption get option => $_getN(1);
   @$pb.TagNumber(2)
-  set config($0.SamplingConfig v) { setField(2, v); }
+  set option(SquareOption v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasConfig() => $_has(1);
+  $core.bool hasOption() => $_has(1);
   @$pb.TagNumber(2)
-  void clearConfig() => clearField(2);
+  void clearOption() => clearField(2);
   @$pb.TagNumber(2)
-  $0.SamplingConfig ensureConfig() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $core.int get low => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set low($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasLow() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearLow() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get high => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set high($core.int v) { $_setUnsignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasHigh() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearHigh() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.double get duty => $_getN(4);
-  @$pb.TagNumber(5)
-  set duty($core.double v) { $_setFloat(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasDuty() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearDuty() => clearField(5);
+  SquareOption ensureOption() => $_ensure(1);
 }
 
 enum Modulation_Modulation {
@@ -741,7 +686,6 @@ class Modulation extends $pb.GeneratedMessage {
     SquareExact? squareExact,
     SquareExactFloat? squareExactFloat,
     SquareNearest? squareNearest,
-    $0.LoopBehavior? loopBehavior,
   }) {
     final $result = create();
     if (static != null) {
@@ -764,9 +708,6 @@ class Modulation extends $pb.GeneratedMessage {
     }
     if (squareNearest != null) {
       $result.squareNearest = squareNearest;
-    }
-    if (loopBehavior != null) {
-      $result.loopBehavior = loopBehavior;
     }
     return $result;
   }
@@ -793,7 +734,6 @@ class Modulation extends $pb.GeneratedMessage {
     ..aOM<SquareExact>(20, _omitFieldNames ? '' : 'squareExact', subBuilder: SquareExact.create)
     ..aOM<SquareExactFloat>(21, _omitFieldNames ? '' : 'squareExactFloat', subBuilder: SquareExactFloat.create)
     ..aOM<SquareNearest>(22, _omitFieldNames ? '' : 'squareNearest', subBuilder: SquareNearest.create)
-    ..aOM<$0.LoopBehavior>(1000, _omitFieldNames ? '' : 'loopBehavior', subBuilder: $0.LoopBehavior.create)
     ..hasRequiredFields = false
   ;
 
@@ -897,99 +837,6 @@ class Modulation extends $pb.GeneratedMessage {
   void clearSquareNearest() => clearField(22);
   @$pb.TagNumber(22)
   SquareNearest ensureSquareNearest() => $_ensure(6);
-
-  @$pb.TagNumber(1000)
-  $0.LoopBehavior get loopBehavior => $_getN(7);
-  @$pb.TagNumber(1000)
-  set loopBehavior($0.LoopBehavior v) { setField(1000, v); }
-  @$pb.TagNumber(1000)
-  $core.bool hasLoopBehavior() => $_has(7);
-  @$pb.TagNumber(1000)
-  void clearLoopBehavior() => clearField(1000);
-  @$pb.TagNumber(1000)
-  $0.LoopBehavior ensureLoopBehavior() => $_ensure(7);
-}
-
-class ModulationWithSegment extends $pb.GeneratedMessage {
-  factory ModulationWithSegment({
-    Modulation? modulation,
-    $0.Segment? segment,
-    $0.TransitionMode? transitionMode,
-  }) {
-    final $result = create();
-    if (modulation != null) {
-      $result.modulation = modulation;
-    }
-    if (segment != null) {
-      $result.segment = segment;
-    }
-    if (transitionMode != null) {
-      $result.transitionMode = transitionMode;
-    }
-    return $result;
-  }
-  ModulationWithSegment._() : super();
-  factory ModulationWithSegment.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ModulationWithSegment.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModulationWithSegment', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..aOM<Modulation>(1, _omitFieldNames ? '' : 'modulation', subBuilder: Modulation.create)
-    ..e<$0.Segment>(2, _omitFieldNames ? '' : 'segment', $pb.PbFieldType.OE, defaultOrMaker: $0.Segment.S0, valueOf: $0.Segment.valueOf, enumValues: $0.Segment.values)
-    ..aOM<$0.TransitionMode>(3, _omitFieldNames ? '' : 'transitionMode', subBuilder: $0.TransitionMode.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  ModulationWithSegment clone() => ModulationWithSegment()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  ModulationWithSegment copyWith(void Function(ModulationWithSegment) updates) => super.copyWith((message) => updates(message as ModulationWithSegment)) as ModulationWithSegment;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static ModulationWithSegment create() => ModulationWithSegment._();
-  ModulationWithSegment createEmptyInstance() => create();
-  static $pb.PbList<ModulationWithSegment> createRepeated() => $pb.PbList<ModulationWithSegment>();
-  @$core.pragma('dart2js:noInline')
-  static ModulationWithSegment getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ModulationWithSegment>(create);
-  static ModulationWithSegment? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  Modulation get modulation => $_getN(0);
-  @$pb.TagNumber(1)
-  set modulation(Modulation v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasModulation() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearModulation() => clearField(1);
-  @$pb.TagNumber(1)
-  Modulation ensureModulation() => $_ensure(0);
-
-  @$pb.TagNumber(2)
-  $0.Segment get segment => $_getN(1);
-  @$pb.TagNumber(2)
-  set segment($0.Segment v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasSegment() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearSegment() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $0.TransitionMode get transitionMode => $_getN(2);
-  @$pb.TagNumber(3)
-  set transitionMode($0.TransitionMode v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasTransitionMode() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearTransitionMode() => clearField(3);
-  @$pb.TagNumber(3)
-  $0.TransitionMode ensureTransitionMode() => $_ensure(2);
 }
 
 

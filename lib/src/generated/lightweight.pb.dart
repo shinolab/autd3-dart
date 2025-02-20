@@ -11,7 +11,6 @@
 
 import 'dart:core' as $core;
 
-import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'datagram.pb.dart' as $3;
@@ -27,13 +26,11 @@ enum Datagram_Datagram {
   silencer, 
   swapSegment, 
   modulation, 
-  modulationWithSegment, 
   gain, 
-  gainWithSegment, 
   fociStm, 
-  fociStmWithSegment, 
   gainStm, 
-  gainStmWithSegment, 
+  withSegment, 
+  withLoopBehavior, 
   notSet
 }
 
@@ -46,15 +43,11 @@ class Datagram extends $pb.GeneratedMessage {
     $3.Silencer? silencer,
     $3.SwapSegment? swapSegment,
     $4.Modulation? modulation,
-    $4.ModulationWithSegment? modulationWithSegment,
     $5.Gain? gain,
-    $5.GainWithSegment? gainWithSegment,
     $3.FociSTM? fociStm,
-    $3.FociSTMWithSegment? fociStmWithSegment,
     $3.GainSTM? gainStm,
-    $3.GainSTMWithSegment? gainStmWithSegment,
-    $fixnum.Int64? timeout,
-    $fixnum.Int64? parallelThreshold,
+    $3.WithSegment? withSegment,
+    $3.WithLoopBehavior? withLoopBehavior,
   }) {
     final $result = create();
     if (clear_1 != null) {
@@ -78,32 +71,20 @@ class Datagram extends $pb.GeneratedMessage {
     if (modulation != null) {
       $result.modulation = modulation;
     }
-    if (modulationWithSegment != null) {
-      $result.modulationWithSegment = modulationWithSegment;
-    }
     if (gain != null) {
       $result.gain = gain;
-    }
-    if (gainWithSegment != null) {
-      $result.gainWithSegment = gainWithSegment;
     }
     if (fociStm != null) {
       $result.fociStm = fociStm;
     }
-    if (fociStmWithSegment != null) {
-      $result.fociStmWithSegment = fociStmWithSegment;
-    }
     if (gainStm != null) {
       $result.gainStm = gainStm;
     }
-    if (gainStmWithSegment != null) {
-      $result.gainStmWithSegment = gainStmWithSegment;
+    if (withSegment != null) {
+      $result.withSegment = withSegment;
     }
-    if (timeout != null) {
-      $result.timeout = timeout;
-    }
-    if (parallelThreshold != null) {
-      $result.parallelThreshold = parallelThreshold;
+    if (withLoopBehavior != null) {
+      $result.withLoopBehavior = withLoopBehavior;
     }
     return $result;
   }
@@ -119,17 +100,15 @@ class Datagram extends $pb.GeneratedMessage {
     5 : Datagram_Datagram.silencer,
     6 : Datagram_Datagram.swapSegment,
     10 : Datagram_Datagram.modulation,
-    11 : Datagram_Datagram.modulationWithSegment,
     30 : Datagram_Datagram.gain,
-    31 : Datagram_Datagram.gainWithSegment,
     40 : Datagram_Datagram.fociStm,
-    41 : Datagram_Datagram.fociStmWithSegment,
     50 : Datagram_Datagram.gainStm,
-    51 : Datagram_Datagram.gainStmWithSegment,
+    60 : Datagram_Datagram.withSegment,
+    61 : Datagram_Datagram.withLoopBehavior,
     0 : Datagram_Datagram.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Datagram', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 10, 11, 30, 31, 40, 41, 50, 51])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 10, 30, 40, 50, 60, 61])
     ..aOM<$3.Clear>(1, _omitFieldNames ? '' : 'clear', subBuilder: $3.Clear.create)
     ..aOM<$3.Synchronize>(2, _omitFieldNames ? '' : 'synchronize', subBuilder: $3.Synchronize.create)
     ..aOM<$3.ForceFan>(3, _omitFieldNames ? '' : 'forceFan', subBuilder: $3.ForceFan.create)
@@ -137,15 +116,11 @@ class Datagram extends $pb.GeneratedMessage {
     ..aOM<$3.Silencer>(5, _omitFieldNames ? '' : 'silencer', subBuilder: $3.Silencer.create)
     ..aOM<$3.SwapSegment>(6, _omitFieldNames ? '' : 'swapSegment', subBuilder: $3.SwapSegment.create)
     ..aOM<$4.Modulation>(10, _omitFieldNames ? '' : 'modulation', subBuilder: $4.Modulation.create)
-    ..aOM<$4.ModulationWithSegment>(11, _omitFieldNames ? '' : 'modulationWithSegment', subBuilder: $4.ModulationWithSegment.create)
     ..aOM<$5.Gain>(30, _omitFieldNames ? '' : 'gain', subBuilder: $5.Gain.create)
-    ..aOM<$5.GainWithSegment>(31, _omitFieldNames ? '' : 'gainWithSegment', subBuilder: $5.GainWithSegment.create)
     ..aOM<$3.FociSTM>(40, _omitFieldNames ? '' : 'fociStm', subBuilder: $3.FociSTM.create)
-    ..aOM<$3.FociSTMWithSegment>(41, _omitFieldNames ? '' : 'fociStmWithSegment', subBuilder: $3.FociSTMWithSegment.create)
     ..aOM<$3.GainSTM>(50, _omitFieldNames ? '' : 'gainStm', subBuilder: $3.GainSTM.create)
-    ..aOM<$3.GainSTMWithSegment>(51, _omitFieldNames ? '' : 'gainStmWithSegment', subBuilder: $3.GainSTMWithSegment.create)
-    ..a<$fixnum.Int64>(1001, _omitFieldNames ? '' : 'timeout', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(1002, _omitFieldNames ? '' : 'parallelThreshold', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOM<$3.WithSegment>(60, _omitFieldNames ? '' : 'withSegment', subBuilder: $3.WithSegment.create)
+    ..aOM<$3.WithLoopBehavior>(61, _omitFieldNames ? '' : 'withLoopBehavior', subBuilder: $3.WithLoopBehavior.create)
     ..hasRequiredFields = false
   ;
 
@@ -250,112 +225,68 @@ class Datagram extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   $4.Modulation ensureModulation() => $_ensure(6);
 
-  @$pb.TagNumber(11)
-  $4.ModulationWithSegment get modulationWithSegment => $_getN(7);
-  @$pb.TagNumber(11)
-  set modulationWithSegment($4.ModulationWithSegment v) { setField(11, v); }
-  @$pb.TagNumber(11)
-  $core.bool hasModulationWithSegment() => $_has(7);
-  @$pb.TagNumber(11)
-  void clearModulationWithSegment() => clearField(11);
-  @$pb.TagNumber(11)
-  $4.ModulationWithSegment ensureModulationWithSegment() => $_ensure(7);
-
   @$pb.TagNumber(30)
-  $5.Gain get gain => $_getN(8);
+  $5.Gain get gain => $_getN(7);
   @$pb.TagNumber(30)
   set gain($5.Gain v) { setField(30, v); }
   @$pb.TagNumber(30)
-  $core.bool hasGain() => $_has(8);
+  $core.bool hasGain() => $_has(7);
   @$pb.TagNumber(30)
   void clearGain() => clearField(30);
   @$pb.TagNumber(30)
-  $5.Gain ensureGain() => $_ensure(8);
-
-  @$pb.TagNumber(31)
-  $5.GainWithSegment get gainWithSegment => $_getN(9);
-  @$pb.TagNumber(31)
-  set gainWithSegment($5.GainWithSegment v) { setField(31, v); }
-  @$pb.TagNumber(31)
-  $core.bool hasGainWithSegment() => $_has(9);
-  @$pb.TagNumber(31)
-  void clearGainWithSegment() => clearField(31);
-  @$pb.TagNumber(31)
-  $5.GainWithSegment ensureGainWithSegment() => $_ensure(9);
+  $5.Gain ensureGain() => $_ensure(7);
 
   @$pb.TagNumber(40)
-  $3.FociSTM get fociStm => $_getN(10);
+  $3.FociSTM get fociStm => $_getN(8);
   @$pb.TagNumber(40)
   set fociStm($3.FociSTM v) { setField(40, v); }
   @$pb.TagNumber(40)
-  $core.bool hasFociStm() => $_has(10);
+  $core.bool hasFociStm() => $_has(8);
   @$pb.TagNumber(40)
   void clearFociStm() => clearField(40);
   @$pb.TagNumber(40)
-  $3.FociSTM ensureFociStm() => $_ensure(10);
-
-  @$pb.TagNumber(41)
-  $3.FociSTMWithSegment get fociStmWithSegment => $_getN(11);
-  @$pb.TagNumber(41)
-  set fociStmWithSegment($3.FociSTMWithSegment v) { setField(41, v); }
-  @$pb.TagNumber(41)
-  $core.bool hasFociStmWithSegment() => $_has(11);
-  @$pb.TagNumber(41)
-  void clearFociStmWithSegment() => clearField(41);
-  @$pb.TagNumber(41)
-  $3.FociSTMWithSegment ensureFociStmWithSegment() => $_ensure(11);
+  $3.FociSTM ensureFociStm() => $_ensure(8);
 
   @$pb.TagNumber(50)
-  $3.GainSTM get gainStm => $_getN(12);
+  $3.GainSTM get gainStm => $_getN(9);
   @$pb.TagNumber(50)
   set gainStm($3.GainSTM v) { setField(50, v); }
   @$pb.TagNumber(50)
-  $core.bool hasGainStm() => $_has(12);
+  $core.bool hasGainStm() => $_has(9);
   @$pb.TagNumber(50)
   void clearGainStm() => clearField(50);
   @$pb.TagNumber(50)
-  $3.GainSTM ensureGainStm() => $_ensure(12);
+  $3.GainSTM ensureGainStm() => $_ensure(9);
 
-  @$pb.TagNumber(51)
-  $3.GainSTMWithSegment get gainStmWithSegment => $_getN(13);
-  @$pb.TagNumber(51)
-  set gainStmWithSegment($3.GainSTMWithSegment v) { setField(51, v); }
-  @$pb.TagNumber(51)
-  $core.bool hasGainStmWithSegment() => $_has(13);
-  @$pb.TagNumber(51)
-  void clearGainStmWithSegment() => clearField(51);
-  @$pb.TagNumber(51)
-  $3.GainSTMWithSegment ensureGainStmWithSegment() => $_ensure(13);
+  @$pb.TagNumber(60)
+  $3.WithSegment get withSegment => $_getN(10);
+  @$pb.TagNumber(60)
+  set withSegment($3.WithSegment v) { setField(60, v); }
+  @$pb.TagNumber(60)
+  $core.bool hasWithSegment() => $_has(10);
+  @$pb.TagNumber(60)
+  void clearWithSegment() => clearField(60);
+  @$pb.TagNumber(60)
+  $3.WithSegment ensureWithSegment() => $_ensure(10);
 
-  @$pb.TagNumber(1001)
-  $fixnum.Int64 get timeout => $_getI64(14);
-  @$pb.TagNumber(1001)
-  set timeout($fixnum.Int64 v) { $_setInt64(14, v); }
-  @$pb.TagNumber(1001)
-  $core.bool hasTimeout() => $_has(14);
-  @$pb.TagNumber(1001)
-  void clearTimeout() => clearField(1001);
-
-  @$pb.TagNumber(1002)
-  $fixnum.Int64 get parallelThreshold => $_getI64(15);
-  @$pb.TagNumber(1002)
-  set parallelThreshold($fixnum.Int64 v) { $_setInt64(15, v); }
-  @$pb.TagNumber(1002)
-  $core.bool hasParallelThreshold() => $_has(15);
-  @$pb.TagNumber(1002)
-  void clearParallelThreshold() => clearField(1002);
+  @$pb.TagNumber(61)
+  $3.WithLoopBehavior get withLoopBehavior => $_getN(11);
+  @$pb.TagNumber(61)
+  set withLoopBehavior($3.WithLoopBehavior v) { setField(61, v); }
+  @$pb.TagNumber(61)
+  $core.bool hasWithLoopBehavior() => $_has(11);
+  @$pb.TagNumber(61)
+  void clearWithLoopBehavior() => clearField(61);
+  @$pb.TagNumber(61)
+  $3.WithLoopBehavior ensureWithLoopBehavior() => $_ensure(11);
 }
 
 class SendResponseLightweight extends $pb.GeneratedMessage {
   factory SendResponseLightweight({
-    $core.bool? success,
     $core.bool? err,
     $core.String? msg,
   }) {
     final $result = create();
-    if (success != null) {
-      $result.success = success;
-    }
     if (err != null) {
       $result.err = err;
     }
@@ -369,9 +300,8 @@ class SendResponseLightweight extends $pb.GeneratedMessage {
   factory SendResponseLightweight.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendResponseLightweight', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'success')
-    ..aOB(2, _omitFieldNames ? '' : 'err')
-    ..aOS(3, _omitFieldNames ? '' : 'msg')
+    ..aOB(1, _omitFieldNames ? '' : 'err')
+    ..aOS(2, _omitFieldNames ? '' : 'msg')
     ..hasRequiredFields = false
   ;
 
@@ -397,31 +327,22 @@ class SendResponseLightweight extends $pb.GeneratedMessage {
   static SendResponseLightweight? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get success => $_getBF(0);
+  $core.bool get err => $_getBF(0);
   @$pb.TagNumber(1)
-  set success($core.bool v) { $_setBool(0, v); }
+  set err($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasSuccess() => $_has(0);
+  $core.bool hasErr() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSuccess() => clearField(1);
+  void clearErr() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get err => $_getBF(1);
+  $core.String get msg => $_getSZ(1);
   @$pb.TagNumber(2)
-  set err($core.bool v) { $_setBool(1, v); }
+  set msg($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasErr() => $_has(1);
+  $core.bool hasMsg() => $_has(1);
   @$pb.TagNumber(2)
-  void clearErr() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get msg => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set msg($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasMsg() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearMsg() => clearField(3);
+  void clearMsg() => clearField(2);
 }
 
 class FirmwareVersionRequestLightweight extends $pb.GeneratedMessage {
@@ -564,13 +485,13 @@ class FirmwareVersionResponseLightweight_FirmwareVersion extends $pb.GeneratedMe
 
 class FirmwareVersionResponseLightweight extends $pb.GeneratedMessage {
   factory FirmwareVersionResponseLightweight({
-    $core.bool? success,
+    $core.bool? err,
     $core.String? msg,
     $core.Iterable<FirmwareVersionResponseLightweight_FirmwareVersion>? firmwareVersionList,
   }) {
     final $result = create();
-    if (success != null) {
-      $result.success = success;
+    if (err != null) {
+      $result.err = err;
     }
     if (msg != null) {
       $result.msg = msg;
@@ -585,7 +506,7 @@ class FirmwareVersionResponseLightweight extends $pb.GeneratedMessage {
   factory FirmwareVersionResponseLightweight.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FirmwareVersionResponseLightweight', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'success')
+    ..aOB(1, _omitFieldNames ? '' : 'err')
     ..aOS(2, _omitFieldNames ? '' : 'msg')
     ..pc<FirmwareVersionResponseLightweight_FirmwareVersion>(3, _omitFieldNames ? '' : 'firmwareVersionList', $pb.PbFieldType.PM, subBuilder: FirmwareVersionResponseLightweight_FirmwareVersion.create)
     ..hasRequiredFields = false
@@ -613,13 +534,13 @@ class FirmwareVersionResponseLightweight extends $pb.GeneratedMessage {
   static FirmwareVersionResponseLightweight? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get success => $_getBF(0);
+  $core.bool get err => $_getBF(0);
   @$pb.TagNumber(1)
-  set success($core.bool v) { $_setBool(0, v); }
+  set err($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasSuccess() => $_has(0);
+  $core.bool hasErr() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSuccess() => clearField(1);
+  void clearErr() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get msg => $_getSZ(1);
@@ -669,26 +590,10 @@ class CloseRequestLightweight extends $pb.GeneratedMessage {
 class OpenRequestLightweight extends $pb.GeneratedMessage {
   factory OpenRequestLightweight({
     $0.Geometry? geometry,
-    $fixnum.Int64? parallelThreshold,
-    $fixnum.Int64? sendInterval,
-    $fixnum.Int64? receiveInterval,
-    $core.int? timerResolution,
   }) {
     final $result = create();
     if (geometry != null) {
       $result.geometry = geometry;
-    }
-    if (parallelThreshold != null) {
-      $result.parallelThreshold = parallelThreshold;
-    }
-    if (sendInterval != null) {
-      $result.sendInterval = sendInterval;
-    }
-    if (receiveInterval != null) {
-      $result.receiveInterval = receiveInterval;
-    }
-    if (timerResolution != null) {
-      $result.timerResolution = timerResolution;
     }
     return $result;
   }
@@ -698,10 +603,6 @@ class OpenRequestLightweight extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OpenRequestLightweight', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..aOM<$0.Geometry>(1, _omitFieldNames ? '' : 'geometry', subBuilder: $0.Geometry.create)
-    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'parallelThreshold', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'sendInterval', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(4, _omitFieldNames ? '' : 'receiveInterval', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.int>(5, _omitFieldNames ? '' : 'timerResolution', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -736,42 +637,6 @@ class OpenRequestLightweight extends $pb.GeneratedMessage {
   void clearGeometry() => clearField(1);
   @$pb.TagNumber(1)
   $0.Geometry ensureGeometry() => $_ensure(0);
-
-  @$pb.TagNumber(2)
-  $fixnum.Int64 get parallelThreshold => $_getI64(1);
-  @$pb.TagNumber(2)
-  set parallelThreshold($fixnum.Int64 v) { $_setInt64(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasParallelThreshold() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearParallelThreshold() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $fixnum.Int64 get sendInterval => $_getI64(2);
-  @$pb.TagNumber(3)
-  set sendInterval($fixnum.Int64 v) { $_setInt64(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasSendInterval() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearSendInterval() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $fixnum.Int64 get receiveInterval => $_getI64(3);
-  @$pb.TagNumber(4)
-  set receiveInterval($fixnum.Int64 v) { $_setInt64(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasReceiveInterval() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearReceiveInterval() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.int get timerResolution => $_getIZ(4);
-  @$pb.TagNumber(5)
-  set timerResolution($core.int v) { $_setUnsignedInt32(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasTimerResolution() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearTimerResolution() => clearField(5);
 }
 
 

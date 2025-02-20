@@ -7,6 +7,8 @@ class Phase {
   int get value => _value;
 
   Phase(int value) : _value = validateU8(value);
+  Phase.zero() : _value = 0;
+  Phase.pi() : _value = 0x80;
 
   lightweight.Phase toMsg() {
     return lightweight.Phase(value: _value);

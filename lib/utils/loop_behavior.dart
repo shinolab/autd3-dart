@@ -10,18 +10,21 @@ class LoopBehavior {
   LoopBehavior._(this._loopBehavior);
 
   static LoopBehavior infinite() {
-    return LoopBehavior._(lightweight.LoopBehavior(rep: 0xFFFFFFFF));
+    return LoopBehavior._(lightweight.LoopBehavior(
+        infinite: lightweight.LoopBehavior_Infinite()));
   }
 
   static LoopBehavior once() {
-    return LoopBehavior._(lightweight.LoopBehavior(rep: 0));
+    return LoopBehavior._(lightweight.LoopBehavior(
+        finite: lightweight.LoopBehavior_Finite(rep: 1)));
   }
 
   static LoopBehavior finite(int value) {
     if (value <= 0) {
       throw ArgumentError('value must be greater than 0');
     }
-    return LoopBehavior._(lightweight.LoopBehavior(rep: value - 1));
+    return LoopBehavior._(lightweight.LoopBehavior(
+        finite: lightweight.LoopBehavior_Finite(rep: value)));
   }
 
   @override

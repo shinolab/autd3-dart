@@ -2,28 +2,38 @@ import 'package:autd3/datagram/gain/gain.dart';
 import 'package:autd3/datagram/gain/holo/constraint.dart';
 import 'package:autd3/datagram/gain/holo/holo.dart';
 import 'package:autd3/geometry.dart';
-import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/gain.pb.dart' as gain;
 import 'package:autd3/utils/int_helper.dart';
 
-class GS extends Gain {
-  final Iterable<Holo> foci;
+class GSOption {
   final EmissionConstraint? constraint;
   final int? repeat;
 
-  GS(this.foci, {this.constraint, this.repeat}) {
+  GSOption({this.constraint, this.repeat});
+
+  gain.GSOption toMsg() {
+    return gain.GSOption(
+      constraint: constraint?.toMsg(),
+      repeat: repeat?.toMsgU64(),
+    );
+  }
+}
+
+class GS extends Gain {
+  final Iterable<Holo> foci;
+  final GSOption option;
+
+  GS({required this.foci, required this.option}) {
     {}
   }
 
   @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        gain: gain.Gain(
+  gain.Gain rawDatagram(Geometry geometry) {
+    return gain.Gain(
       gs: gain.GS(
         holo: foci.map((f) => f.toMsg()),
-        constraint: constraint?.toMsg(),
-        repeat: repeat.toMsgU64(),
+        option: option.toMsg(),
       ),
-    ));
+    );
   }
 }

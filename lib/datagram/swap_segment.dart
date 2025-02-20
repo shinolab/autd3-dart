@@ -1,11 +1,11 @@
 import 'package:autd3/geometry.dart';
-import 'package:autd3/sendable.dart';
+import 'package:autd3/datagram.dart';
 import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/datagram.pb.dart' as lightweight_datagram;
 import 'package:autd3/utils/segment.dart';
 import 'package:autd3/utils/transition_mode.dart';
 
-class SwapSegmentGain extends Sendable {
+class SwapSegmentGain extends Datagram {
   final Segment segment;
 
   SwapSegmentGain._(this.segment);
@@ -14,11 +14,11 @@ class SwapSegmentGain extends Sendable {
   lightweight.Datagram datagram(Geometry geometry) {
     return lightweight.Datagram(
         swapSegment: lightweight_datagram.SwapSegment(
-            gain: lightweight_datagram.SwapSegmentGain(segment: segment)));
+            gain: lightweight_datagram.SwapSegment_Gain(segment: segment)));
   }
 }
 
-class SwapSegmentModulation extends Sendable {
+class SwapSegmentModulation extends Datagram {
   final Segment segment;
   final TransitionMode transitionMode;
 
@@ -28,12 +28,12 @@ class SwapSegmentModulation extends Sendable {
   lightweight.Datagram datagram(Geometry geometry) {
     return lightweight.Datagram(
         swapSegment: lightweight_datagram.SwapSegment(
-            modulation: lightweight_datagram.SwapSegmentModulation(
+            modulation: lightweight_datagram.SwapSegment_Modulation(
                 segment: segment, transitionMode: transitionMode.toMsg())));
   }
 }
 
-class SwapSegmentGainSTM extends Sendable {
+class SwapSegmentGainSTM extends Datagram {
   final Segment segment;
   final TransitionMode transitionMode;
 
@@ -43,12 +43,12 @@ class SwapSegmentGainSTM extends Sendable {
   lightweight.Datagram datagram(Geometry geometry) {
     return lightweight.Datagram(
         swapSegment: lightweight_datagram.SwapSegment(
-            gainStm: lightweight_datagram.SwapSegmentGainSTM(
+            gainStm: lightweight_datagram.SwapSegment_GainSTM(
                 segment: segment, transitionMode: transitionMode.toMsg())));
   }
 }
 
-class SwapSegmentFociSTM extends Sendable {
+class SwapSegmentFociSTM extends Datagram {
   final Segment segment;
   final TransitionMode transitionMode;
 
@@ -58,7 +58,7 @@ class SwapSegmentFociSTM extends Sendable {
   lightweight.Datagram datagram(Geometry geometry) {
     return lightweight.Datagram(
         swapSegment: lightweight_datagram.SwapSegment(
-            fociStm: lightweight_datagram.SwapSegmentFociSTM(
+            fociStm: lightweight_datagram.SwapSegment_FociSTM(
                 segment: segment, transitionMode: transitionMode.toMsg())));
   }
 }
