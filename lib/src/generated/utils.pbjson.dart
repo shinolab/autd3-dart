@@ -85,14 +85,17 @@ const Geometry_AUTD3$json = {
   '2': [
     {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Point3', '10': 'pos'},
     {'1': 'rot', '3': 2, '4': 1, '5': 11, '6': '.autd3.Quaternion', '10': 'rot'},
-    {'1': 'sound_speed', '3': 3, '4': 1, '5': 2, '10': 'soundSpeed'},
+    {'1': 'sound_speed', '3': 3, '4': 1, '5': 2, '9': 0, '10': 'soundSpeed', '17': true},
+  ],
+  '8': [
+    {'1': '_sound_speed'},
   ],
 };
 
 /// Descriptor for `Geometry`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List geometryDescriptor = $convert.base64Decode(
     'CghHZW9tZXRyeRIvCgdkZXZpY2VzGAEgAygLMhUuYXV0ZDMuR2VvbWV0cnkuQVVURDNSB2Rldm'
-    'ljZXMabgoFQVVURDMSHwoDcG9zGAEgASgLMg0uYXV0ZDMuUG9pbnQzUgNwb3MSIwoDcm90GAIg'
-    'ASgLMhEuYXV0ZDMuUXVhdGVybmlvblIDcm90Eh8KC3NvdW5kX3NwZWVkGAMgASgCUgpzb3VuZF'
-    'NwZWVk');
+    'ljZXMagwEKBUFVVEQzEh8KA3BvcxgBIAEoCzINLmF1dGQzLlBvaW50M1IDcG9zEiMKA3JvdBgC'
+    'IAEoCzIRLmF1dGQzLlF1YXRlcm5pb25SA3JvdBIkCgtzb3VuZF9zcGVlZBgDIAEoAkgAUgpzb3'
+    'VuZFNwZWVkiAEBQg4KDF9zb3VuZF9zcGVlZA==');
 
