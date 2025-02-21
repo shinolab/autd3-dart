@@ -63,8 +63,8 @@ class Angle extends $pb.GeneratedMessage {
   void clearRad() => clearField(1);
 }
 
-class Vector3 extends $pb.GeneratedMessage {
-  factory Vector3({
+class UnitVector3 extends $pb.GeneratedMessage {
+  factory UnitVector3({
     $core.double? x,
     $core.double? y,
     $core.double? z,
@@ -81,11 +81,11 @@ class Vector3 extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  Vector3._() : super();
-  factory Vector3.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Vector3.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  UnitVector3._() : super();
+  factory UnitVector3.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UnitVector3.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Vector3', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UnitVector3', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$core.double>(1, _omitFieldNames ? '' : 'x', $pb.PbFieldType.OF)
     ..a<$core.double>(2, _omitFieldNames ? '' : 'y', $pb.PbFieldType.OF)
     ..a<$core.double>(3, _omitFieldNames ? '' : 'z', $pb.PbFieldType.OF)
@@ -96,22 +96,100 @@ class Vector3 extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Vector3 clone() => Vector3()..mergeFromMessage(this);
+  UnitVector3 clone() => UnitVector3()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Vector3 copyWith(void Function(Vector3) updates) => super.copyWith((message) => updates(message as Vector3)) as Vector3;
+  UnitVector3 copyWith(void Function(UnitVector3) updates) => super.copyWith((message) => updates(message as UnitVector3)) as UnitVector3;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Vector3 create() => Vector3._();
-  Vector3 createEmptyInstance() => create();
-  static $pb.PbList<Vector3> createRepeated() => $pb.PbList<Vector3>();
+  static UnitVector3 create() => UnitVector3._();
+  UnitVector3 createEmptyInstance() => create();
+  static $pb.PbList<UnitVector3> createRepeated() => $pb.PbList<UnitVector3>();
   @$core.pragma('dart2js:noInline')
-  static Vector3 getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Vector3>(create);
-  static Vector3? _defaultInstance;
+  static UnitVector3 getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UnitVector3>(create);
+  static UnitVector3? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.double get x => $_getN(0);
+  @$pb.TagNumber(1)
+  set x($core.double v) { $_setFloat(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasX() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearX() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get y => $_getN(1);
+  @$pb.TagNumber(2)
+  set y($core.double v) { $_setFloat(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasY() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearY() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.double get z => $_getN(2);
+  @$pb.TagNumber(3)
+  set z($core.double v) { $_setFloat(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasZ() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearZ() => clearField(3);
+}
+
+class Point3 extends $pb.GeneratedMessage {
+  factory Point3({
+    $core.double? x,
+    $core.double? y,
+    $core.double? z,
+  }) {
+    final $result = create();
+    if (x != null) {
+      $result.x = x;
+    }
+    if (y != null) {
+      $result.y = y;
+    }
+    if (z != null) {
+      $result.z = z;
+    }
+    return $result;
+  }
+  Point3._() : super();
+  factory Point3.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Point3.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Point3', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..a<$core.double>(1, _omitFieldNames ? '' : 'x', $pb.PbFieldType.OF)
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'y', $pb.PbFieldType.OF)
+    ..a<$core.double>(3, _omitFieldNames ? '' : 'z', $pb.PbFieldType.OF)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Point3 clone() => Point3()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Point3 copyWith(void Function(Point3) updates) => super.copyWith((message) => updates(message as Point3)) as Point3;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Point3 create() => Point3._();
+  Point3 createEmptyInstance() => create();
+  static $pb.PbList<Point3> createRepeated() => $pb.PbList<Point3>();
+  @$core.pragma('dart2js:noInline')
+  static Point3 getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Point3>(create);
+  static Point3? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.double get x => $_getN(0);
@@ -235,7 +313,7 @@ class Quaternion extends $pb.GeneratedMessage {
 
 class Geometry_AUTD3 extends $pb.GeneratedMessage {
   factory Geometry_AUTD3({
-    Vector3? pos,
+    Point3? pos,
     Quaternion? rot,
     $core.double? soundSpeed,
   }) {
@@ -256,7 +334,7 @@ class Geometry_AUTD3 extends $pb.GeneratedMessage {
   factory Geometry_AUTD3.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Geometry.AUTD3', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..aOM<Vector3>(1, _omitFieldNames ? '' : 'pos', subBuilder: Vector3.create)
+    ..aOM<Point3>(1, _omitFieldNames ? '' : 'pos', subBuilder: Point3.create)
     ..aOM<Quaternion>(2, _omitFieldNames ? '' : 'rot', subBuilder: Quaternion.create)
     ..a<$core.double>(3, _omitFieldNames ? '' : 'soundSpeed', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
@@ -284,15 +362,15 @@ class Geometry_AUTD3 extends $pb.GeneratedMessage {
   static Geometry_AUTD3? _defaultInstance;
 
   @$pb.TagNumber(1)
-  Vector3 get pos => $_getN(0);
+  Point3 get pos => $_getN(0);
   @$pb.TagNumber(1)
-  set pos(Vector3 v) { setField(1, v); }
+  set pos(Point3 v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPos() => $_has(0);
   @$pb.TagNumber(1)
   void clearPos() => clearField(1);
   @$pb.TagNumber(1)
-  Vector3 ensurePos() => $_ensure(0);
+  Point3 ensurePos() => $_ensure(0);
 
   @$pb.TagNumber(2)
   Quaternion get rot => $_getN(1);

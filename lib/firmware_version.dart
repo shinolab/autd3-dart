@@ -30,6 +30,8 @@ class FirmwareVersion {
       >= 0x8F && <= 0x90 => "v6.${major - 0x8F}.$minor",
       >= 0x91 && <= 0x91 => "v7.${major - 0x91}.$minor",
       >= 0x92 && <= 0x92 => "v8.${major - 0x92}.$minor",
+      >= 0xA0 && <= 0xA1 => "v9.${major - 0xA0}.$minor",
+      >= 0xA2 && <= 0xA2 => "v8.${major - 0xA2}.$minor",
       _ => "unknown ($major)",
     };
   }

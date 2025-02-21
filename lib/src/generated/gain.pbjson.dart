@@ -13,37 +13,48 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use besselDescriptor instead')
-const Bessel$json = {
-  '1': 'Bessel',
+@$core.Deprecated('Use besselOptionDescriptor instead')
+const BesselOption$json = {
+  '1': 'BesselOption',
   '2': [
-    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Vector3', '10': 'pos'},
-    {'1': 'dir', '3': 2, '4': 1, '5': 11, '6': '.autd3.Vector3', '10': 'dir'},
-    {'1': 'theta', '3': 3, '4': 1, '5': 11, '6': '.autd3.Angle', '10': 'theta'},
-    {'1': 'intensity', '3': 4, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '9': 0, '10': 'intensity', '17': true},
-    {'1': 'phase_offset', '3': 5, '4': 1, '5': 11, '6': '.autd3.Phase', '9': 1, '10': 'phaseOffset', '17': true},
+    {'1': 'intensity', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '9': 0, '10': 'intensity', '17': true},
+    {'1': 'phase_offset', '3': 2, '4': 1, '5': 11, '6': '.autd3.Phase', '9': 1, '10': 'phaseOffset', '17': true},
   ],
   '8': [
     {'1': '_intensity'},
     {'1': '_phase_offset'},
+  ],
+};
+
+/// Descriptor for `BesselOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List besselOptionDescriptor = $convert.base64Decode(
+    'CgxCZXNzZWxPcHRpb24SNwoJaW50ZW5zaXR5GAEgASgLMhQuYXV0ZDMuRW1pdEludGVuc2l0eU'
+    'gAUglpbnRlbnNpdHmIAQESNAoMcGhhc2Vfb2Zmc2V0GAIgASgLMgwuYXV0ZDMuUGhhc2VIAVIL'
+    'cGhhc2VPZmZzZXSIAQFCDAoKX2ludGVuc2l0eUIPCg1fcGhhc2Vfb2Zmc2V0');
+
+@$core.Deprecated('Use besselDescriptor instead')
+const Bessel$json = {
+  '1': 'Bessel',
+  '2': [
+    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Point3', '10': 'pos'},
+    {'1': 'dir', '3': 2, '4': 1, '5': 11, '6': '.autd3.UnitVector3', '10': 'dir'},
+    {'1': 'theta', '3': 3, '4': 1, '5': 11, '6': '.autd3.Angle', '10': 'theta'},
+    {'1': 'option', '3': 4, '4': 1, '5': 11, '6': '.autd3.BesselOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `Bessel`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List besselDescriptor = $convert.base64Decode(
-    'CgZCZXNzZWwSIAoDcG9zGAEgASgLMg4uYXV0ZDMuVmVjdG9yM1IDcG9zEiAKA2RpchgCIAEoCz'
-    'IOLmF1dGQzLlZlY3RvcjNSA2RpchIiCgV0aGV0YRgDIAEoCzIMLmF1dGQzLkFuZ2xlUgV0aGV0'
-    'YRI3CglpbnRlbnNpdHkYBCABKAsyFC5hdXRkMy5FbWl0SW50ZW5zaXR5SABSCWludGVuc2l0eY'
-    'gBARI0CgxwaGFzZV9vZmZzZXQYBSABKAsyDC5hdXRkMy5QaGFzZUgBUgtwaGFzZU9mZnNldIgB'
-    'AUIMCgpfaW50ZW5zaXR5Qg8KDV9waGFzZV9vZmZzZXQ=');
+    'CgZCZXNzZWwSHwoDcG9zGAEgASgLMg0uYXV0ZDMuUG9pbnQzUgNwb3MSJAoDZGlyGAIgASgLMh'
+    'IuYXV0ZDMuVW5pdFZlY3RvcjNSA2RpchIiCgV0aGV0YRgDIAEoCzIMLmF1dGQzLkFuZ2xlUgV0'
+    'aGV0YRIrCgZvcHRpb24YBCABKAsyEy5hdXRkMy5CZXNzZWxPcHRpb25SBm9wdGlvbg==');
 
-@$core.Deprecated('Use focusDescriptor instead')
-const Focus$json = {
-  '1': 'Focus',
+@$core.Deprecated('Use focusOptionDescriptor instead')
+const FocusOption$json = {
+  '1': 'FocusOption',
   '2': [
-    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Vector3', '10': 'pos'},
-    {'1': 'intensity', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '9': 0, '10': 'intensity', '17': true},
-    {'1': 'phase_offset', '3': 3, '4': 1, '5': 11, '6': '.autd3.Phase', '9': 1, '10': 'phaseOffset', '17': true},
+    {'1': 'intensity', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '9': 0, '10': 'intensity', '17': true},
+    {'1': 'phase_offset', '3': 2, '4': 1, '5': 11, '6': '.autd3.Phase', '9': 1, '10': 'phaseOffset', '17': true},
   ],
   '8': [
     {'1': '_intensity'},
@@ -51,12 +62,25 @@ const Focus$json = {
   ],
 };
 
+/// Descriptor for `FocusOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List focusOptionDescriptor = $convert.base64Decode(
+    'CgtGb2N1c09wdGlvbhI3CglpbnRlbnNpdHkYASABKAsyFC5hdXRkMy5FbWl0SW50ZW5zaXR5SA'
+    'BSCWludGVuc2l0eYgBARI0CgxwaGFzZV9vZmZzZXQYAiABKAsyDC5hdXRkMy5QaGFzZUgBUgtw'
+    'aGFzZU9mZnNldIgBAUIMCgpfaW50ZW5zaXR5Qg8KDV9waGFzZV9vZmZzZXQ=');
+
+@$core.Deprecated('Use focusDescriptor instead')
+const Focus$json = {
+  '1': 'Focus',
+  '2': [
+    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Point3', '10': 'pos'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.FocusOption', '10': 'option'},
+  ],
+};
+
 /// Descriptor for `Focus`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List focusDescriptor = $convert.base64Decode(
-    'CgVGb2N1cxIgCgNwb3MYASABKAsyDi5hdXRkMy5WZWN0b3IzUgNwb3MSNwoJaW50ZW5zaXR5GA'
-    'IgASgLMhQuYXV0ZDMuRW1pdEludGVuc2l0eUgAUglpbnRlbnNpdHmIAQESNAoMcGhhc2Vfb2Zm'
-    'c2V0GAMgASgLMgwuYXV0ZDMuUGhhc2VIAVILcGhhc2VPZmZzZXSIAQFCDAoKX2ludGVuc2l0eU'
-    'IPCg1fcGhhc2Vfb2Zmc2V0');
+    'CgVGb2N1cxIfCgNwb3MYASABKAsyDS5hdXRkMy5Qb2ludDNSA3BvcxIqCgZvcHRpb24YAiABKA'
+    'syEi5hdXRkMy5Gb2N1c09wdGlvblIGb3B0aW9u');
 
 @$core.Deprecated('Use nullDescriptor instead')
 const Null$json = {
@@ -67,13 +91,12 @@ const Null$json = {
 final $typed_data.Uint8List nullDescriptor = $convert.base64Decode(
     'CgROdWxs');
 
-@$core.Deprecated('Use planeDescriptor instead')
-const Plane$json = {
-  '1': 'Plane',
+@$core.Deprecated('Use planeOptionDescriptor instead')
+const PlaneOption$json = {
+  '1': 'PlaneOption',
   '2': [
-    {'1': 'dir', '3': 1, '4': 1, '5': 11, '6': '.autd3.Vector3', '10': 'dir'},
-    {'1': 'intensity', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '9': 0, '10': 'intensity', '17': true},
-    {'1': 'phase_offset', '3': 3, '4': 1, '5': 11, '6': '.autd3.Phase', '9': 1, '10': 'phaseOffset', '17': true},
+    {'1': 'intensity', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '9': 0, '10': 'intensity', '17': true},
+    {'1': 'phase_offset', '3': 2, '4': 1, '5': 11, '6': '.autd3.Phase', '9': 1, '10': 'phaseOffset', '17': true},
   ],
   '8': [
     {'1': '_intensity'},
@@ -81,12 +104,25 @@ const Plane$json = {
   ],
 };
 
+/// Descriptor for `PlaneOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List planeOptionDescriptor = $convert.base64Decode(
+    'CgtQbGFuZU9wdGlvbhI3CglpbnRlbnNpdHkYASABKAsyFC5hdXRkMy5FbWl0SW50ZW5zaXR5SA'
+    'BSCWludGVuc2l0eYgBARI0CgxwaGFzZV9vZmZzZXQYAiABKAsyDC5hdXRkMy5QaGFzZUgBUgtw'
+    'aGFzZU9mZnNldIgBAUIMCgpfaW50ZW5zaXR5Qg8KDV9waGFzZV9vZmZzZXQ=');
+
+@$core.Deprecated('Use planeDescriptor instead')
+const Plane$json = {
+  '1': 'Plane',
+  '2': [
+    {'1': 'dir', '3': 1, '4': 1, '5': 11, '6': '.autd3.UnitVector3', '10': 'dir'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.PlaneOption', '10': 'option'},
+  ],
+};
+
 /// Descriptor for `Plane`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List planeDescriptor = $convert.base64Decode(
-    'CgVQbGFuZRIgCgNkaXIYASABKAsyDi5hdXRkMy5WZWN0b3IzUgNkaXISNwoJaW50ZW5zaXR5GA'
-    'IgASgLMhQuYXV0ZDMuRW1pdEludGVuc2l0eUgAUglpbnRlbnNpdHmIAQESNAoMcGhhc2Vfb2Zm'
-    'c2V0GAMgASgLMgwuYXV0ZDMuUGhhc2VIAVILcGhhc2VPZmZzZXSIAQFCDAoKX2ludGVuc2l0eU'
-    'IPCg1fcGhhc2Vfb2Zmc2V0');
+    'CgVQbGFuZRIkCgNkaXIYASABKAsyEi5hdXRkMy5Vbml0VmVjdG9yM1IDZGlyEioKBm9wdGlvbh'
+    'gCIAEoCzISLmF1dGQzLlBsYW5lT3B0aW9uUgZvcHRpb24=');
 
 @$core.Deprecated('Use uniformDescriptor instead')
 const Uniform$json = {
@@ -118,111 +154,142 @@ final $typed_data.Uint8List amplitudeDescriptor = $convert.base64Decode(
 const Holo$json = {
   '1': 'Holo',
   '2': [
-    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Vector3', '10': 'pos'},
+    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Point3', '10': 'pos'},
     {'1': 'amp', '3': 2, '4': 1, '5': 11, '6': '.autd3.Amplitude', '10': 'amp'},
   ],
 };
 
 /// Descriptor for `Holo`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List holoDescriptor = $convert.base64Decode(
-    'CgRIb2xvEiAKA3BvcxgBIAEoCzIOLmF1dGQzLlZlY3RvcjNSA3BvcxIiCgNhbXAYAiABKAsyEC'
-    '5hdXRkMy5BbXBsaXR1ZGVSA2FtcA==');
+    'CgRIb2xvEh8KA3BvcxgBIAEoCzINLmF1dGQzLlBvaW50M1IDcG9zEiIKA2FtcBgCIAEoCzIQLm'
+    'F1dGQzLkFtcGxpdHVkZVIDYW1w');
 
-@$core.Deprecated('Use normalizeConstraintDescriptor instead')
-const NormalizeConstraint$json = {
-  '1': 'NormalizeConstraint',
+@$core.Deprecated('Use emissionConstraintDescriptor instead')
+const EmissionConstraint$json = {
+  '1': 'EmissionConstraint',
+  '2': [
+    {'1': 'normalize', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint.Normalize', '9': 0, '10': 'normalize'},
+    {'1': 'uniform', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint.Uniform', '9': 0, '10': 'uniform'},
+    {'1': 'clamp', '3': 3, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint.Clamp', '9': 0, '10': 'clamp'},
+    {'1': 'multiply', '3': 4, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint.Multiply', '9': 0, '10': 'multiply'},
+  ],
+  '3': [EmissionConstraint_Normalize$json, EmissionConstraint_Multiply$json, EmissionConstraint_Uniform$json, EmissionConstraint_Clamp$json],
+  '8': [
+    {'1': 'variant'},
+  ],
 };
 
-/// Descriptor for `NormalizeConstraint`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List normalizeConstraintDescriptor = $convert.base64Decode(
-    'ChNOb3JtYWxpemVDb25zdHJhaW50');
+@$core.Deprecated('Use emissionConstraintDescriptor instead')
+const EmissionConstraint_Normalize$json = {
+  '1': 'Normalize',
+};
 
-@$core.Deprecated('Use multiplyConstraintDescriptor instead')
-const MultiplyConstraint$json = {
-  '1': 'MultiplyConstraint',
+@$core.Deprecated('Use emissionConstraintDescriptor instead')
+const EmissionConstraint_Multiply$json = {
+  '1': 'Multiply',
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 2, '10': 'value'},
   ],
 };
 
-/// Descriptor for `MultiplyConstraint`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List multiplyConstraintDescriptor = $convert.base64Decode(
-    'ChJNdWx0aXBseUNvbnN0cmFpbnQSFAoFdmFsdWUYASABKAJSBXZhbHVl');
-
-@$core.Deprecated('Use uniformConstraintDescriptor instead')
-const UniformConstraint$json = {
-  '1': 'UniformConstraint',
+@$core.Deprecated('Use emissionConstraintDescriptor instead')
+const EmissionConstraint_Uniform$json = {
+  '1': 'Uniform',
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '10': 'value'},
   ],
 };
 
-/// Descriptor for `UniformConstraint`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List uniformConstraintDescriptor = $convert.base64Decode(
-    'ChFVbmlmb3JtQ29uc3RyYWludBIqCgV2YWx1ZRgBIAEoCzIULmF1dGQzLkVtaXRJbnRlbnNpdH'
-    'lSBXZhbHVl');
-
-@$core.Deprecated('Use clampConstraintDescriptor instead')
-const ClampConstraint$json = {
-  '1': 'ClampConstraint',
+@$core.Deprecated('Use emissionConstraintDescriptor instead')
+const EmissionConstraint_Clamp$json = {
+  '1': 'Clamp',
   '2': [
     {'1': 'min', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '10': 'min'},
     {'1': 'max', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmitIntensity', '10': 'max'},
   ],
 };
 
-/// Descriptor for `ClampConstraint`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List clampConstraintDescriptor = $convert.base64Decode(
-    'Cg9DbGFtcENvbnN0cmFpbnQSJgoDbWluGAEgASgLMhQuYXV0ZDMuRW1pdEludGVuc2l0eVIDbW'
-    'luEiYKA21heBgCIAEoCzIULmF1dGQzLkVtaXRJbnRlbnNpdHlSA21heA==');
+/// Descriptor for `EmissionConstraint`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List emissionConstraintDescriptor = $convert.base64Decode(
+    'ChJFbWlzc2lvbkNvbnN0cmFpbnQSQwoJbm9ybWFsaXplGAEgASgLMiMuYXV0ZDMuRW1pc3Npb2'
+    '5Db25zdHJhaW50Lk5vcm1hbGl6ZUgAUglub3JtYWxpemUSPQoHdW5pZm9ybRgCIAEoCzIhLmF1'
+    'dGQzLkVtaXNzaW9uQ29uc3RyYWludC5Vbmlmb3JtSABSB3VuaWZvcm0SNwoFY2xhbXAYAyABKA'
+    'syHy5hdXRkMy5FbWlzc2lvbkNvbnN0cmFpbnQuQ2xhbXBIAFIFY2xhbXASQAoIbXVsdGlwbHkY'
+    'BCABKAsyIi5hdXRkMy5FbWlzc2lvbkNvbnN0cmFpbnQuTXVsdGlwbHlIAFIIbXVsdGlwbHkaCw'
+    'oJTm9ybWFsaXplGiAKCE11bHRpcGx5EhQKBXZhbHVlGAEgASgCUgV2YWx1ZRo1CgdVbmlmb3Jt'
+    'EioKBXZhbHVlGAEgASgLMhQuYXV0ZDMuRW1pdEludGVuc2l0eVIFdmFsdWUaVwoFQ2xhbXASJg'
+    'oDbWluGAEgASgLMhQuYXV0ZDMuRW1pdEludGVuc2l0eVIDbWluEiYKA21heBgCIAEoCzIULmF1'
+    'dGQzLkVtaXRJbnRlbnNpdHlSA21heEIJCgd2YXJpYW50');
 
-@$core.Deprecated('Use emissionConstraintDescriptor instead')
-const EmissionConstraint$json = {
-  '1': 'EmissionConstraint',
+@$core.Deprecated('Use naiveOptionDescriptor instead')
+const NaiveOption$json = {
+  '1': 'NaiveOption',
   '2': [
-    {'1': 'normalize', '3': 1, '4': 1, '5': 11, '6': '.autd3.NormalizeConstraint', '9': 0, '10': 'normalize'},
-    {'1': 'uniform', '3': 2, '4': 1, '5': 11, '6': '.autd3.UniformConstraint', '9': 0, '10': 'uniform'},
-    {'1': 'clamp', '3': 3, '4': 1, '5': 11, '6': '.autd3.ClampConstraint', '9': 0, '10': 'clamp'},
-    {'1': 'multiply', '3': 4, '4': 1, '5': 11, '6': '.autd3.MultiplyConstraint', '9': 0, '10': 'multiply'},
+    {'1': 'constraint', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
   ],
   '8': [
-    {'1': 'constraint'},
+    {'1': '_constraint'},
   ],
 };
 
-/// Descriptor for `EmissionConstraint`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List emissionConstraintDescriptor = $convert.base64Decode(
-    'ChJFbWlzc2lvbkNvbnN0cmFpbnQSOgoJbm9ybWFsaXplGAEgASgLMhouYXV0ZDMuTm9ybWFsaX'
-    'plQ29uc3RyYWludEgAUglub3JtYWxpemUSNAoHdW5pZm9ybRgCIAEoCzIYLmF1dGQzLlVuaWZv'
-    'cm1Db25zdHJhaW50SABSB3VuaWZvcm0SLgoFY2xhbXAYAyABKAsyFi5hdXRkMy5DbGFtcENvbn'
-    'N0cmFpbnRIAFIFY2xhbXASNwoIbXVsdGlwbHkYBCABKAsyGS5hdXRkMy5NdWx0aXBseUNvbnN0'
-    'cmFpbnRIAFIIbXVsdGlwbHlCDAoKY29uc3RyYWludA==');
+/// Descriptor for `NaiveOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List naiveOptionDescriptor = $convert.base64Decode(
+    'CgtOYWl2ZU9wdGlvbhI+Cgpjb25zdHJhaW50GAEgASgLMhkuYXV0ZDMuRW1pc3Npb25Db25zdH'
+    'JhaW50SABSCmNvbnN0cmFpbnSIAQFCDQoLX2NvbnN0cmFpbnQ=');
 
 @$core.Deprecated('Use naiveDescriptor instead')
 const Naive$json = {
   '1': 'Naive',
   '2': [
     {'1': 'holo', '3': 1, '4': 3, '5': 11, '6': '.autd3.Holo', '10': 'holo'},
-    {'1': 'constraint', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
-  ],
-  '8': [
-    {'1': '_constraint'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.NaiveOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `Naive`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List naiveDescriptor = $convert.base64Decode(
-    'CgVOYWl2ZRIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxI+Cgpjb25zdHJhaW50GA'
-    'IgASgLMhkuYXV0ZDMuRW1pc3Npb25Db25zdHJhaW50SABSCmNvbnN0cmFpbnSIAQFCDQoLX2Nv'
-    'bnN0cmFpbnQ=');
+    'CgVOYWl2ZRIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxIqCgZvcHRpb24YAiABKA'
+    'syEi5hdXRkMy5OYWl2ZU9wdGlvblIGb3B0aW9u');
+
+@$core.Deprecated('Use gSOptionDescriptor instead')
+const GSOption$json = {
+  '1': 'GSOption',
+  '2': [
+    {'1': 'constraint', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
+    {'1': 'repeat', '3': 2, '4': 1, '5': 4, '9': 1, '10': 'repeat', '17': true},
+  ],
+  '8': [
+    {'1': '_constraint'},
+    {'1': '_repeat'},
+  ],
+};
+
+/// Descriptor for `GSOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List gSOptionDescriptor = $convert.base64Decode(
+    'CghHU09wdGlvbhI+Cgpjb25zdHJhaW50GAEgASgLMhkuYXV0ZDMuRW1pc3Npb25Db25zdHJhaW'
+    '50SABSCmNvbnN0cmFpbnSIAQESGwoGcmVwZWF0GAIgASgESAFSBnJlcGVhdIgBAUINCgtfY29u'
+    'c3RyYWludEIJCgdfcmVwZWF0');
 
 @$core.Deprecated('Use gSDescriptor instead')
 const GS$json = {
   '1': 'GS',
   '2': [
     {'1': 'holo', '3': 1, '4': 3, '5': 11, '6': '.autd3.Holo', '10': 'holo'},
-    {'1': 'constraint', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
-    {'1': 'repeat', '3': 3, '4': 1, '5': 4, '9': 1, '10': 'repeat', '17': true},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.GSOption', '10': 'option'},
+  ],
+};
+
+/// Descriptor for `GS`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List gSDescriptor = $convert.base64Decode(
+    'CgJHUxIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxInCgZvcHRpb24YAiABKAsyDy'
+    '5hdXRkMy5HU09wdGlvblIGb3B0aW9u');
+
+@$core.Deprecated('Use gSPATOptionDescriptor instead')
+const GSPATOption$json = {
+  '1': 'GSPATOption',
+  '2': [
+    {'1': 'constraint', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
+    {'1': 'repeat', '3': 2, '4': 1, '5': 4, '9': 1, '10': 'repeat', '17': true},
   ],
   '8': [
     {'1': '_constraint'},
@@ -230,45 +297,39 @@ const GS$json = {
   ],
 };
 
-/// Descriptor for `GS`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gSDescriptor = $convert.base64Decode(
-    'CgJHUxIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxI+Cgpjb25zdHJhaW50GAIgAS'
-    'gLMhkuYXV0ZDMuRW1pc3Npb25Db25zdHJhaW50SABSCmNvbnN0cmFpbnSIAQESGwoGcmVwZWF0'
-    'GAMgASgESAFSBnJlcGVhdIgBAUINCgtfY29uc3RyYWludEIJCgdfcmVwZWF0');
+/// Descriptor for `GSPATOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List gSPATOptionDescriptor = $convert.base64Decode(
+    'CgtHU1BBVE9wdGlvbhI+Cgpjb25zdHJhaW50GAEgASgLMhkuYXV0ZDMuRW1pc3Npb25Db25zdH'
+    'JhaW50SABSCmNvbnN0cmFpbnSIAQESGwoGcmVwZWF0GAIgASgESAFSBnJlcGVhdIgBAUINCgtf'
+    'Y29uc3RyYWludEIJCgdfcmVwZWF0');
 
 @$core.Deprecated('Use gSPATDescriptor instead')
 const GSPAT$json = {
   '1': 'GSPAT',
   '2': [
     {'1': 'holo', '3': 1, '4': 3, '5': 11, '6': '.autd3.Holo', '10': 'holo'},
-    {'1': 'constraint', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
-    {'1': 'repeat', '3': 3, '4': 1, '5': 4, '9': 1, '10': 'repeat', '17': true},
-  ],
-  '8': [
-    {'1': '_constraint'},
-    {'1': '_repeat'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.GSPATOption', '10': 'option'},
   ],
 };
 
 /// Descriptor for `GSPAT`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List gSPATDescriptor = $convert.base64Decode(
-    'CgVHU1BBVBIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxI+Cgpjb25zdHJhaW50GA'
-    'IgASgLMhkuYXV0ZDMuRW1pc3Npb25Db25zdHJhaW50SABSCmNvbnN0cmFpbnSIAQESGwoGcmVw'
-    'ZWF0GAMgASgESAFSBnJlcGVhdIgBAUINCgtfY29uc3RyYWludEIJCgdfcmVwZWF0');
+    'CgVHU1BBVBIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxIqCgZvcHRpb24YAiABKA'
+    'syEi5hdXRkMy5HU1BBVE9wdGlvblIGb3B0aW9u');
 
-@$core.Deprecated('Use lMDescriptor instead')
-const LM$json = {
-  '1': 'LM',
+@$core.Deprecated('Use lMOptionDescriptor instead')
+const LMOption$json = {
+  '1': 'LMOption',
   '2': [
-    {'1': 'holo', '3': 1, '4': 3, '5': 11, '6': '.autd3.Holo', '10': 'holo'},
-    {'1': 'constraint', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '10': 'constraint'},
-    {'1': 'eps_1', '3': 3, '4': 1, '5': 2, '9': 0, '10': 'eps1', '17': true},
-    {'1': 'eps_2', '3': 4, '4': 1, '5': 2, '9': 1, '10': 'eps2', '17': true},
-    {'1': 'tau', '3': 5, '4': 1, '5': 2, '9': 2, '10': 'tau', '17': true},
-    {'1': 'k_max', '3': 6, '4': 1, '5': 4, '9': 3, '10': 'kMax', '17': true},
-    {'1': 'initial', '3': 7, '4': 3, '5': 2, '10': 'initial'},
+    {'1': 'constraint', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
+    {'1': 'eps_1', '3': 2, '4': 1, '5': 2, '9': 1, '10': 'eps1', '17': true},
+    {'1': 'eps_2', '3': 3, '4': 1, '5': 2, '9': 2, '10': 'eps2', '17': true},
+    {'1': 'tau', '3': 4, '4': 1, '5': 2, '9': 3, '10': 'tau', '17': true},
+    {'1': 'k_max', '3': 5, '4': 1, '5': 4, '9': 4, '10': 'kMax', '17': true},
+    {'1': 'initial', '3': 6, '4': 3, '5': 2, '10': 'initial'},
   ],
   '8': [
+    {'1': '_constraint'},
     {'1': '_eps_1'},
     {'1': '_eps_2'},
     {'1': '_tau'},
@@ -276,21 +337,34 @@ const LM$json = {
   ],
 };
 
-/// Descriptor for `LM`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List lMDescriptor = $convert.base64Decode(
-    'CgJMTRIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxI5Cgpjb25zdHJhaW50GAIgAS'
-    'gLMhkuYXV0ZDMuRW1pc3Npb25Db25zdHJhaW50Ugpjb25zdHJhaW50EhgKBWVwc18xGAMgASgC'
-    'SABSBGVwczGIAQESGAoFZXBzXzIYBCABKAJIAVIEZXBzMogBARIVCgN0YXUYBSABKAJIAlIDdG'
-    'F1iAEBEhgKBWtfbWF4GAYgASgESANSBGtNYXiIAQESGAoHaW5pdGlhbBgHIAMoAlIHaW5pdGlh'
-    'bEIICgZfZXBzXzFCCAoGX2Vwc18yQgYKBF90YXVCCAoGX2tfbWF4');
+/// Descriptor for `LMOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List lMOptionDescriptor = $convert.base64Decode(
+    'CghMTU9wdGlvbhI+Cgpjb25zdHJhaW50GAEgASgLMhkuYXV0ZDMuRW1pc3Npb25Db25zdHJhaW'
+    '50SABSCmNvbnN0cmFpbnSIAQESGAoFZXBzXzEYAiABKAJIAVIEZXBzMYgBARIYCgVlcHNfMhgD'
+    'IAEoAkgCUgRlcHMyiAEBEhUKA3RhdRgEIAEoAkgDUgN0YXWIAQESGAoFa19tYXgYBSABKARIBF'
+    'IEa01heIgBARIYCgdpbml0aWFsGAYgAygCUgdpbml0aWFsQg0KC19jb25zdHJhaW50QggKBl9l'
+    'cHNfMUIICgZfZXBzXzJCBgoEX3RhdUIICgZfa19tYXg=');
 
-@$core.Deprecated('Use greedyDescriptor instead')
-const Greedy$json = {
-  '1': 'Greedy',
+@$core.Deprecated('Use lMDescriptor instead')
+const LM$json = {
+  '1': 'LM',
   '2': [
     {'1': 'holo', '3': 1, '4': 3, '5': 11, '6': '.autd3.Holo', '10': 'holo'},
-    {'1': 'constraint', '3': 2, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
-    {'1': 'phase_div', '3': 3, '4': 1, '5': 13, '9': 1, '10': 'phaseDiv', '17': true},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.LMOption', '10': 'option'},
+  ],
+};
+
+/// Descriptor for `LM`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List lMDescriptor = $convert.base64Decode(
+    'CgJMTRIfCgRob2xvGAEgAygLMgsuYXV0ZDMuSG9sb1IEaG9sbxInCgZvcHRpb24YAiABKAsyDy'
+    '5hdXRkMy5MTU9wdGlvblIGb3B0aW9u');
+
+@$core.Deprecated('Use greedyOptionDescriptor instead')
+const GreedyOption$json = {
+  '1': 'GreedyOption',
+  '2': [
+    {'1': 'constraint', '3': 1, '4': 1, '5': 11, '6': '.autd3.EmissionConstraint', '9': 0, '10': 'constraint', '17': true},
+    {'1': 'phase_div', '3': 2, '4': 1, '5': 13, '9': 1, '10': 'phaseDiv', '17': true},
   ],
   '8': [
     {'1': '_constraint'},
@@ -298,12 +372,25 @@ const Greedy$json = {
   ],
 };
 
+/// Descriptor for `GreedyOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List greedyOptionDescriptor = $convert.base64Decode(
+    'CgxHcmVlZHlPcHRpb24SPgoKY29uc3RyYWludBgBIAEoCzIZLmF1dGQzLkVtaXNzaW9uQ29uc3'
+    'RyYWludEgAUgpjb25zdHJhaW50iAEBEiAKCXBoYXNlX2RpdhgCIAEoDUgBUghwaGFzZURpdogB'
+    'AUINCgtfY29uc3RyYWludEIMCgpfcGhhc2VfZGl2');
+
+@$core.Deprecated('Use greedyDescriptor instead')
+const Greedy$json = {
+  '1': 'Greedy',
+  '2': [
+    {'1': 'holo', '3': 1, '4': 3, '5': 11, '6': '.autd3.Holo', '10': 'holo'},
+    {'1': 'option', '3': 2, '4': 1, '5': 11, '6': '.autd3.GreedyOption', '10': 'option'},
+  ],
+};
+
 /// Descriptor for `Greedy`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List greedyDescriptor = $convert.base64Decode(
-    'CgZHcmVlZHkSHwoEaG9sbxgBIAMoCzILLmF1dGQzLkhvbG9SBGhvbG8SPgoKY29uc3RyYWludB'
-    'gCIAEoCzIZLmF1dGQzLkVtaXNzaW9uQ29uc3RyYWludEgAUgpjb25zdHJhaW50iAEBEiAKCXBo'
-    'YXNlX2RpdhgDIAEoDUgBUghwaGFzZURpdogBAUINCgtfY29uc3RyYWludEIMCgpfcGhhc2VfZG'
-    'l2');
+    'CgZHcmVlZHkSHwoEaG9sbxgBIAMoCzILLmF1dGQzLkhvbG9SBGhvbG8SKwoGb3B0aW9uGAIgAS'
+    'gLMhMuYXV0ZDMuR3JlZWR5T3B0aW9uUgZvcHRpb24=');
 
 @$core.Deprecated('Use gainDescriptor instead')
 const Gain$json = {
@@ -334,20 +421,4 @@ final $typed_data.Uint8List gainDescriptor = $convert.base64Decode(
     'dGQzLk5haXZlSABSBW5haXZlEhsKAmdzGGYgASgLMgkuYXV0ZDMuR1NIAFICZ3MSJAoFZ3NwYX'
     'QYZyABKAsyDC5hdXRkMy5HU1BBVEgAUgVnc3BhdBIbCgJsbRhoIAEoCzIJLmF1dGQzLkxNSABS'
     'AmxtEicKBmdyZWVkeRhpIAEoCzINLmF1dGQzLkdyZWVkeUgAUgZncmVlZHlCBgoEZ2Fpbg==');
-
-@$core.Deprecated('Use gainWithSegmentDescriptor instead')
-const GainWithSegment$json = {
-  '1': 'GainWithSegment',
-  '2': [
-    {'1': 'gain', '3': 1, '4': 1, '5': 11, '6': '.autd3.Gain', '10': 'gain'},
-    {'1': 'segment', '3': 2, '4': 1, '5': 14, '6': '.autd3.Segment', '10': 'segment'},
-    {'1': 'transition', '3': 3, '4': 1, '5': 8, '10': 'transition'},
-  ],
-};
-
-/// Descriptor for `GainWithSegment`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gainWithSegmentDescriptor = $convert.base64Decode(
-    'Cg9HYWluV2l0aFNlZ21lbnQSHwoEZ2FpbhgBIAEoCzILLmF1dGQzLkdhaW5SBGdhaW4SKAoHc2'
-    'VnbWVudBgCIAEoDjIOLmF1dGQzLlNlZ21lbnRSB3NlZ21lbnQSHgoKdHJhbnNpdGlvbhgDIAEo'
-    'CFIKdHJhbnNpdGlvbg==');
 

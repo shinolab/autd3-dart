@@ -119,8 +119,8 @@ class Phase extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class SamplingConfig extends $pb.GeneratedMessage {
-  factory SamplingConfig({
+class SamplingConfig_Division extends $pb.GeneratedMessage {
+  factory SamplingConfig_Division({
     $core.int? div,
   }) {
     final $result = create();
@@ -129,12 +129,300 @@ class SamplingConfig extends $pb.GeneratedMessage {
     }
     return $result;
   }
+  SamplingConfig_Division._() : super();
+  factory SamplingConfig_Division.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SamplingConfig_Division.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SamplingConfig.Division', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'div', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_Division clone() => SamplingConfig_Division()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_Division copyWith(void Function(SamplingConfig_Division) updates) => super.copyWith((message) => updates(message as SamplingConfig_Division)) as SamplingConfig_Division;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_Division create() => SamplingConfig_Division._();
+  SamplingConfig_Division createEmptyInstance() => create();
+  static $pb.PbList<SamplingConfig_Division> createRepeated() => $pb.PbList<SamplingConfig_Division>();
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_Division getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SamplingConfig_Division>(create);
+  static SamplingConfig_Division? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get div => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set div($core.int v) { $_setUnsignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDiv() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDiv() => clearField(1);
+}
+
+class SamplingConfig_Freq extends $pb.GeneratedMessage {
+  factory SamplingConfig_Freq({
+    $core.double? freq,
+  }) {
+    final $result = create();
+    if (freq != null) {
+      $result.freq = freq;
+    }
+    return $result;
+  }
+  SamplingConfig_Freq._() : super();
+  factory SamplingConfig_Freq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SamplingConfig_Freq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SamplingConfig.Freq', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..a<$core.double>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OF)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_Freq clone() => SamplingConfig_Freq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_Freq copyWith(void Function(SamplingConfig_Freq) updates) => super.copyWith((message) => updates(message as SamplingConfig_Freq)) as SamplingConfig_Freq;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_Freq create() => SamplingConfig_Freq._();
+  SamplingConfig_Freq createEmptyInstance() => create();
+  static $pb.PbList<SamplingConfig_Freq> createRepeated() => $pb.PbList<SamplingConfig_Freq>();
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_Freq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SamplingConfig_Freq>(create);
+  static SamplingConfig_Freq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.double get freq => $_getN(0);
+  @$pb.TagNumber(1)
+  set freq($core.double v) { $_setFloat(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasFreq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFreq() => clearField(1);
+}
+
+class SamplingConfig_FreqNearest extends $pb.GeneratedMessage {
+  factory SamplingConfig_FreqNearest({
+    $core.double? freq,
+  }) {
+    final $result = create();
+    if (freq != null) {
+      $result.freq = freq;
+    }
+    return $result;
+  }
+  SamplingConfig_FreqNearest._() : super();
+  factory SamplingConfig_FreqNearest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SamplingConfig_FreqNearest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SamplingConfig.FreqNearest', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..a<$core.double>(1, _omitFieldNames ? '' : 'freq', $pb.PbFieldType.OF)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_FreqNearest clone() => SamplingConfig_FreqNearest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_FreqNearest copyWith(void Function(SamplingConfig_FreqNearest) updates) => super.copyWith((message) => updates(message as SamplingConfig_FreqNearest)) as SamplingConfig_FreqNearest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_FreqNearest create() => SamplingConfig_FreqNearest._();
+  SamplingConfig_FreqNearest createEmptyInstance() => create();
+  static $pb.PbList<SamplingConfig_FreqNearest> createRepeated() => $pb.PbList<SamplingConfig_FreqNearest>();
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_FreqNearest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SamplingConfig_FreqNearest>(create);
+  static SamplingConfig_FreqNearest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.double get freq => $_getN(0);
+  @$pb.TagNumber(1)
+  set freq($core.double v) { $_setFloat(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasFreq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFreq() => clearField(1);
+}
+
+class SamplingConfig_Period extends $pb.GeneratedMessage {
+  factory SamplingConfig_Period({
+    $fixnum.Int64? ns,
+  }) {
+    final $result = create();
+    if (ns != null) {
+      $result.ns = ns;
+    }
+    return $result;
+  }
+  SamplingConfig_Period._() : super();
+  factory SamplingConfig_Period.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SamplingConfig_Period.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SamplingConfig.Period', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'ns', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_Period clone() => SamplingConfig_Period()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_Period copyWith(void Function(SamplingConfig_Period) updates) => super.copyWith((message) => updates(message as SamplingConfig_Period)) as SamplingConfig_Period;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_Period create() => SamplingConfig_Period._();
+  SamplingConfig_Period createEmptyInstance() => create();
+  static $pb.PbList<SamplingConfig_Period> createRepeated() => $pb.PbList<SamplingConfig_Period>();
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_Period getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SamplingConfig_Period>(create);
+  static SamplingConfig_Period? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get ns => $_getI64(0);
+  @$pb.TagNumber(1)
+  set ns($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasNs() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNs() => clearField(1);
+}
+
+class SamplingConfig_PeriodNearest extends $pb.GeneratedMessage {
+  factory SamplingConfig_PeriodNearest({
+    $fixnum.Int64? ns,
+  }) {
+    final $result = create();
+    if (ns != null) {
+      $result.ns = ns;
+    }
+    return $result;
+  }
+  SamplingConfig_PeriodNearest._() : super();
+  factory SamplingConfig_PeriodNearest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SamplingConfig_PeriodNearest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SamplingConfig.PeriodNearest', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'ns', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_PeriodNearest clone() => SamplingConfig_PeriodNearest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SamplingConfig_PeriodNearest copyWith(void Function(SamplingConfig_PeriodNearest) updates) => super.copyWith((message) => updates(message as SamplingConfig_PeriodNearest)) as SamplingConfig_PeriodNearest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_PeriodNearest create() => SamplingConfig_PeriodNearest._();
+  SamplingConfig_PeriodNearest createEmptyInstance() => create();
+  static $pb.PbList<SamplingConfig_PeriodNearest> createRepeated() => $pb.PbList<SamplingConfig_PeriodNearest>();
+  @$core.pragma('dart2js:noInline')
+  static SamplingConfig_PeriodNearest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SamplingConfig_PeriodNearest>(create);
+  static SamplingConfig_PeriodNearest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get ns => $_getI64(0);
+  @$pb.TagNumber(1)
+  set ns($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasNs() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNs() => clearField(1);
+}
+
+enum SamplingConfig_Variant {
+  division, 
+  freq, 
+  freqNearest, 
+  period, 
+  periodNearest, 
+  notSet
+}
+
+class SamplingConfig extends $pb.GeneratedMessage {
+  factory SamplingConfig({
+    SamplingConfig_Division? division,
+    SamplingConfig_Freq? freq,
+    SamplingConfig_FreqNearest? freqNearest,
+    SamplingConfig_Period? period,
+    SamplingConfig_PeriodNearest? periodNearest,
+  }) {
+    final $result = create();
+    if (division != null) {
+      $result.division = division;
+    }
+    if (freq != null) {
+      $result.freq = freq;
+    }
+    if (freqNearest != null) {
+      $result.freqNearest = freqNearest;
+    }
+    if (period != null) {
+      $result.period = period;
+    }
+    if (periodNearest != null) {
+      $result.periodNearest = periodNearest;
+    }
+    return $result;
+  }
   SamplingConfig._() : super();
   factory SamplingConfig.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SamplingConfig.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
+  static const $core.Map<$core.int, SamplingConfig_Variant> _SamplingConfig_VariantByTag = {
+    1 : SamplingConfig_Variant.division,
+    2 : SamplingConfig_Variant.freq,
+    3 : SamplingConfig_Variant.freqNearest,
+    4 : SamplingConfig_Variant.period,
+    5 : SamplingConfig_Variant.periodNearest,
+    0 : SamplingConfig_Variant.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SamplingConfig', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'div', $pb.PbFieldType.OU3)
+    ..oo(0, [1, 2, 3, 4, 5])
+    ..aOM<SamplingConfig_Division>(1, _omitFieldNames ? '' : 'division', subBuilder: SamplingConfig_Division.create)
+    ..aOM<SamplingConfig_Freq>(2, _omitFieldNames ? '' : 'freq', subBuilder: SamplingConfig_Freq.create)
+    ..aOM<SamplingConfig_FreqNearest>(3, _omitFieldNames ? '' : 'freqNearest', subBuilder: SamplingConfig_FreqNearest.create)
+    ..aOM<SamplingConfig_Period>(4, _omitFieldNames ? '' : 'period', subBuilder: SamplingConfig_Period.create)
+    ..aOM<SamplingConfig_PeriodNearest>(5, _omitFieldNames ? '' : 'periodNearest', subBuilder: SamplingConfig_PeriodNearest.create)
     ..hasRequiredFields = false
   ;
 
@@ -159,18 +447,99 @@ class SamplingConfig extends $pb.GeneratedMessage {
   static SamplingConfig getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SamplingConfig>(create);
   static SamplingConfig? _defaultInstance;
 
+  SamplingConfig_Variant whichVariant() => _SamplingConfig_VariantByTag[$_whichOneof(0)]!;
+  void clearVariant() => clearField($_whichOneof(0));
+
   @$pb.TagNumber(1)
-  $core.int get div => $_getIZ(0);
+  SamplingConfig_Division get division => $_getN(0);
   @$pb.TagNumber(1)
-  set div($core.int v) { $_setUnsignedInt32(0, v); }
+  set division(SamplingConfig_Division v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDiv() => $_has(0);
+  $core.bool hasDivision() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDiv() => clearField(1);
+  void clearDivision() => clearField(1);
+  @$pb.TagNumber(1)
+  SamplingConfig_Division ensureDivision() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  SamplingConfig_Freq get freq => $_getN(1);
+  @$pb.TagNumber(2)
+  set freq(SamplingConfig_Freq v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFreq() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFreq() => clearField(2);
+  @$pb.TagNumber(2)
+  SamplingConfig_Freq ensureFreq() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  SamplingConfig_FreqNearest get freqNearest => $_getN(2);
+  @$pb.TagNumber(3)
+  set freqNearest(SamplingConfig_FreqNearest v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasFreqNearest() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFreqNearest() => clearField(3);
+  @$pb.TagNumber(3)
+  SamplingConfig_FreqNearest ensureFreqNearest() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  SamplingConfig_Period get period => $_getN(3);
+  @$pb.TagNumber(4)
+  set period(SamplingConfig_Period v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPeriod() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPeriod() => clearField(4);
+  @$pb.TagNumber(4)
+  SamplingConfig_Period ensurePeriod() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  SamplingConfig_PeriodNearest get periodNearest => $_getN(4);
+  @$pb.TagNumber(5)
+  set periodNearest(SamplingConfig_PeriodNearest v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasPeriodNearest() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearPeriodNearest() => clearField(5);
+  @$pb.TagNumber(5)
+  SamplingConfig_PeriodNearest ensurePeriodNearest() => $_ensure(4);
 }
 
-class LoopBehavior extends $pb.GeneratedMessage {
-  factory LoopBehavior({
+class LoopBehavior_Infinite extends $pb.GeneratedMessage {
+  factory LoopBehavior_Infinite() => create();
+  LoopBehavior_Infinite._() : super();
+  factory LoopBehavior_Infinite.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoopBehavior_Infinite.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoopBehavior.Infinite', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoopBehavior_Infinite clone() => LoopBehavior_Infinite()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoopBehavior_Infinite copyWith(void Function(LoopBehavior_Infinite) updates) => super.copyWith((message) => updates(message as LoopBehavior_Infinite)) as LoopBehavior_Infinite;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static LoopBehavior_Infinite create() => LoopBehavior_Infinite._();
+  LoopBehavior_Infinite createEmptyInstance() => create();
+  static $pb.PbList<LoopBehavior_Infinite> createRepeated() => $pb.PbList<LoopBehavior_Infinite>();
+  @$core.pragma('dart2js:noInline')
+  static LoopBehavior_Infinite getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoopBehavior_Infinite>(create);
+  static LoopBehavior_Infinite? _defaultInstance;
+}
+
+class LoopBehavior_Finite extends $pb.GeneratedMessage {
+  factory LoopBehavior_Finite({
     $core.int? rep,
   }) {
     final $result = create();
@@ -179,12 +548,79 @@ class LoopBehavior extends $pb.GeneratedMessage {
     }
     return $result;
   }
+  LoopBehavior_Finite._() : super();
+  factory LoopBehavior_Finite.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoopBehavior_Finite.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoopBehavior.Finite', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'rep', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoopBehavior_Finite clone() => LoopBehavior_Finite()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoopBehavior_Finite copyWith(void Function(LoopBehavior_Finite) updates) => super.copyWith((message) => updates(message as LoopBehavior_Finite)) as LoopBehavior_Finite;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static LoopBehavior_Finite create() => LoopBehavior_Finite._();
+  LoopBehavior_Finite createEmptyInstance() => create();
+  static $pb.PbList<LoopBehavior_Finite> createRepeated() => $pb.PbList<LoopBehavior_Finite>();
+  @$core.pragma('dart2js:noInline')
+  static LoopBehavior_Finite getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoopBehavior_Finite>(create);
+  static LoopBehavior_Finite? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get rep => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set rep($core.int v) { $_setUnsignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRep() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRep() => clearField(1);
+}
+
+enum LoopBehavior_Variant {
+  infinite, 
+  finite, 
+  notSet
+}
+
+class LoopBehavior extends $pb.GeneratedMessage {
+  factory LoopBehavior({
+    LoopBehavior_Infinite? infinite,
+    LoopBehavior_Finite? finite,
+  }) {
+    final $result = create();
+    if (infinite != null) {
+      $result.infinite = infinite;
+    }
+    if (finite != null) {
+      $result.finite = finite;
+    }
+    return $result;
+  }
   LoopBehavior._() : super();
   factory LoopBehavior.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory LoopBehavior.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
+  static const $core.Map<$core.int, LoopBehavior_Variant> _LoopBehavior_VariantByTag = {
+    1 : LoopBehavior_Variant.infinite,
+    2 : LoopBehavior_Variant.finite,
+    0 : LoopBehavior_Variant.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoopBehavior', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'rep', $pb.PbFieldType.OU3)
+    ..oo(0, [1, 2])
+    ..aOM<LoopBehavior_Infinite>(1, _omitFieldNames ? '' : 'infinite', subBuilder: LoopBehavior_Infinite.create)
+    ..aOM<LoopBehavior_Finite>(2, _omitFieldNames ? '' : 'finite', subBuilder: LoopBehavior_Finite.create)
     ..hasRequiredFields = false
   ;
 
@@ -209,23 +645,39 @@ class LoopBehavior extends $pb.GeneratedMessage {
   static LoopBehavior getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoopBehavior>(create);
   static LoopBehavior? _defaultInstance;
 
+  LoopBehavior_Variant whichVariant() => _LoopBehavior_VariantByTag[$_whichOneof(0)]!;
+  void clearVariant() => clearField($_whichOneof(0));
+
   @$pb.TagNumber(1)
-  $core.int get rep => $_getIZ(0);
+  LoopBehavior_Infinite get infinite => $_getN(0);
   @$pb.TagNumber(1)
-  set rep($core.int v) { $_setUnsignedInt32(0, v); }
+  set infinite(LoopBehavior_Infinite v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasRep() => $_has(0);
+  $core.bool hasInfinite() => $_has(0);
   @$pb.TagNumber(1)
-  void clearRep() => clearField(1);
+  void clearInfinite() => clearField(1);
+  @$pb.TagNumber(1)
+  LoopBehavior_Infinite ensureInfinite() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  LoopBehavior_Finite get finite => $_getN(1);
+  @$pb.TagNumber(2)
+  set finite(LoopBehavior_Finite v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFinite() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFinite() => clearField(2);
+  @$pb.TagNumber(2)
+  LoopBehavior_Finite ensureFinite() => $_ensure(1);
 }
 
-class TransitionModeSyncIdx extends $pb.GeneratedMessage {
-  factory TransitionModeSyncIdx() => create();
-  TransitionModeSyncIdx._() : super();
-  factory TransitionModeSyncIdx.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TransitionModeSyncIdx.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class TransitionMode_SyncIdx extends $pb.GeneratedMessage {
+  factory TransitionMode_SyncIdx() => create();
+  TransitionMode_SyncIdx._() : super();
+  factory TransitionMode_SyncIdx.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TransitionMode_SyncIdx.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionModeSyncIdx', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionMode.SyncIdx', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -233,26 +685,26 @@ class TransitionModeSyncIdx extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  TransitionModeSyncIdx clone() => TransitionModeSyncIdx()..mergeFromMessage(this);
+  TransitionMode_SyncIdx clone() => TransitionMode_SyncIdx()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TransitionModeSyncIdx copyWith(void Function(TransitionModeSyncIdx) updates) => super.copyWith((message) => updates(message as TransitionModeSyncIdx)) as TransitionModeSyncIdx;
+  TransitionMode_SyncIdx copyWith(void Function(TransitionMode_SyncIdx) updates) => super.copyWith((message) => updates(message as TransitionMode_SyncIdx)) as TransitionMode_SyncIdx;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static TransitionModeSyncIdx create() => TransitionModeSyncIdx._();
-  TransitionModeSyncIdx createEmptyInstance() => create();
-  static $pb.PbList<TransitionModeSyncIdx> createRepeated() => $pb.PbList<TransitionModeSyncIdx>();
+  static TransitionMode_SyncIdx create() => TransitionMode_SyncIdx._();
+  TransitionMode_SyncIdx createEmptyInstance() => create();
+  static $pb.PbList<TransitionMode_SyncIdx> createRepeated() => $pb.PbList<TransitionMode_SyncIdx>();
   @$core.pragma('dart2js:noInline')
-  static TransitionModeSyncIdx getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionModeSyncIdx>(create);
-  static TransitionModeSyncIdx? _defaultInstance;
+  static TransitionMode_SyncIdx getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionMode_SyncIdx>(create);
+  static TransitionMode_SyncIdx? _defaultInstance;
 }
 
-class TransitionModeSysTime extends $pb.GeneratedMessage {
-  factory TransitionModeSysTime({
+class TransitionMode_SysTime extends $pb.GeneratedMessage {
+  factory TransitionMode_SysTime({
     $fixnum.Int64? value,
   }) {
     final $result = create();
@@ -261,11 +713,11 @@ class TransitionModeSysTime extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  TransitionModeSysTime._() : super();
-  factory TransitionModeSysTime.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TransitionModeSysTime.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  TransitionMode_SysTime._() : super();
+  factory TransitionMode_SysTime.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TransitionMode_SysTime.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionModeSysTime', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionMode.SysTime', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;
@@ -274,22 +726,22 @@ class TransitionModeSysTime extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  TransitionModeSysTime clone() => TransitionModeSysTime()..mergeFromMessage(this);
+  TransitionMode_SysTime clone() => TransitionMode_SysTime()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TransitionModeSysTime copyWith(void Function(TransitionModeSysTime) updates) => super.copyWith((message) => updates(message as TransitionModeSysTime)) as TransitionModeSysTime;
+  TransitionMode_SysTime copyWith(void Function(TransitionMode_SysTime) updates) => super.copyWith((message) => updates(message as TransitionMode_SysTime)) as TransitionMode_SysTime;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static TransitionModeSysTime create() => TransitionModeSysTime._();
-  TransitionModeSysTime createEmptyInstance() => create();
-  static $pb.PbList<TransitionModeSysTime> createRepeated() => $pb.PbList<TransitionModeSysTime>();
+  static TransitionMode_SysTime create() => TransitionMode_SysTime._();
+  TransitionMode_SysTime createEmptyInstance() => create();
+  static $pb.PbList<TransitionMode_SysTime> createRepeated() => $pb.PbList<TransitionMode_SysTime>();
   @$core.pragma('dart2js:noInline')
-  static TransitionModeSysTime getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionModeSysTime>(create);
-  static TransitionModeSysTime? _defaultInstance;
+  static TransitionMode_SysTime getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionMode_SysTime>(create);
+  static TransitionMode_SysTime? _defaultInstance;
 
   @$pb.TagNumber(1)
   $fixnum.Int64 get value => $_getI64(0);
@@ -301,8 +753,8 @@ class TransitionModeSysTime extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class TransitionModeGPIO extends $pb.GeneratedMessage {
-  factory TransitionModeGPIO({
+class TransitionMode_GPIO extends $pb.GeneratedMessage {
+  factory TransitionMode_GPIO({
     GPIOIn? value,
   }) {
     final $result = create();
@@ -311,11 +763,11 @@ class TransitionModeGPIO extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  TransitionModeGPIO._() : super();
-  factory TransitionModeGPIO.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TransitionModeGPIO.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  TransitionMode_GPIO._() : super();
+  factory TransitionMode_GPIO.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TransitionMode_GPIO.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionModeGPIO', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionMode.GPIO', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..e<GPIOIn>(1, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OE, defaultOrMaker: GPIOIn.I0, valueOf: GPIOIn.valueOf, enumValues: GPIOIn.values)
     ..hasRequiredFields = false
   ;
@@ -324,22 +776,22 @@ class TransitionModeGPIO extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  TransitionModeGPIO clone() => TransitionModeGPIO()..mergeFromMessage(this);
+  TransitionMode_GPIO clone() => TransitionMode_GPIO()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TransitionModeGPIO copyWith(void Function(TransitionModeGPIO) updates) => super.copyWith((message) => updates(message as TransitionModeGPIO)) as TransitionModeGPIO;
+  TransitionMode_GPIO copyWith(void Function(TransitionMode_GPIO) updates) => super.copyWith((message) => updates(message as TransitionMode_GPIO)) as TransitionMode_GPIO;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static TransitionModeGPIO create() => TransitionModeGPIO._();
-  TransitionModeGPIO createEmptyInstance() => create();
-  static $pb.PbList<TransitionModeGPIO> createRepeated() => $pb.PbList<TransitionModeGPIO>();
+  static TransitionMode_GPIO create() => TransitionMode_GPIO._();
+  TransitionMode_GPIO createEmptyInstance() => create();
+  static $pb.PbList<TransitionMode_GPIO> createRepeated() => $pb.PbList<TransitionMode_GPIO>();
   @$core.pragma('dart2js:noInline')
-  static TransitionModeGPIO getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionModeGPIO>(create);
-  static TransitionModeGPIO? _defaultInstance;
+  static TransitionMode_GPIO getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionMode_GPIO>(create);
+  static TransitionMode_GPIO? _defaultInstance;
 
   @$pb.TagNumber(1)
   GPIOIn get value => $_getN(0);
@@ -351,13 +803,13 @@ class TransitionModeGPIO extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class TransitionModeExt extends $pb.GeneratedMessage {
-  factory TransitionModeExt() => create();
-  TransitionModeExt._() : super();
-  factory TransitionModeExt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TransitionModeExt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class TransitionMode_Ext extends $pb.GeneratedMessage {
+  factory TransitionMode_Ext() => create();
+  TransitionMode_Ext._() : super();
+  factory TransitionMode_Ext.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TransitionMode_Ext.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionModeExt', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionMode.Ext', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -365,31 +817,31 @@ class TransitionModeExt extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  TransitionModeExt clone() => TransitionModeExt()..mergeFromMessage(this);
+  TransitionMode_Ext clone() => TransitionMode_Ext()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TransitionModeExt copyWith(void Function(TransitionModeExt) updates) => super.copyWith((message) => updates(message as TransitionModeExt)) as TransitionModeExt;
+  TransitionMode_Ext copyWith(void Function(TransitionMode_Ext) updates) => super.copyWith((message) => updates(message as TransitionMode_Ext)) as TransitionMode_Ext;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static TransitionModeExt create() => TransitionModeExt._();
-  TransitionModeExt createEmptyInstance() => create();
-  static $pb.PbList<TransitionModeExt> createRepeated() => $pb.PbList<TransitionModeExt>();
+  static TransitionMode_Ext create() => TransitionMode_Ext._();
+  TransitionMode_Ext createEmptyInstance() => create();
+  static $pb.PbList<TransitionMode_Ext> createRepeated() => $pb.PbList<TransitionMode_Ext>();
   @$core.pragma('dart2js:noInline')
-  static TransitionModeExt getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionModeExt>(create);
-  static TransitionModeExt? _defaultInstance;
+  static TransitionMode_Ext getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionMode_Ext>(create);
+  static TransitionMode_Ext? _defaultInstance;
 }
 
-class TransitionModeImmediate extends $pb.GeneratedMessage {
-  factory TransitionModeImmediate() => create();
-  TransitionModeImmediate._() : super();
-  factory TransitionModeImmediate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TransitionModeImmediate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class TransitionMode_Immediate extends $pb.GeneratedMessage {
+  factory TransitionMode_Immediate() => create();
+  TransitionMode_Immediate._() : super();
+  factory TransitionMode_Immediate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TransitionMode_Immediate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionModeImmediate', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionMode.Immediate', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -397,22 +849,22 @@ class TransitionModeImmediate extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  TransitionModeImmediate clone() => TransitionModeImmediate()..mergeFromMessage(this);
+  TransitionMode_Immediate clone() => TransitionMode_Immediate()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TransitionModeImmediate copyWith(void Function(TransitionModeImmediate) updates) => super.copyWith((message) => updates(message as TransitionModeImmediate)) as TransitionModeImmediate;
+  TransitionMode_Immediate copyWith(void Function(TransitionMode_Immediate) updates) => super.copyWith((message) => updates(message as TransitionMode_Immediate)) as TransitionMode_Immediate;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static TransitionModeImmediate create() => TransitionModeImmediate._();
-  TransitionModeImmediate createEmptyInstance() => create();
-  static $pb.PbList<TransitionModeImmediate> createRepeated() => $pb.PbList<TransitionModeImmediate>();
+  static TransitionMode_Immediate create() => TransitionMode_Immediate._();
+  TransitionMode_Immediate createEmptyInstance() => create();
+  static $pb.PbList<TransitionMode_Immediate> createRepeated() => $pb.PbList<TransitionMode_Immediate>();
   @$core.pragma('dart2js:noInline')
-  static TransitionModeImmediate getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionModeImmediate>(create);
-  static TransitionModeImmediate? _defaultInstance;
+  static TransitionMode_Immediate getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransitionMode_Immediate>(create);
+  static TransitionMode_Immediate? _defaultInstance;
 }
 
 enum TransitionMode_Mode {
@@ -426,11 +878,11 @@ enum TransitionMode_Mode {
 
 class TransitionMode extends $pb.GeneratedMessage {
   factory TransitionMode({
-    TransitionModeSyncIdx? syncIdx,
-    TransitionModeSysTime? sysTime,
-    TransitionModeGPIO? gpio,
-    TransitionModeExt? ext,
-    TransitionModeImmediate? immediate,
+    TransitionMode_SyncIdx? syncIdx,
+    TransitionMode_SysTime? sysTime,
+    TransitionMode_GPIO? gpio,
+    TransitionMode_Ext? ext,
+    TransitionMode_Immediate? immediate,
   }) {
     final $result = create();
     if (syncIdx != null) {
@@ -464,11 +916,11 @@ class TransitionMode extends $pb.GeneratedMessage {
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransitionMode', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
     ..oo(0, [1, 2, 3, 4, 5])
-    ..aOM<TransitionModeSyncIdx>(1, _omitFieldNames ? '' : 'syncIdx', subBuilder: TransitionModeSyncIdx.create)
-    ..aOM<TransitionModeSysTime>(2, _omitFieldNames ? '' : 'sysTime', subBuilder: TransitionModeSysTime.create)
-    ..aOM<TransitionModeGPIO>(3, _omitFieldNames ? '' : 'gpio', subBuilder: TransitionModeGPIO.create)
-    ..aOM<TransitionModeExt>(4, _omitFieldNames ? '' : 'ext', subBuilder: TransitionModeExt.create)
-    ..aOM<TransitionModeImmediate>(5, _omitFieldNames ? '' : 'immediate', subBuilder: TransitionModeImmediate.create)
+    ..aOM<TransitionMode_SyncIdx>(1, _omitFieldNames ? '' : 'syncIdx', subBuilder: TransitionMode_SyncIdx.create)
+    ..aOM<TransitionMode_SysTime>(2, _omitFieldNames ? '' : 'sysTime', subBuilder: TransitionMode_SysTime.create)
+    ..aOM<TransitionMode_GPIO>(3, _omitFieldNames ? '' : 'gpio', subBuilder: TransitionMode_GPIO.create)
+    ..aOM<TransitionMode_Ext>(4, _omitFieldNames ? '' : 'ext', subBuilder: TransitionMode_Ext.create)
+    ..aOM<TransitionMode_Immediate>(5, _omitFieldNames ? '' : 'immediate', subBuilder: TransitionMode_Immediate.create)
     ..hasRequiredFields = false
   ;
 
@@ -497,64 +949,64 @@ class TransitionMode extends $pb.GeneratedMessage {
   void clearMode() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  TransitionModeSyncIdx get syncIdx => $_getN(0);
+  TransitionMode_SyncIdx get syncIdx => $_getN(0);
   @$pb.TagNumber(1)
-  set syncIdx(TransitionModeSyncIdx v) { setField(1, v); }
+  set syncIdx(TransitionMode_SyncIdx v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasSyncIdx() => $_has(0);
   @$pb.TagNumber(1)
   void clearSyncIdx() => clearField(1);
   @$pb.TagNumber(1)
-  TransitionModeSyncIdx ensureSyncIdx() => $_ensure(0);
+  TransitionMode_SyncIdx ensureSyncIdx() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  TransitionModeSysTime get sysTime => $_getN(1);
+  TransitionMode_SysTime get sysTime => $_getN(1);
   @$pb.TagNumber(2)
-  set sysTime(TransitionModeSysTime v) { setField(2, v); }
+  set sysTime(TransitionMode_SysTime v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasSysTime() => $_has(1);
   @$pb.TagNumber(2)
   void clearSysTime() => clearField(2);
   @$pb.TagNumber(2)
-  TransitionModeSysTime ensureSysTime() => $_ensure(1);
+  TransitionMode_SysTime ensureSysTime() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  TransitionModeGPIO get gpio => $_getN(2);
+  TransitionMode_GPIO get gpio => $_getN(2);
   @$pb.TagNumber(3)
-  set gpio(TransitionModeGPIO v) { setField(3, v); }
+  set gpio(TransitionMode_GPIO v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasGpio() => $_has(2);
   @$pb.TagNumber(3)
   void clearGpio() => clearField(3);
   @$pb.TagNumber(3)
-  TransitionModeGPIO ensureGpio() => $_ensure(2);
+  TransitionMode_GPIO ensureGpio() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  TransitionModeExt get ext => $_getN(3);
+  TransitionMode_Ext get ext => $_getN(3);
   @$pb.TagNumber(4)
-  set ext(TransitionModeExt v) { setField(4, v); }
+  set ext(TransitionMode_Ext v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasExt() => $_has(3);
   @$pb.TagNumber(4)
   void clearExt() => clearField(4);
   @$pb.TagNumber(4)
-  TransitionModeExt ensureExt() => $_ensure(3);
+  TransitionMode_Ext ensureExt() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  TransitionModeImmediate get immediate => $_getN(4);
+  TransitionMode_Immediate get immediate => $_getN(4);
   @$pb.TagNumber(5)
-  set immediate(TransitionModeImmediate v) { setField(5, v); }
+  set immediate(TransitionMode_Immediate v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasImmediate() => $_has(4);
   @$pb.TagNumber(5)
   void clearImmediate() => clearField(5);
   @$pb.TagNumber(5)
-  TransitionModeImmediate ensureImmediate() => $_ensure(4);
+  TransitionMode_Immediate ensureImmediate() => $_ensure(4);
 }
 
 class ControlPoint extends $pb.GeneratedMessage {
   factory ControlPoint({
-    $0.Vector3? pos,
+    $0.Point3? pos,
     Phase? offset,
   }) {
     final $result = create();
@@ -571,7 +1023,7 @@ class ControlPoint extends $pb.GeneratedMessage {
   factory ControlPoint.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ControlPoint', package: const $pb.PackageName(_omitMessageNames ? '' : 'autd3'), createEmptyInstance: create)
-    ..aOM<$0.Vector3>(1, _omitFieldNames ? '' : 'pos', subBuilder: $0.Vector3.create)
+    ..aOM<$0.Point3>(1, _omitFieldNames ? '' : 'pos', subBuilder: $0.Point3.create)
     ..aOM<Phase>(2, _omitFieldNames ? '' : 'offset', subBuilder: Phase.create)
     ..hasRequiredFields = false
   ;
@@ -598,15 +1050,15 @@ class ControlPoint extends $pb.GeneratedMessage {
   static ControlPoint? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.Vector3 get pos => $_getN(0);
+  $0.Point3 get pos => $_getN(0);
   @$pb.TagNumber(1)
-  set pos($0.Vector3 v) { setField(1, v); }
+  set pos($0.Point3 v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPos() => $_has(0);
   @$pb.TagNumber(1)
   void clearPos() => clearField(1);
   @$pb.TagNumber(1)
-  $0.Vector3 ensurePos() => $_ensure(0);
+  $0.Point3 ensurePos() => $_ensure(0);
 
   @$pb.TagNumber(2)
   Phase get offset => $_getN(1);

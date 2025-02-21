@@ -1,61 +1,62 @@
 import 'package:autd3/datagram/modulation/modulation.dart';
-import 'package:autd3/geometry.dart';
-import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/utils/freq.dart';
-import 'package:autd3/utils/sampling_config.dart';
 import 'package:autd3/utils/angle.dart';
-import 'package:autd3/utils/loop_behavior.dart';
-import 'package:autd3/datagram/modulation/sampling_mode.dart';
+import 'package:autd3/utils/sampling_config.dart';
+import 'package:autd3/src/generated/modulation.pb.dart' as modulation;
+import 'package:autd3/utils/int_helper.dart';
 
-class Sine extends Modulation {
-  final SamplingMode _samplingMode;
+class SineOption {
   final int? intensity;
   final int? offset;
   final Angle? phase;
   final SamplingConfig? samplingConfig;
-  final LoopBehavior? loopBehavior;
 
-  dynamic get freq => _samplingMode.freq;
-
-  Sine._(this._samplingMode, this.intensity, this.offset, this.phase,
-      this.samplingConfig, this.loopBehavior) {
+  SineOption({this.intensity, this.offset, this.phase, this.samplingConfig}) {
     {}
   }
 
-  static Sine create<T>(Freq<T> freq,
-      {int? intensity,
-      int? offset,
-      Angle? phase,
-      SamplingConfig? samplingConfig,
-      LoopBehavior? loopBehavior}) {
-    switch (T) {
-      // ignore: type_literal_in_constant_pattern
-      case int:
-        return Sine._(ExactFreq(freq as Freq<int>), intensity, offset, phase,
-            samplingConfig, loopBehavior);
-      // ignore: type_literal_in_constant_pattern
-      case double:
-        return Sine._(NearestFreq(freq as Freq<double>), intensity, offset,
-            phase, samplingConfig, loopBehavior);
+  modulation.SineOption toMsg() {
+    return modulation.SineOption(
+      intensity: intensity.toMsgU8(),
+      offset: offset.toMsgU8(),
+      phase: phase?.toMsg(),
+      config: samplingConfig?.toMsg(),
+    );
+  }
+}
+
+class Sine<T> extends Modulation {
+  final T freq;
+  final SineOption option;
+
+  Sine({required this.freq, required this.option});
+
+  Sine<Nearest<Freq<double>>> intoNearest() {
+    switch (freq) {
+      case Freq<double> f:
+        return Sine(freq: Nearest(f), option: option);
       case _:
         throw UnimplementedError();
     }
   }
 
-  static Sine fromFreqNearest(Freq<double> freq,
-      {int? intensity,
-      int? offset,
-      Angle? phase,
-      SamplingConfig? samplingConfig,
-      LoopBehavior? loopBehavior}) {
-    return Sine._(NearestFreq(freq), intensity, offset, phase, samplingConfig,
-        loopBehavior);
-  }
-
   @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        modulation: _samplingMode.sine(
-            samplingConfig, intensity, offset, phase, loopBehavior));
+  modulation.Modulation rawDatagram() {
+    switch (freq) {
+      case Freq<int> f:
+        return modulation.Modulation(
+            sineExact:
+                modulation.SineExact(freq: f.hz, option: option.toMsg()));
+      case Freq<double> f:
+        return modulation.Modulation(
+            sineExactFloat:
+                modulation.SineExactFloat(freq: f.hz, option: option.toMsg()));
+      case Nearest<Freq<double>> f:
+        return modulation.Modulation(
+            sineNearest: modulation.SineNearest(
+                freq: f.value.hz, option: option.toMsg()));
+      case _:
+        throw UnimplementedError();
+    }
   }
 }

@@ -14,25 +14,25 @@ class TransitionMode {
   // ignore: non_constant_identifier_names
   static TransitionMode Immediate() {
     return TransitionMode._(lightweight.TransitionMode(
-        immediate: lightweight.TransitionModeImmediate()));
+        immediate: lightweight.TransitionMode_Immediate()));
   }
 
   // ignore: non_constant_identifier_names
   static TransitionMode SyncIdx() {
     return TransitionMode._(lightweight.TransitionMode(
-        syncIdx: lightweight.TransitionModeSyncIdx()));
+        syncIdx: lightweight.TransitionMode_SyncIdx()));
   }
 
   // ignore: non_constant_identifier_names
   static TransitionMode Ext() {
     return TransitionMode._(
-        lightweight.TransitionMode(ext: lightweight.TransitionModeExt()));
+        lightweight.TransitionMode(ext: lightweight.TransitionMode_Ext()));
   }
 
   // ignore: non_constant_identifier_names
   static TransitionMode GPIO(GPIOIn gpio) {
     return TransitionMode._(lightweight.TransitionMode(
-        gpio: lightweight.TransitionModeGPIO(value: gpio)));
+        gpio: lightweight.TransitionMode_GPIO(value: gpio)));
   }
 
   // ignore: non_constant_identifier_names
@@ -40,7 +40,7 @@ class TransitionMode {
     final value =
         time.difference(DateTime.utc(2000, 1, 1)).inMicroseconds * 1000;
     return TransitionMode._(lightweight.TransitionMode(
-        sysTime: lightweight.TransitionModeSysTime(value: Int64(value))));
+        sysTime: lightweight.TransitionMode_SysTime(value: Int64(value))));
   }
 
   @override

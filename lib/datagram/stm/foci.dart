@@ -1,6 +1,6 @@
 import 'package:autd3/datagram/stm/control_point.dart';
 import 'package:autd3/geometry.dart';
-import 'package:autd3/sendable.dart';
+import 'package:autd3/datagram.dart';
 import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/datagram.pb.dart' as lightweight_datagram;
 import 'package:autd3/utils/freq.dart';
@@ -9,480 +9,99 @@ import 'package:autd3/utils/sampling_config.dart';
 import 'package:autd3/utils/segment.dart';
 import 'package:autd3/utils/transition_mode.dart';
 
-abstract class FociSTM<T extends ControlPoints> extends Sendable {
-  final List<T> foci;
-  final SamplingConfig samplingConfig;
-  final LoopBehavior? loopBehavior;
+class Nearest<T> {
+  final T value;
+  Nearest(this.value);
+}
 
-  FociSTM(this.foci, this.samplingConfig, this.loopBehavior);
+class FociSTM<C> extends DatagramL {
+  final List<ControlPoints> foci;
+  final C config;
 
-  static (List<T>, SamplingConfig, LoopBehavior?)
-      fromFreq<T extends ControlPoints>(
-          Freq<double> f, List<T> foci, LoopBehavior? loopBehavior) {
-    final fs = f.hz * foci.length;
-    final div = 40000.0 / fs;
-    if (div != div.roundToDouble()) {
-      throw ArgumentError('The frequency is invalid');
+  FociSTM({required this.foci, required this.config});
+
+  FociSTM<Nearest<C>> intoNearest() {
+    switch (config) {
+      case Freq<double> _:
+        return FociSTM(foci: foci, config: Nearest(config));
+      case Duration _:
+        return FociSTM(foci: foci, config: Nearest(config));
+      case _:
+        throw UnimplementedError();
     }
-    return (foci, SamplingConfig(div.round()), loopBehavior);
   }
 
-  static (List<T>, SamplingConfig, LoopBehavior?)
-      fromFreqNearest<T extends ControlPoints>(
-          Freq<double> f, List<T> foci, LoopBehavior? loopBehavior) {
-    final fs = f.hz * foci.length;
-    final div = 40000.0 / fs;
-    return (foci, SamplingConfig(div.round()), loopBehavior);
-  }
-
-  static (List<T>, SamplingConfig, LoopBehavior?)
-      fromPeriod<T extends ControlPoints>(
-          Duration period, List<T> foci, LoopBehavior? loopBehavior) {
-    if (((period.inMicroseconds) % foci.length) != 0) {
-      throw ArgumentError('The sampling period must be integer');
+  lightweight_datagram.FociSTM rawDatagram() {
+    SamplingConfig samplingConfig;
+    switch (config) {
+      case Freq<double> f:
+        final fs = f.hz * this.foci.length;
+        final div = 40000.0 / fs;
+        if (div != div.roundToDouble()) {
+          throw ArgumentError('The frequency is invalid');
+        }
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case Nearest<Freq<double>> f:
+        final fs = f.value.hz * this.foci.length;
+        final div = 40000.0 / fs;
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case Duration period:
+        if (((period.inMicroseconds) % this.foci.length) != 0) {
+          throw ArgumentError('The sampling period must be integer');
+        }
+        final us = period.inMicroseconds ~/ this.foci.length;
+        final div = us / 25.0;
+        if (div != div.roundToDouble()) {
+          throw ArgumentError('The period is invalid');
+        }
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case Nearest<Duration> period:
+        final us = period.value.inMicroseconds ~/ this.foci.length;
+        final div = us / 25.0;
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case SamplingConfig config:
+        samplingConfig = config;
+        break;
+      case _:
+        throw UnimplementedError();
     }
-    final us = period.inMicroseconds ~/ foci.length;
-    final div = us / 25.0;
-    if (div != div.roundToDouble()) {
-      throw ArgumentError('The period is invalid');
-    }
-    return (foci, SamplingConfig(div.round()), loopBehavior);
-  }
-
-  static (List<T>, SamplingConfig, LoopBehavior?)
-      fromPeriodNearest<T extends ControlPoints>(
-          Duration period, List<T> foci, LoopBehavior? loopBehavior) {
-    final us = period.inMicroseconds ~/ foci.length;
-    final div = us / 25.0;
-    return (foci, SamplingConfig(div.round()), loopBehavior);
-  }
-
-  static (List<T>, SamplingConfig, LoopBehavior?)
-      fromSamplingConifg<T extends ControlPoints>(
-          SamplingConfig config, List<T> foci, LoopBehavior? loopBehavior) {
-    return (foci, config, loopBehavior);
-  }
-
-  FociSTMWithSegment withSegment(Segment segment,
-      {TransitionMode? transitionMode}) {
-    return FociSTMWithSegment(this, segment, transitionMode: transitionMode);
-  }
-}
-
-class FociSTM1 extends FociSTM<ControlPoints1> {
-  FociSTM1._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM1 fromFreq(Freq<double> f, List<ControlPoints1> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM1._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM1 fromFreqNearest(Freq<double> f, List<ControlPoints1> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM1._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM1 fromPeriod(Duration period, List<ControlPoints1> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM1._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM1 fromPeriodNearest(Duration period, List<ControlPoints1> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM1._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM1 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints1> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM1._(foci_, config_, loopBehavior_);
+    final foci = this.foci.map((e) => e.toMsg());
+    return lightweight_datagram.FociSTM(
+      foci: foci,
+      samplingConfig: samplingConfig.toMsg(),
+    );
   }
 
   @override
   lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n1: lightweight_datagram.FociSTM1(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                  config: samplingConfig.toMsg(),
-                  loopBehavior: loopBehavior?.toMsg(),
-                ))));
-  }
-}
-
-class FociSTM2 extends FociSTM<ControlPoints2> {
-  FociSTM2._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM2 fromFreq(Freq<double> f, List<ControlPoints2> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM2._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM2 fromFreqNearest(Freq<double> f, List<ControlPoints2> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM2._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM2 fromPeriod(Duration period, List<ControlPoints2> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM2._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM2 fromPeriodNearest(Duration period, List<ControlPoints2> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM2._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM2 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints2> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM2._(foci_, config_, loopBehavior_);
+    return lightweight.Datagram(fociStm: rawDatagram());
   }
 
   @override
-  lightweight.Datagram datagram(Geometry geometry) {
+  lightweight.Datagram datagramWithSegment(
+      Geometry geometry, Segment segment, TransitionMode? transitionMode) {
     return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n2: lightweight_datagram.FociSTM2(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                    config: samplingConfig.toMsg()))));
-  }
-}
-
-class FociSTM3 extends FociSTM<ControlPoints3> {
-  FociSTM3._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM3 fromFreq(Freq<double> f, List<ControlPoints3> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM3._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM3 fromFreqNearest(Freq<double> f, List<ControlPoints3> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM3._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM3 fromPeriod(Duration period, List<ControlPoints3> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM3._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM3 fromPeriodNearest(Duration period, List<ControlPoints3> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM3._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM3 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints3> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM3._(foci_, config_, loopBehavior_);
+        withSegment: lightweight_datagram.WithSegment(
+      fociStm: rawDatagram(),
+      segment: segment,
+      transitionMode: transitionMode?.toMsg(),
+    ));
   }
 
   @override
-  lightweight.Datagram datagram(Geometry geometry) {
+  lightweight.Datagram datagramWithLoopBehavior(
+      Geometry geometry,
+      LoopBehavior loopBehavior,
+      Segment segment,
+      TransitionMode? transitionMode) {
     return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n3: lightweight_datagram.FociSTM3(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                    config: samplingConfig.toMsg()))));
-  }
-}
-
-class FociSTM4 extends FociSTM<ControlPoints4> {
-  FociSTM4._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM4 fromFreq(Freq<double> f, List<ControlPoints4> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM4._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM4 fromFreqNearest(Freq<double> f, List<ControlPoints4> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM4._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM4 fromPeriod(Duration period, List<ControlPoints4> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM4._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM4 fromPeriodNearest(Duration period, List<ControlPoints4> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM4._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM4 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints4> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM4._(foci_, config_, loopBehavior_);
-  }
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n4: lightweight_datagram.FociSTM4(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                    config: samplingConfig.toMsg()))));
-  }
-}
-
-class FociSTM5 extends FociSTM<ControlPoints5> {
-  FociSTM5._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM5 fromFreq(Freq<double> f, List<ControlPoints5> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM5._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM5 fromFreqNearest(Freq<double> f, List<ControlPoints5> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM5._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM5 fromPeriod(Duration period, List<ControlPoints5> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM5._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM5 fromPeriodNearest(Duration period, List<ControlPoints5> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM5._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM5 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints5> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM5._(foci_, config_, loopBehavior_);
-  }
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n5: lightweight_datagram.FociSTM5(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                    config: samplingConfig.toMsg()))));
-  }
-}
-
-class FociSTM6 extends FociSTM<ControlPoints6> {
-  FociSTM6._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM6 fromFreq(Freq<double> f, List<ControlPoints6> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM6._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM6 fromFreqNearest(Freq<double> f, List<ControlPoints6> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM6._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM6 fromPeriod(Duration period, List<ControlPoints6> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM6._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM6 fromPeriodNearest(Duration period, List<ControlPoints6> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM6._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM6 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints6> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM6._(foci_, config_, loopBehavior_);
-  }
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n6: lightweight_datagram.FociSTM6(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                    config: samplingConfig.toMsg()))));
-  }
-}
-
-class FociSTM7 extends FociSTM<ControlPoints7> {
-  FociSTM7._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM7 fromFreq(Freq<double> f, List<ControlPoints7> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM7._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM7 fromFreqNearest(Freq<double> f, List<ControlPoints7> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM7._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM7 fromPeriod(Duration period, List<ControlPoints7> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM7._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM7 fromPeriodNearest(Duration period, List<ControlPoints7> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM7._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM7 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints7> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM7._(foci_, config_, loopBehavior_);
-  }
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n7: lightweight_datagram.FociSTM7(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                    config: samplingConfig.toMsg()))));
-  }
-}
-
-class FociSTM8 extends FociSTM<ControlPoints8> {
-  FociSTM8._(super.foci, super.samplingConfig, super.loopBehavior);
-
-  static FociSTM8 fromFreq(Freq<double> f, List<ControlPoints8> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreq(f, foci, loopBehavior);
-    return FociSTM8._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM8 fromFreqNearest(Freq<double> f, List<ControlPoints8> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromFreqNearest(f, foci, loopBehavior);
-    return FociSTM8._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM8 fromPeriod(Duration period, List<ControlPoints8> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriod(period, foci, loopBehavior);
-    return FociSTM8._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM8 fromPeriodNearest(Duration period, List<ControlPoints8> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromPeriodNearest(period, foci, loopBehavior);
-    return FociSTM8._(foci_, config_, loopBehavior_);
-  }
-
-  static FociSTM8 fromSamplingConifg(
-      SamplingConfig config, List<ControlPoints8> foci,
-      {LoopBehavior? loopBehavior}) {
-    final (foci_, config_, loopBehavior_) =
-        FociSTM.fromSamplingConifg(config, foci, loopBehavior);
-    return FociSTM8._(foci_, config_, loopBehavior_);
-  }
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        fociStm: lightweight_datagram.FociSTM(
-            n8: lightweight_datagram.FociSTM8(
-                foci: foci.map((e) => e.toMsg()),
-                props: lightweight_datagram.FociSTMProps(
-                    config: samplingConfig.toMsg()))));
-  }
-}
-
-class FociSTMWithSegment extends Sendable {
-  final FociSTM stm;
-  final Segment segment;
-  final TransitionMode? transitionMode;
-
-  FociSTMWithSegment(this.stm, this.segment, {this.transitionMode});
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        fociStmWithSegment: lightweight_datagram.FociSTMWithSegment(
-      fociStm: stm.datagram(geometry).fociStm,
+        withLoopBehavior: lightweight_datagram.WithLoopBehavior(
+      fociStm: rawDatagram(),
+      loopBehavior: loopBehavior.toMsg(),
       segment: segment,
       transitionMode: transitionMode?.toMsg(),
     ));

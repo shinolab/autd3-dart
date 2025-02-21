@@ -1,30 +1,39 @@
 import 'package:autd3/datagram/gain/gain.dart';
 import 'package:autd3/geometry.dart';
-import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/gain.pb.dart' as gain;
 import 'package:autd3/utils/geometry.dart';
 import 'package:autd3/utils/phase.dart';
 import 'package:autd3/utils/emit_intensity.dart';
-import 'package:vector_math/vector_math.dart';
 
-class Focus extends Gain {
-  final Vector3 pos;
+class FocusOption {
   EmitIntensity? intensity;
   Phase? phaseOffset;
 
-  Focus(this.pos, {this.intensity, this.phaseOffset}) {
+  FocusOption(this.intensity, this.phaseOffset);
+
+  gain.FocusOption toMsg() {
+    return gain.FocusOption(
+      intensity: intensity?.toMsg(),
+      phaseOffset: phaseOffset?.toMsg(),
+    );
+  }
+}
+
+class Focus extends Gain {
+  final Point3 pos;
+  final FocusOption option;
+
+  Focus({required this.pos, required this.option}) {
     {}
   }
 
   @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        gain: gain.Gain(
+  gain.Gain rawDatagram(Geometry geometry) {
+    return gain.Gain(
       focus: gain.Focus(
         pos: pos.toMsg(),
-        intensity: intensity?.toMsg(),
-        phaseOffset: phaseOffset?.toMsg(),
+        option: option.toMsg(),
       ),
-    ));
+    );
   }
 }

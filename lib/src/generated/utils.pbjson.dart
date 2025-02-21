@@ -25,9 +25,9 @@ const Angle$json = {
 final $typed_data.Uint8List angleDescriptor = $convert.base64Decode(
     'CgVBbmdsZRIQCgNyYWQYASABKAJSA3JhZA==');
 
-@$core.Deprecated('Use vector3Descriptor instead')
-const Vector3$json = {
-  '1': 'Vector3',
+@$core.Deprecated('Use unitVector3Descriptor instead')
+const UnitVector3$json = {
+  '1': 'UnitVector3',
   '2': [
     {'1': 'x', '3': 1, '4': 1, '5': 2, '10': 'x'},
     {'1': 'y', '3': 2, '4': 1, '5': 2, '10': 'y'},
@@ -35,9 +35,24 @@ const Vector3$json = {
   ],
 };
 
-/// Descriptor for `Vector3`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List vector3Descriptor = $convert.base64Decode(
-    'CgdWZWN0b3IzEgwKAXgYASABKAJSAXgSDAoBeRgCIAEoAlIBeRIMCgF6GAMgASgCUgF6');
+/// Descriptor for `UnitVector3`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List unitVector3Descriptor = $convert.base64Decode(
+    'CgtVbml0VmVjdG9yMxIMCgF4GAEgASgCUgF4EgwKAXkYAiABKAJSAXkSDAoBehgDIAEoAlIBeg'
+    '==');
+
+@$core.Deprecated('Use point3Descriptor instead')
+const Point3$json = {
+  '1': 'Point3',
+  '2': [
+    {'1': 'x', '3': 1, '4': 1, '5': 2, '10': 'x'},
+    {'1': 'y', '3': 2, '4': 1, '5': 2, '10': 'y'},
+    {'1': 'z', '3': 3, '4': 1, '5': 2, '10': 'z'},
+  ],
+};
+
+/// Descriptor for `Point3`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List point3Descriptor = $convert.base64Decode(
+    'CgZQb2ludDMSDAoBeBgBIAEoAlIBeBIMCgF5GAIgASgCUgF5EgwKAXoYAyABKAJSAXo=');
 
 @$core.Deprecated('Use quaternionDescriptor instead')
 const Quaternion$json = {
@@ -68,16 +83,19 @@ const Geometry$json = {
 const Geometry_AUTD3$json = {
   '1': 'AUTD3',
   '2': [
-    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Vector3', '10': 'pos'},
+    {'1': 'pos', '3': 1, '4': 1, '5': 11, '6': '.autd3.Point3', '10': 'pos'},
     {'1': 'rot', '3': 2, '4': 1, '5': 11, '6': '.autd3.Quaternion', '10': 'rot'},
-    {'1': 'sound_speed', '3': 3, '4': 1, '5': 2, '10': 'soundSpeed'},
+    {'1': 'sound_speed', '3': 3, '4': 1, '5': 2, '9': 0, '10': 'soundSpeed', '17': true},
+  ],
+  '8': [
+    {'1': '_sound_speed'},
   ],
 };
 
 /// Descriptor for `Geometry`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List geometryDescriptor = $convert.base64Decode(
     'CghHZW9tZXRyeRIvCgdkZXZpY2VzGAEgAygLMhUuYXV0ZDMuR2VvbWV0cnkuQVVURDNSB2Rldm'
-    'ljZXMabwoFQVVURDMSIAoDcG9zGAEgASgLMg4uYXV0ZDMuVmVjdG9yM1IDcG9zEiMKA3JvdBgC'
-    'IAEoCzIRLmF1dGQzLlF1YXRlcm5pb25SA3JvdBIfCgtzb3VuZF9zcGVlZBgDIAEoAlIKc291bm'
-    'RTcGVlZA==');
+    'ljZXMagwEKBUFVVEQzEh8KA3BvcxgBIAEoCzINLmF1dGQzLlBvaW50M1IDcG9zEiMKA3JvdBgC'
+    'IAEoCzIRLmF1dGQzLlF1YXRlcm5pb25SA3JvdBIkCgtzb3VuZF9zcGVlZBgDIAEoAkgAUgpzb3'
+    'VuZFNwZWVkiAEBQg4KDF9zb3VuZF9zcGVlZA==');
 

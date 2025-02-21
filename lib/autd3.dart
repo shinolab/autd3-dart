@@ -1,44 +1,46 @@
 export 'package:autd3/datagram/gain/gain.dart'
-    show Focus, Bessel, Null, Plane, Uniform;
+    show
+        Focus,
+        Bessel,
+        Null,
+        Plane,
+        Uniform,
+        FocusOption,
+        BesselOption,
+        PlaneOption;
 export 'package:autd3/datagram/gain/holo/holo.dart'
-    show GS, GSPAT, Greedy, LM, Naive;
+    show
+        GS,
+        GSPAT,
+        Greedy,
+        LM,
+        Naive,
+        GSOption,
+        GSPATOption,
+        GreedyOption,
+        LMOption,
+        Holo,
+        NaiveOption;
 export 'package:autd3/datagram/gain/holo/amplitude.dart' show AmplitudeExt;
 export 'package:autd3/datagram/gain/holo/constraint.dart'
     show EmissionConstraint;
 
 export 'package:autd3/datagram/modulation/modulation.dart'
-    show Sine, Square, Static;
+    show Sine, Square, Static, SineOption, SquareOption;
 
-export 'package:autd3/datagram/silencer.dart' show Silencer;
+export 'package:autd3/datagram/silencer.dart'
+    show Silencer, FixedCompletionSteps, FixedCompletionTime, FixedUpdateRate;
 export 'package:autd3/datagram/clear.dart' show Clear;
 export 'package:autd3/datagram/force_fan.dart' show ForceFan;
 export 'package:autd3/datagram/reads_fpga_state.dart' show ReadsFPGAState;
 export 'package:autd3/datagram/synchronize.dart' show Synchronize;
 export 'package:autd3/datagram/swap_segment.dart' show SwapSegment;
-export 'package:autd3/datagram/stm/foci.dart'
-    show
-        FociSTM1,
-        FociSTM2,
-        FociSTM3,
-        FociSTM4,
-        FociSTM5,
-        FociSTM6,
-        FociSTM7,
-        FociSTM8;
-
+export 'package:autd3/datagram/stm/foci.dart' show FociSTM;
 export 'package:autd3/datagram/stm/gain.dart' show GainSTM;
+export 'package:autd3/datagram/with_segment.dart' show WithSegment;
+export 'package:autd3/datagram/with_loop_behavior.dart' show WithLoopBehavior;
 export 'package:autd3/datagram/stm/control_point.dart'
-    show
-        ControlPoint,
-        ControlPoints1,
-        ControlPoints2,
-        ControlPoints3,
-        ControlPoints4,
-        ControlPoints5,
-        ControlPoints6,
-        ControlPoints7,
-        ControlPoints8;
-
+    show ControlPoint, ControlPoints;
 export 'package:autd3/utils/angle.dart' show AngleExt;
 export 'package:autd3/utils/emit_intensity.dart' show EmitIntensity;
 export 'package:autd3/utils/freq.dart' show FreqInt, FreqDouble;

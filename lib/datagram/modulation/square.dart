@@ -1,61 +1,61 @@
 import 'package:autd3/datagram/modulation/modulation.dart';
-import 'package:autd3/datagram/modulation/sampling_mode.dart';
-import 'package:autd3/geometry.dart';
-import 'package:autd3/src/generated/lightweight.pb.dart'
-    as lightweight;
 import 'package:autd3/utils/freq.dart';
+import 'package:autd3/src/generated/modulation.pb.dart' as modulation;
 import 'package:autd3/utils/sampling_config.dart';
-import 'package:autd3/utils/loop_behavior.dart';
+import 'package:autd3/utils/int_helper.dart';
 
-class Square extends Modulation {
-  final SamplingMode _samplingMode;
+class SquareOption {
   final int? low;
   final int? high;
   final double? duty;
   final SamplingConfig? samplingConfig;
-  final LoopBehavior? loopBehavior;
 
-  dynamic get freq => _samplingMode.freq;
-
-  Square._(this._samplingMode, this.low, this.high, this.duty,
-      this.samplingConfig, this.loopBehavior) {
+  SquareOption({this.low, this.high, this.duty, this.samplingConfig}) {
     {}
   }
 
-  static Square create<T>(Freq<T> freq,
-      {int? low,
-      int? high,
-      double? duty,
-      SamplingConfig? samplingConfig,
-      LoopBehavior? loopBehavior}) {
-    switch (T) {
-      // ignore: type_literal_in_constant_pattern
-      case int:
-        return Square._(ExactFreq(freq as Freq<int>), low, high, duty,
-            samplingConfig, loopBehavior);
-      // ignore: type_literal_in_constant_pattern
-      case double:
-        return Square._(NearestFreq(freq as Freq<double>), low, high, duty,
-            samplingConfig, loopBehavior);
+  modulation.SquareOption toMsg() {
+    return modulation.SquareOption(
+      low: low.toMsgU8(),
+      high: high.toMsgU8(),
+      duty: duty,
+      config: samplingConfig?.toMsg(),
+    );
+  }
+}
+
+class Square<T> extends Modulation {
+  final T freq;
+  final SquareOption option;
+
+  Square({required this.freq, required this.option});
+
+  Square<Nearest<Freq<double>>> intoNearest() {
+    switch (freq) {
+      case Freq<double> f:
+        return Square(freq: Nearest(f), option: option);
       case _:
         throw UnimplementedError();
     }
   }
 
-  static Square fromFreqNearest(Freq<double> freq,
-      {int? low,
-      int? high,
-      double? duty,
-      SamplingConfig? samplingConfig,
-      LoopBehavior? loopBehavior}) {
-    return Square._(
-        NearestFreq(freq), low, high, duty, samplingConfig, loopBehavior);
-  }
-
   @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        modulation: _samplingMode.square(
-            samplingConfig, low, high, duty, loopBehavior));
+  modulation.Modulation rawDatagram() {
+    switch (freq) {
+      case Freq<int> f:
+        return modulation.Modulation(
+            squareExact:
+                modulation.SquareExact(freq: f.hz, option: option.toMsg()));
+      case Freq<double> f:
+        return modulation.Modulation(
+            squareExactFloat: modulation.SquareExactFloat(
+                freq: f.hz, option: option.toMsg()));
+      case Nearest<Freq<double>> f:
+        return modulation.Modulation(
+            squareNearest: modulation.SquareNearest(
+                freq: f.value.hz, option: option.toMsg()));
+      case _:
+        throw UnimplementedError();
+    }
   }
 }

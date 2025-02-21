@@ -13,26 +13,26 @@ class EmissionConstraint {
   // ignore: non_constant_identifier_names
   static EmissionConstraint Normalize() {
     return EmissionConstraint._(lightweight.EmissionConstraint(
-        normalize: lightweight.NormalizeConstraint()));
+        normalize: lightweight.EmissionConstraint_Normalize()));
   }
 
   // ignore: non_constant_identifier_names
   static EmissionConstraint Multiply(double value) {
     return EmissionConstraint._(lightweight.EmissionConstraint(
-        multiply: lightweight.MultiplyConstraint(value: value)));
+        multiply: lightweight.EmissionConstraint_Multiply(value: value)));
   }
 
   // ignore: non_constant_identifier_names
   static EmissionConstraint Uniform(EmitIntensity value) {
     return EmissionConstraint._(lightweight.EmissionConstraint(
-        uniform: lightweight.UniformConstraint(value: value.toMsg())));
+        uniform: lightweight.EmissionConstraint_Uniform(value: value.toMsg())));
   }
 
   // ignore: non_constant_identifier_names
   static EmissionConstraint Clamp(EmitIntensity min, EmitIntensity max) {
     return EmissionConstraint._(lightweight.EmissionConstraint(
-        clamp:
-            lightweight.ClampConstraint(min: min.toMsg(), max: max.toMsg())));
+        clamp: lightweight.EmissionConstraint_Clamp(
+            min: min.toMsg(), max: max.toMsg())));
   }
 
   @override

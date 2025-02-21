@@ -1,6 +1,6 @@
 import 'package:autd3/datagram/gain/gain.dart';
 import 'package:autd3/geometry.dart';
-import 'package:autd3/sendable.dart';
+import 'package:autd3/datagram.dart';
 import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/datagram.pb.dart' as lightweight_datagram;
 import 'package:autd3/utils/freq.dart';
@@ -10,84 +10,115 @@ import 'package:autd3/utils/sampling_config.dart';
 import 'package:autd3/utils/segment.dart';
 import 'package:autd3/utils/transition_mode.dart';
 
-class GainSTM extends Sendable {
-  final List<Gain> gains;
-  final SamplingConfig samplingConfig;
-  final LoopBehavior? loopBehavior;
+class Nearest<T> {
+  final T value;
+  Nearest(this.value);
+}
+
+class GainSTMOption {
   final GainSTMMode? mode;
 
-  GainSTM._(this.gains, this.samplingConfig, this.loopBehavior, this.mode);
+  GainSTMOption({this.mode});
 
-  static GainSTM fromFreq(Freq<double> f, List<Gain> gains,
-      {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
-    final fs = f.hz * gains.length;
-    final div = 40000.0 / fs;
-    if (div != div.roundToDouble()) {
-      throw ArgumentError('The frequency is invalid');
-    }
-    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
-  }
-
-  static GainSTM fromFreqNearest(Freq<double> f, List<Gain> gains,
-      {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
-    final fs = f.hz * gains.length;
-    final div = 40000.0 / fs;
-    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
-  }
-
-  static GainSTM fromPeriod(Duration period, List<Gain> gains,
-      {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
-    if (((period.inMicroseconds) % gains.length) != 0) {
-      throw ArgumentError('The sampling period must be integer');
-    }
-    final us = period.inMicroseconds ~/ gains.length;
-    final div = us / 25.0;
-    if (div != div.roundToDouble()) {
-      throw ArgumentError('The period is invalid');
-    }
-    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
-  }
-
-  static GainSTM fromPeriodNearest(Duration period, List<Gain> gains,
-      {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
-    final us = period.inMicroseconds ~/ gains.length;
-    final div = us / 25.0;
-    return GainSTM._(gains, SamplingConfig(div.round()), loopBehavior, mode);
-  }
-
-  static GainSTM fromSamplingConifg(SamplingConfig config, List<Gain> gains,
-      {LoopBehavior? loopBehavior, GainSTMMode? mode}) {
-    return GainSTM._(gains, config, loopBehavior, mode);
-  }
-
-  @override
-  lightweight.Datagram datagram(Geometry geometry) {
-    return lightweight.Datagram(
-        gainStm: lightweight_datagram.GainSTM(
-            gains: gains.map((e) => e.datagram(geometry).gain),
-            config: samplingConfig.toMsg(),
-            loopBehavior: loopBehavior?.toMsg(),
-            mode: mode));
-  }
-
-  GainSTMWithSegment withSegment(Segment segment,
-      {TransitionMode? transitionMode}) {
-    return GainSTMWithSegment(this, segment, transitionMode: transitionMode);
+  lightweight_datagram.GainSTMOption toMsg() {
+    return lightweight_datagram.GainSTMOption(
+      mode: mode,
+    );
   }
 }
 
-class GainSTMWithSegment extends Sendable {
-  final GainSTM stm;
-  final Segment segment;
-  final TransitionMode? transitionMode;
+class GainSTM<C> extends DatagramL {
+  final List<Gain> gains;
+  final C config;
+  final GainSTMOption option;
 
-  GainSTMWithSegment(this.stm, this.segment, {this.transitionMode});
+  GainSTM({required this.gains, required this.config, required this.option});
+
+  GainSTM<Nearest<C>> intoNearest() {
+    switch (config) {
+      case Freq<double> _:
+        return GainSTM(gains: gains, config: Nearest(config), option: option);
+      case Duration _:
+        return GainSTM(gains: gains, config: Nearest(config), option: option);
+      case _:
+        throw UnimplementedError();
+    }
+  }
+
+  lightweight_datagram.GainSTM rawDatagram(Geometry geometry) {
+    final gains = this.gains.map((e) => e.datagram(geometry).gain);
+
+    SamplingConfig samplingConfig;
+    switch (config) {
+      case Freq<double> f:
+        final fs = f.hz * this.gains.length;
+        final div = 40000.0 / fs;
+        if (div != div.roundToDouble()) {
+          throw ArgumentError('The frequency is invalid');
+        }
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case Nearest<Freq<double>> f:
+        final fs = f.value.hz * this.gains.length;
+        final div = 40000.0 / fs;
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case Duration period:
+        if (((period.inMicroseconds) % this.gains.length) != 0) {
+          throw ArgumentError('The sampling period must be integer');
+        }
+        final us = period.inMicroseconds ~/ this.gains.length;
+        final div = us / 25.0;
+        if (div != div.roundToDouble()) {
+          throw ArgumentError('The period is invalid');
+        }
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case Nearest<Duration> period:
+        final us = period.value.inMicroseconds ~/ this.gains.length;
+        final div = us / 25.0;
+        samplingConfig = SamplingConfig(div.round());
+        break;
+      case SamplingConfig config:
+        samplingConfig = config;
+        break;
+      case _:
+        throw UnimplementedError();
+    }
+
+    return lightweight_datagram.GainSTM(
+      gains: gains,
+      samplingConfig: samplingConfig.toMsg(),
+      option: option.toMsg(),
+    );
+  }
 
   @override
   lightweight.Datagram datagram(Geometry geometry) {
+    return lightweight.Datagram(gainStm: rawDatagram(geometry));
+  }
+
+  @override
+  lightweight.Datagram datagramWithSegment(
+      Geometry geometry, Segment segment, TransitionMode? transitionMode) {
     return lightweight.Datagram(
-        gainStmWithSegment: lightweight_datagram.GainSTMWithSegment(
-      gainStm: stm.datagram(geometry).gainStm,
+        withSegment: lightweight_datagram.WithSegment(
+      gainStm: rawDatagram(geometry),
+      segment: segment,
+      transitionMode: transitionMode?.toMsg(),
+    ));
+  }
+
+  @override
+  lightweight.Datagram datagramWithLoopBehavior(
+      Geometry geometry,
+      LoopBehavior loopBehavior,
+      Segment segment,
+      TransitionMode? transitionMode) {
+    return lightweight.Datagram(
+        withLoopBehavior: lightweight_datagram.WithLoopBehavior(
+      gainStm: rawDatagram(geometry),
+      loopBehavior: loopBehavior.toMsg(),
       segment: segment,
       transitionMode: transitionMode?.toMsg(),
     ));
