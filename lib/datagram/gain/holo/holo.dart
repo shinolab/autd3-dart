@@ -9,18 +9,11 @@ export 'gspat.dart' show GSPAT, GSPATOption;
 export 'lm.dart' show LM, LMOption;
 export 'naive.dart' show Naive, NaiveOption;
 
-class Holo {
-  final Point3 pos;
-  final Amplitude amp;
-
-  Holo(this.pos, this.amp) {
-    {}
-  }
-
+extension HoloExt on (Point3, Amplitude) {
   gain.Holo toMsg() {
     return gain.Holo(
-      pos: pos.toMsg(),
-      amp: amp.toMsg(),
+      pos: this.$1.toMsg(),
+      amp: this.$2.toMsg(),
     );
   }
 }
