@@ -9,7 +9,7 @@ class PlaneOption {
   EmitIntensity? intensity;
   Phase? phaseOffset;
 
-  PlaneOption(this.intensity, this.phaseOffset);
+  PlaneOption({this.intensity, this.phaseOffset});
 
   gain.PlaneOption toMsg() {
     return gain.PlaneOption(

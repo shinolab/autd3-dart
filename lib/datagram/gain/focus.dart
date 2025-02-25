@@ -9,7 +9,7 @@ class FocusOption {
   EmitIntensity? intensity;
   Phase? phaseOffset;
 
-  FocusOption(this.intensity, this.phaseOffset);
+  FocusOption({this.intensity, this.phaseOffset});
 
   gain.FocusOption toMsg() {
     return gain.FocusOption(
