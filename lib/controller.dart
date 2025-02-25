@@ -15,7 +15,7 @@ class Controller {
       : _client = client,
         _geometry = geometry;
 
-  Future<Controller> open(
+  static Future<Controller> open(
       Iterable<AUTD3> devices, ClientChannel channel) async {
     final client = lightweight.ECATLightClient(channel);
 
