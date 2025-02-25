@@ -1,9 +1,9 @@
-import 'package:autd3/autd3.dart';
 import 'package:autd3/datagram/gain/gain.dart';
 import 'package:autd3/datagram/gain/holo/constraint.dart';
 import 'package:autd3/datagram/gain/holo/holo.dart';
 import 'package:autd3/geometry.dart';
 import 'package:autd3/src/generated/gain.pb.dart' as gain;
+import 'package:autd3/utils/geometry.dart';
 
 class GreedyOption {
   final EmissionConstraint? constraint;
