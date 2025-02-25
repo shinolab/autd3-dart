@@ -1,3 +1,4 @@
+import 'package:autd3/autd3.dart';
 import 'package:autd3/datagram/gain/gain.dart';
 import 'package:autd3/datagram/gain/holo/constraint.dart';
 import 'package:autd3/datagram/gain/holo/holo.dart';
@@ -17,7 +18,7 @@ class GreedyOption {
 }
 
 class Greedy extends Gain {
-  final Iterable<Holo> foci;
+  final Iterable<(Point3, Amplitude)> foci;
   final GreedyOption option;
 
   Greedy({required this.foci, required this.option}) {

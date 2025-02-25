@@ -3,6 +3,7 @@ import 'package:autd3/datagram/gain/holo/constraint.dart';
 import 'package:autd3/datagram/gain/holo/holo.dart';
 import 'package:autd3/geometry.dart';
 import 'package:autd3/src/generated/gain.pb.dart' as gain;
+import 'package:autd3/utils/geometry.dart';
 
 class NaiveOption {
   final EmissionConstraint? constraint;
@@ -17,7 +18,7 @@ class NaiveOption {
 }
 
 class Naive extends Gain {
-  final Iterable<Holo> foci;
+  final Iterable<(Point3, Amplitude)> foci;
   final NaiveOption option;
 
   Naive({required this.foci, required this.option}) {

@@ -19,7 +19,6 @@ export 'package:autd3/datagram/gain/holo/holo.dart'
         GSPATOption,
         GreedyOption,
         LMOption,
-        Holo,
         NaiveOption;
 export 'package:autd3/datagram/gain/holo/amplitude.dart' show AmplitudeExt;
 export 'package:autd3/datagram/gain/holo/constraint.dart'
