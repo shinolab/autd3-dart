@@ -30,7 +30,15 @@ class Controller {
 
   Future send(Datagram datagram, {CallOptions? options}) async {
     await _client
-        .send(datagram.datagram(_geometry), options: options)
+        .send(
+            lightweight.SendRequestLightweight(
+              datagram: lightweight.DatagramTuple(
+                first: datagram.datagram(_geometry),
+                second: null,
+              ),
+              senderOption: null,
+            ),
+            options: options)
         .validate();
   }
 

@@ -29,9 +29,17 @@ class ECATLightClient extends $grpc.Client {
       '/autd3.ECATLight/FirmwareVersion',
       ($2.FirmwareVersionRequestLightweight value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.FirmwareVersionResponseLightweight.fromBuffer(value));
-  static final _$send = $grpc.ClientMethod<$2.Datagram, $2.SendResponseLightweight>(
+  static final _$fpgaState = $grpc.ClientMethod<$2.FPGAStateRequestLightweight, $2.FPGAStateResponseLightweight>(
+      '/autd3.ECATLight/FpgaState',
+      ($2.FPGAStateRequestLightweight value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.FPGAStateResponseLightweight.fromBuffer(value));
+  static final _$send = $grpc.ClientMethod<$2.SendRequestLightweight, $2.SendResponseLightweight>(
       '/autd3.ECATLight/Send',
-      ($2.Datagram value) => value.writeToBuffer(),
+      ($2.SendRequestLightweight value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.SendResponseLightweight.fromBuffer(value));
+  static final _$groupSend = $grpc.ClientMethod<$2.GroupSendRequestLightweight, $2.SendResponseLightweight>(
+      '/autd3.ECATLight/GroupSend',
+      ($2.GroupSendRequestLightweight value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.SendResponseLightweight.fromBuffer(value));
   static final _$close = $grpc.ClientMethod<$2.CloseRequestLightweight, $2.SendResponseLightweight>(
       '/autd3.ECATLight/Close',
@@ -52,8 +60,16 @@ class ECATLightClient extends $grpc.Client {
     return $createUnaryCall(_$firmwareVersion, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.SendResponseLightweight> send($2.Datagram request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.FPGAStateResponseLightweight> fpgaState($2.FPGAStateRequestLightweight request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$fpgaState, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.SendResponseLightweight> send($2.SendRequestLightweight request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$send, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.SendResponseLightweight> groupSend($2.GroupSendRequestLightweight request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$groupSend, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.SendResponseLightweight> close($2.CloseRequestLightweight request, {$grpc.CallOptions? options}) {
@@ -80,12 +96,26 @@ abstract class ECATLightServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.FirmwareVersionRequestLightweight.fromBuffer(value),
         ($2.FirmwareVersionResponseLightweight value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.Datagram, $2.SendResponseLightweight>(
+    $addMethod($grpc.ServiceMethod<$2.FPGAStateRequestLightweight, $2.FPGAStateResponseLightweight>(
+        'FpgaState',
+        fpgaState_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $2.FPGAStateRequestLightweight.fromBuffer(value),
+        ($2.FPGAStateResponseLightweight value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.SendRequestLightweight, $2.SendResponseLightweight>(
         'Send',
         send_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.Datagram.fromBuffer(value),
+        ($core.List<$core.int> value) => $2.SendRequestLightweight.fromBuffer(value),
+        ($2.SendResponseLightweight value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.GroupSendRequestLightweight, $2.SendResponseLightweight>(
+        'GroupSend',
+        groupSend_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $2.GroupSendRequestLightweight.fromBuffer(value),
         ($2.SendResponseLightweight value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.CloseRequestLightweight, $2.SendResponseLightweight>(
         'Close',
@@ -104,8 +134,16 @@ abstract class ECATLightServiceBase extends $grpc.Service {
     return firmwareVersion(call, await request);
   }
 
-  $async.Future<$2.SendResponseLightweight> send_Pre($grpc.ServiceCall call, $async.Future<$2.Datagram> request) async {
+  $async.Future<$2.FPGAStateResponseLightweight> fpgaState_Pre($grpc.ServiceCall call, $async.Future<$2.FPGAStateRequestLightweight> request) async {
+    return fpgaState(call, await request);
+  }
+
+  $async.Future<$2.SendResponseLightweight> send_Pre($grpc.ServiceCall call, $async.Future<$2.SendRequestLightweight> request) async {
     return send(call, await request);
+  }
+
+  $async.Future<$2.SendResponseLightweight> groupSend_Pre($grpc.ServiceCall call, $async.Future<$2.GroupSendRequestLightweight> request) async {
+    return groupSend(call, await request);
   }
 
   $async.Future<$2.SendResponseLightweight> close_Pre($grpc.ServiceCall call, $async.Future<$2.CloseRequestLightweight> request) async {
@@ -114,6 +152,8 @@ abstract class ECATLightServiceBase extends $grpc.Service {
 
   $async.Future<$2.SendResponseLightweight> open($grpc.ServiceCall call, $2.OpenRequestLightweight request);
   $async.Future<$2.FirmwareVersionResponseLightweight> firmwareVersion($grpc.ServiceCall call, $2.FirmwareVersionRequestLightweight request);
-  $async.Future<$2.SendResponseLightweight> send($grpc.ServiceCall call, $2.Datagram request);
+  $async.Future<$2.FPGAStateResponseLightweight> fpgaState($grpc.ServiceCall call, $2.FPGAStateRequestLightweight request);
+  $async.Future<$2.SendResponseLightweight> send($grpc.ServiceCall call, $2.SendRequestLightweight request);
+  $async.Future<$2.SendResponseLightweight> groupSend($grpc.ServiceCall call, $2.GroupSendRequestLightweight request);
   $async.Future<$2.SendResponseLightweight> close($grpc.ServiceCall call, $2.CloseRequestLightweight request);
 }
