@@ -1,6 +1,6 @@
 name: autd3
 description: "autd3 lightweight library"
-version: 30.0.1
+version: 31.0.1
 homepage: https://github.com/shinolab/autd3
 
 environment:
