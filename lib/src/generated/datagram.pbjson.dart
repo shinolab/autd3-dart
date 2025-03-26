@@ -13,19 +13,6 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use silencerTargetDescriptor instead')
-const SilencerTarget$json = {
-  '1': 'SilencerTarget',
-  '2': [
-    {'1': 'Intensity', '2': 0},
-    {'1': 'PulseWidth', '2': 1},
-  ],
-};
-
-/// Descriptor for `SilencerTarget`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List silencerTargetDescriptor = $convert.base64Decode(
-    'Cg5TaWxlbmNlclRhcmdldBINCglJbnRlbnNpdHkQABIOCgpQdWxzZVdpZHRoEAE=');
-
 @$core.Deprecated('Use gainSTMModeDescriptor instead')
 const GainSTMMode$json = {
   '1': 'GainSTMMode',
@@ -57,7 +44,6 @@ const Silencer$json = {
     {'1': 'fixed_update_rate', '3': 1, '4': 1, '5': 11, '6': '.autd3.Silencer.FixedUpdateRate', '9': 0, '10': 'fixedUpdateRate'},
     {'1': 'fixed_completion_time', '3': 2, '4': 1, '5': 11, '6': '.autd3.Silencer.FixedCompletionTime', '9': 0, '10': 'fixedCompletionTime'},
     {'1': 'fixed_completion_steps', '3': 3, '4': 1, '5': 11, '6': '.autd3.Silencer.FixedCompletionSteps', '9': 0, '10': 'fixedCompletionSteps'},
-    {'1': 'target', '3': 4, '4': 1, '5': 14, '6': '.autd3.SilencerTarget', '10': 'target'},
   ],
   '3': [Silencer_FixedUpdateRate$json, Silencer_FixedCompletionSteps$json, Silencer_FixedCompletionTime$json],
   '8': [
@@ -110,17 +96,16 @@ final $typed_data.Uint8List silencerDescriptor = $convert.base64Decode(
     'ZpeGVkVXBkYXRlUmF0ZUgAUg9maXhlZFVwZGF0ZVJhdGUSWQoVZml4ZWRfY29tcGxldGlvbl90'
     'aW1lGAIgASgLMiMuYXV0ZDMuU2lsZW5jZXIuRml4ZWRDb21wbGV0aW9uVGltZUgAUhNmaXhlZE'
     'NvbXBsZXRpb25UaW1lElwKFmZpeGVkX2NvbXBsZXRpb25fc3RlcHMYAyABKAsyJC5hdXRkMy5T'
-    'aWxlbmNlci5GaXhlZENvbXBsZXRpb25TdGVwc0gAUhRmaXhlZENvbXBsZXRpb25TdGVwcxItCg'
-    'Z0YXJnZXQYBCABKA4yFS5hdXRkMy5TaWxlbmNlclRhcmdldFIGdGFyZ2V0GlsKD0ZpeGVkVXBk'
-    'YXRlUmF0ZRInCg92YWx1ZV9pbnRlbnNpdHkYASABKA1SDnZhbHVlSW50ZW5zaXR5Eh8KC3ZhbH'
-    'VlX3BoYXNlGAIgASgNUgp2YWx1ZVBoYXNlGsQBChRGaXhlZENvbXBsZXRpb25TdGVwcxIsCg92'
-    'YWx1ZV9pbnRlbnNpdHkYASABKA1IAFIOdmFsdWVJbnRlbnNpdHmIAQESJAoLdmFsdWVfcGhhc2'
-    'UYAiABKA1IAVIKdmFsdWVQaGFzZYgBARIkCgtzdHJpY3RfbW9kZRgDIAEoCEgCUgpzdHJpY3RN'
-    'b2RliAEBQhIKEF92YWx1ZV9pbnRlbnNpdHlCDgoMX3ZhbHVlX3BoYXNlQg4KDF9zdHJpY3RfbW'
-    '9kZRrDAQoTRml4ZWRDb21wbGV0aW9uVGltZRIsCg92YWx1ZV9pbnRlbnNpdHkYASABKA1IAFIO'
-    'dmFsdWVJbnRlbnNpdHmIAQESJAoLdmFsdWVfcGhhc2UYAiABKA1IAVIKdmFsdWVQaGFzZYgBAR'
-    'IkCgtzdHJpY3RfbW9kZRgDIAEoCEgCUgpzdHJpY3RNb2RliAEBQhIKEF92YWx1ZV9pbnRlbnNp'
-    'dHlCDgoMX3ZhbHVlX3BoYXNlQg4KDF9zdHJpY3RfbW9kZUIICgZjb25maWc=');
+    'aWxlbmNlci5GaXhlZENvbXBsZXRpb25TdGVwc0gAUhRmaXhlZENvbXBsZXRpb25TdGVwcxpbCg'
+    '9GaXhlZFVwZGF0ZVJhdGUSJwoPdmFsdWVfaW50ZW5zaXR5GAEgASgNUg52YWx1ZUludGVuc2l0'
+    'eRIfCgt2YWx1ZV9waGFzZRgCIAEoDVIKdmFsdWVQaGFzZRrEAQoURml4ZWRDb21wbGV0aW9uU3'
+    'RlcHMSLAoPdmFsdWVfaW50ZW5zaXR5GAEgASgNSABSDnZhbHVlSW50ZW5zaXR5iAEBEiQKC3Zh'
+    'bHVlX3BoYXNlGAIgASgNSAFSCnZhbHVlUGhhc2WIAQESJAoLc3RyaWN0X21vZGUYAyABKAhIAl'
+    'IKc3RyaWN0TW9kZYgBAUISChBfdmFsdWVfaW50ZW5zaXR5Qg4KDF92YWx1ZV9waGFzZUIOCgxf'
+    'c3RyaWN0X21vZGUawwEKE0ZpeGVkQ29tcGxldGlvblRpbWUSLAoPdmFsdWVfaW50ZW5zaXR5GA'
+    'EgASgNSABSDnZhbHVlSW50ZW5zaXR5iAEBEiQKC3ZhbHVlX3BoYXNlGAIgASgNSAFSCnZhbHVl'
+    'UGhhc2WIAQESJAoLc3RyaWN0X21vZGUYAyABKAhIAlIKc3RyaWN0TW9kZYgBAUISChBfdmFsdW'
+    'VfaW50ZW5zaXR5Qg4KDF92YWx1ZV9waGFzZUIOCgxfc3RyaWN0X21vZGVCCAoGY29uZmln');
 
 @$core.Deprecated('Use synchronizeDescriptor instead')
 const Synchronize$json = {
