@@ -1,6 +1,5 @@
 import 'package:autd3/geometry.dart';
 import 'package:autd3/datagram.dart';
-import 'package:autd3/src/generated/datagram.pbenum.dart';
 import 'package:autd3/src/generated/lightweight.pb.dart' as lightweight;
 import 'package:autd3/src/generated/datagram.pb.dart' as lightweight_datagram;
 import 'package:autd3/utils/int_helper.dart';
@@ -54,9 +53,8 @@ class FixedCompletionSteps {
 
 class Silencer<T> extends Datagram {
   final T config;
-  final SilencerTarget target;
 
-  Silencer({required this.config, required this.target});
+  Silencer({required this.config});
 
   @override
   lightweight.Datagram datagram(Geometry geometry) {
@@ -65,19 +63,16 @@ class Silencer<T> extends Datagram {
         return lightweight.Datagram(
             silencer: lightweight_datagram.Silencer(
           fixedCompletionTime: f.toMsg(),
-          target: target,
         ));
       case FixedCompletionSteps f:
         return lightweight.Datagram(
             silencer: lightweight_datagram.Silencer(
           fixedCompletionSteps: f.toMsg(),
-          target: target,
         ));
       case FixedUpdateRate f:
         return lightweight.Datagram(
             silencer: lightweight_datagram.Silencer(
           fixedUpdateRate: f.toMsg(),
-          target: target,
         ));
       case _:
         throw UnimplementedError();

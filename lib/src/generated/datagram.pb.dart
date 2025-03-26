@@ -285,7 +285,6 @@ class Silencer extends $pb.GeneratedMessage {
     Silencer_FixedUpdateRate? fixedUpdateRate,
     Silencer_FixedCompletionTime? fixedCompletionTime,
     Silencer_FixedCompletionSteps? fixedCompletionSteps,
-    SilencerTarget? target,
   }) {
     final $result = create();
     if (fixedUpdateRate != null) {
@@ -296,9 +295,6 @@ class Silencer extends $pb.GeneratedMessage {
     }
     if (fixedCompletionSteps != null) {
       $result.fixedCompletionSteps = fixedCompletionSteps;
-    }
-    if (target != null) {
-      $result.target = target;
     }
     return $result;
   }
@@ -317,7 +313,6 @@ class Silencer extends $pb.GeneratedMessage {
     ..aOM<Silencer_FixedUpdateRate>(1, _omitFieldNames ? '' : 'fixedUpdateRate', subBuilder: Silencer_FixedUpdateRate.create)
     ..aOM<Silencer_FixedCompletionTime>(2, _omitFieldNames ? '' : 'fixedCompletionTime', subBuilder: Silencer_FixedCompletionTime.create)
     ..aOM<Silencer_FixedCompletionSteps>(3, _omitFieldNames ? '' : 'fixedCompletionSteps', subBuilder: Silencer_FixedCompletionSteps.create)
-    ..e<SilencerTarget>(4, _omitFieldNames ? '' : 'target', $pb.PbFieldType.OE, defaultOrMaker: SilencerTarget.Intensity, valueOf: SilencerTarget.valueOf, enumValues: SilencerTarget.values)
     ..hasRequiredFields = false
   ;
 
@@ -377,15 +372,6 @@ class Silencer extends $pb.GeneratedMessage {
   void clearFixedCompletionSteps() => clearField(3);
   @$pb.TagNumber(3)
   Silencer_FixedCompletionSteps ensureFixedCompletionSteps() => $_ensure(2);
-
-  @$pb.TagNumber(4)
-  SilencerTarget get target => $_getN(3);
-  @$pb.TagNumber(4)
-  set target(SilencerTarget v) { setField(4, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasTarget() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearTarget() => clearField(4);
 }
 
 class Synchronize extends $pb.GeneratedMessage {
